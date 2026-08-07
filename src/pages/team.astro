@@ -1,9 +1,195 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const departments = [
+  { id: 'all', name: 'All Physicians' },
+  { id: 'cardiology', name: 'Cardiology' },
+  { id: 'neurology', name: 'Neurology' },
+  { id: 'emergency', name: 'Emergency Medicine' },
+  { id: 'pediatrics', name: 'Pediatrics' },
+  { id: 'oncology', name: 'Oncology' }
+];
+
+const team = [
+  {
+    name: 'Dr. Elena Vance',
+    role: 'Chief of Cardiology',
+    department: 'cardiology',
+    bio: 'Specializing in advanced heart failure and minimally invasive structural interventions.',
+    image: '/public/team/dr-elena-vance.jpg'
+  },
+  {
+    name: 'Dr. Marcus Chen',
+    role: 'Head of Neurology',
+    department: 'neurology',
+    bio: 'Pioneering neuro-vascular research and comprehensive stroke care protocols.',
+    image: '/public/team/dr-marcus-chen.jpg'
+  },
+  {
+    name: 'Dr. Sarah Jenkins',
+    role: 'Emergency Medicine Director',
+    department: 'emergency',
+    bio: 'Leading high-acuity trauma response and rapid diagnostic stabilization.',
+    image: '/public/team/dr-sarah-jenkins.jpg'
+  },
+  {
+    name: 'Dr. David Ross',
+    role: 'Senior Cardiologist',
+    department: 'cardiology',
+    bio: 'Focused on preventative cardiology and electrophysiology breakthroughs.',
+    image: '/public/team/dr-david-ross.jpg'
+  },
+  {
+    name: 'Dr. Amina Patel',
+    role: 'Chief of Pediatrics',
+    department: 'pediatrics',
+    bio: 'Dedicated to neonatal intensive care and developmental pediatric medicine.',
+    image: '/public/team/dr-amina-patel.jpg'
+  },
+  {
+    name: 'Dr. James Wilson',
+    role: 'Neurosurgeon',
+    department: 'neurology',
+    bio: 'Expert in complex spine surgery and minimally invasive neuro-oncology.',
+    image: '/public/team/dr-james-wilson.jpg'
+  },
+  {
+    name: 'Dr. Claire Dupont',
+    role: 'Head of Oncology',
+    department: 'oncology',
+    bio: 'Advancing personalized targeted immunotherapies and clinical trials.',
+    image: '/public/team/dr-claire-dupont.jpg'
+  },
+  {
+    name: 'Dr. Robert Taylor',
+    role: 'Pediatric Specialist',
+    department: 'pediatrics',
+    bio: 'Specializing in pediatric cardiology and congenital heart defects.',
+    image: '/public/team/dr-robert-taylor.jpg'
+  },
+  {
+    name: 'Dr. Li Wei',
+    role: 'Oncological Surgeon',
+    department: 'oncology',
+    bio: 'Precision oncological resections with advanced robotic assistance.',
+    image: '/public/team/dr-li-wei.jpg'
+  }
+];
 ---
 
-<BaseLayout title="Our Team — Hospital Name">
-  <div class="max-w-[1400px] mx-auto px-6 py-20">
-    <h1 class="text-4xl font-bold tracking-tight text-[var(--color-primary)]">Our Team</h1>
+<BaseLayout title="Our Medical Team — Hospital Name">
+  <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
+    <!-- Header -->
+    <div class="max-w-2xl mb-[var(--space-12)]">
+      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
+        Clinical Leadership
+      </span>
+      <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)]">
+        World-class specialists, dedicated to your care.
+      </h1>
+      <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+        Our medical staff brings together decades of research, clinical expertise, and compassionate patient advocacy across all major disciplines.
+      </p>
+    </div>
+
+    <!-- Department Filter Buttons -->
+    <div class="flex flex-wrap gap-[var(--space-3)] mb-[var(--space-12)]" id="filter-container">
+      {departments.map((dept, index) => (
+        <button
+          type="button"
+          data-filter={dept.id}
+          class={`filter-btn px-[var(--space-4)] py-[var(--space-2)] rounded-[var(--radius-full)] text-[var(--font-size-sm)] font-[var(--font-weight-medium)] transition-colors duration-[var(--duration-fast)] ${
+            index === 0 
+              ? 'bg-[var(--color-primary)] text-[var(--color-surface)]' 
+              : 'bg-[var(--color-surface-alt)] text-[var(--color-text-muted)] hover:text-[var(--color-primary)] border border-[var(--color-surface-alt)]'
+          }`}
+        >
+          {dept.name}
+        </button>
+      ))}
+    </div>
+
+    <!-- Team Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[var(--space-6)]" id="team-grid">
+      {team.map((member) => (
+        <div 
+          data-department={member.department}
+          class="team-card group rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] overflow-hidden flex flex-col justify-between transition-all duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:-translate-y-1 hover:border-[var(--color-primary-muted)] hover:shadow-[var(--shadow-lg)]"
+        >
+          <div>
+            <div class="aspect-[4/3] w-full overflow-hidden bg-[var(--color-surface)] relative">
+              <img 
+                src={`https://picsum.photos/seed/${member.name.replace(/[^a-zA-Z]/g, '')}/600/450`} 
+                alt={member.name}
+                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-[var(--duration-slow)] ease-[var(--ease-standard)]"
+              />
+            </div>
+            <div class="p-[var(--space-6)]">
+              <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)] block">
+                {member.role}
+              </span>
+              <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">
+                {member.name}
+              </h3>
+              <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+                {member.bio}
+              </p>
+            </div>
+          </div>
+          <div class="px-[var(--space-6)] pb-[var(--space-6)] pt-0">
+            <span class="inline-flex items-center text-[var(--font-size-xs)] font-[var(--font-weight-medium)] text-[var(--color-primary)]">
+              View Profile & Publications
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-[var(--space-1)] group-hover:translate-x-1 transition-transform duration-[var(--duration-fast)]"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
+
+  <!-- Expected Headshot Files Manifest (for developer reference) -->
+  <!-- 
+    Expected placeholder filenames in /public/team/:
+    - dr-elena-vance.jpg
+    - dr-marcus-chen.jpg
+    - dr-sarah-jenkins.jpg
+    - dr-david-ross.jpg
+    - dr-amina-patel.jpg
+    - dr-james-wilson.jpg
+    - dr-claire-dupont.jpg
+    - dr-robert-taylor.jpg
+    - dr-li-wei.jpg
+  -->
+
+  <script>
+    function setupTeamFilter() {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.team-card');
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+
+          buttons.forEach(b => {
+            b.classList.remove('bg-[var(--color-primary)]', 'text-[var(--color-surface)]');
+            b.classList.add('bg-[var(--color-surface-alt)]', 'text-[var(--color-text-muted)]', 'border', 'border-[var(--color-surface-alt)]');
+          });
+          btn.classList.remove('bg-[var(--color-surface-alt)]', 'text-[var(--color-text-muted)]', 'border', 'border-[var(--color-surface-alt)]');
+          btn.classList.add('bg-[var(--color-primary)]', 'text-[var(--color-surface)]');
+
+          cards.forEach(card => {
+            const dept = card.getAttribute('data-department');
+            if (filter === 'all' || dept === filter) {
+              (card as HTMLElement).style.display = 'flex';
+            } else {
+              (card as HTMLElement).style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    document.addEventListener('astro:page-load', setupTeamFilter);
+    setupTeamFilter();
+  </script>
 </BaseLayout>
