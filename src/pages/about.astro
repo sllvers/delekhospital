@@ -3,7 +3,108 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="About Us — Hospital Name">
-  <div class="max-w-[1400px] mx-auto px-6 py-20">
-    <h1 class="text-4xl font-bold tracking-tight text-[var(--color-primary)]">About Us</h1>
+  <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
+    <!-- Header -->
+    <div class="max-w-3xl mb-[var(--space-16)]">
+      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
+        Our Institution
+      </span>
+      <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-6xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)] leading-[var(--leading-tight)]">
+        Rooted in community, driven by scientific rigor.
+      </h1>
+      <p class="text-[var(--font-size-lg)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+        Hospital Name operates as an independent non-profit medical institution dedicated entirely to patient outcomes, advanced clinical research, and accessible community care.
+      </p>
+    </div>
+
+    <!-- Mission, Vision, Values Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-6)] mb-[var(--space-16)]">
+      <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] flex flex-col justify-between">
+        <div>
+          <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-3)] block">Mission</span>
+          <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Universal Healing</h3>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+            To provide uncompromising medical excellence and compassionate care to every individual, regardless of circumstance.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] flex flex-col justify-between">
+        <div>
+          <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-3)] block">Vision</span>
+          <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">The Future of Care</h3>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+            Pioneering preventative research and advanced therapeutic technologies to shape the next era of global healthcare.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] flex flex-col justify-between">
+        <div>
+          <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-3)] block">Values</span>
+          <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Integrity First</h3>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+            Patient safety, transparent clinical trials, and absolute respect for human dignity anchor every decision we make.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founding Story Section -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-[var(--space-10)] items-center mb-[var(--space-16)]">
+      <div class="md:col-span-6">
+        <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Founding Story</span>
+        <h2 class="text-[var(--font-size-3xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-4)]">
+          Built on a promise to the community.
+        </h2>
+        <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)] mb-[var(--space-4)]">
+          Established in 1995 by a coalition of regional physicians and community leaders, Hospital Name was founded on a simple premise: advanced medical technology should be paired with deep personal empathy.
+        </p>
+        <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+          Over three decades, we have grown from a local clinic into a comprehensive medical center, maintaining our founding non-profit commitment to reinvest every resource back into patient care and clinical research.
+        </p>
+      </div>
+      <div class="md:col-span-6">
+        <div class="aspect-[4/3] rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+          <img 
+            src="https://picsum.photos/seed/hospital-history-founding/800/600" 
+            alt="Hospital History" 
+            class="w-full h-full object-cover opacity-80"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Photo Grid Section -->
+    <div>
+      <div class="mb-[var(--space-8)]">
+        <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Facilities & Care</span>
+<h2 class="text-[var(--font-size-3xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)]">Inside our medical center</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-6)]">
+        <div class="aspect-[4/3] rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] group">
+          <img 
+            src="https://picsum.photos/seed/hospital-facility-1/600/450" 
+            alt="Advanced Surgical Suite" 
+            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[var(--duration-slow)]"
+          />
+        </div>
+        <div class="aspect-[4/3] rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] group">
+          <img 
+            src="https://picsum.photos/seed/hospital-facility-2/600/450" 
+            alt="Patient Care Wing" 
+            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[var(--duration-slow)]"
+          />
+        </div>
+        <div class="aspect-[4/3] rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] group">
+          <img 
+            src="https://picsum.photos/seed/hospital-facility-3/600/450" 
+            alt="Research Laboratory" 
+            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[var(--duration-slow)]"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </BaseLayout>
