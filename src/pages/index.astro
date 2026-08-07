@@ -2,8 +2,124 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Hospital Name — Home">
-  <div class="max-w-[1400px] mx-auto px-6 py-20">
-    <h1 class="text-4xl font-bold tracking-tight text-[var(--color-primary)]">Welcome to Hospital Name</h1>
-  </div>
+<BaseLayout title="Hospital Name - Home">
+  <!-- Hero Section -->
+  <section class="relative min-h-[100dvh] flex items-end pb-[var(--space-16)] px-[var(--space-6)] overflow-hidden">
+    <!-- Background Image Slot with Gradient Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://picsum.photos/seed/hospital-hero-architecture/1920/1080" 
+        alt="Hospital Architecture" 
+        class="w-full h-full object-cover opacity-40 scale-105 animate-fade-in"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] via-[var(--color-surface)]/60 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 max-w-[1400px] w-full mx-auto">
+      <div class="max-w-2xl">
+        <span class="inline-block text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-3)]">
+          Non-Profit Healthcare Excellence
+        </span>
+        <h1 class="text-[var(--font-size-5xl)] md:text-[var(--font-size-7xl)] font-[var(--font-weight-semibold)] tracking-tight leading-[var(--leading-tight)] text-[var(--color-primary)] mb-[var(--space-4)]">
+          Advanced care, grounded in compassion.
+        </h1>
+        <p class="text-[var(--font-size-lg)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)] mb-[var(--space-8)] max-w-[55ch]">
+          Providing world-class medical services, advanced clinical research, and dedicated community support for every patient who walks through our doors.
+        </p>
+        <div class="flex items-center gap-[var(--space-4)]">
+          <a href="/contact" class="inline-flex items-center justify-center px-[var(--space-6)].5 py-[var(--space-3)] rounded-[var(--radius-md)] bg-[var(--color-primary)] text-[var(--color-surface)] text-[var(--font-size-sm)] font-[var(--font-weight-medium)] hover:opacity-90 transition-opacity duration-[var(--duration-fast)]">
+            Contact & Care
+          </a>
+          <a href="/about" class="inline-flex items-center justify-center px-[var(--space-6)] py-[var(--space-3)] rounded-[var(--radius-md)] border border-[var(--color-surface-alt)] text-[var(--color-primary)] text-[var(--font-size-sm)] font-[var(--font-weight-medium)] hover:bg-[var(--color-surface-alt)] transition-colors duration-[var(--duration-fast)]">
+            Our Mission
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Statement Strip -->
+  <section class="py-[var(--space-16)] bg-[var(--color-surface-alt)] border-y border-[var(--color-surface-alt)]">
+    <div class="max-w-[900px] mx-auto px-[var(--space-6)] text-center">
+      <h2 class="text-[var(--font-size-2xl)] md:text-[var(--font-size-3xl)] font-[var(--font-weight-medium)] text-[var(--color-primary)] leading-[var(--leading-snug)] mb-[var(--space-4)]">
+        Dedicated to the health and well-being of our entire community through uncompromising standards of clinical excellence.
+      </h2>
+      <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)]">
+        Operating as an independent non-profit institution focused purely on patient outcomes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Impact Stats Row -->
+  <section class="py-[var(--space-16)] px-[var(--space-6)] max-w-[1400px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-8)]">
+      <div class="p-[var(--space-6)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+        <div class="text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">24/7</div>
+        <div class="text-[var(--font-size-sm)] text-[var(--color-text-muted)]">Emergency and trauma care services available year-round.</div>
+      </div>
+      <div class="p-[var(--space-6)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+        <div class="text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">150+</div>
+        <div class="text-[var(--font-size-sm)] text-[var(--color-text-muted)]">Specialized physicians and clinical researchers on staff.</div>
+      </div>
+      <div class="p-[var(--space-6)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+        <div class="text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">100%</div>
+        <div class="text-[var(--font-size-sm)] text-[var(--color-text-muted)]">Reinvestment into patient care and medical technology.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Asymmetric Preview Cards Grid -->
+  <section class="py-[var(--space-16)] px-[var(--space-6)] max-w-[1400px] mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-[var(--space-8)]">
+      <div>
+        <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Explore Our Institution</span>
+        <h2 class="text-[var(--font-size-3xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)]">Built on legacy, driven by innovation</h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-[var(--space-6)]">
+      <!-- Large About Card -->
+      <a href="/about" class="md:col-span-7 group relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] p-[var(--space-8)] flex flex-col justify-between min-h-[380px] hover:border-[var(--color-primary-muted)] transition-colors duration-[var(--duration-base)]">
+        <div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-opacity duration-[var(--duration-base)]">
+          <img src="https://picsum.photos/seed/hospital-about/800/600" alt="About Hospital" class="w-full h-full object-cover" />
+        </div>
+        <div class="relative z-10">
+          <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">About Us</span>
+          <h3 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Our Heritage of Care</h3>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] max-w-[45ch]">Discover our history, our core leadership principles, and our unwavering commitment to community health.</p>
+        </div>
+        <div class="relative z-10 flex items-center gap-[var(--space-2)] text-[var(--font-size-sm)] font-[var(--font-weight-medium)] text-[var(--color-primary)]">
+          <span>Learn more</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-[var(--duration-fast)]"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- Right Column Stack (Team & Milestones) -->
+      <div class="md:col-span-5 grid grid-cols-1 gap-[var(--space-6)]">
+        <a href="/team" class="group relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] p-[var(--space-6)] flex flex-col justify-between hover:border-[var(--color-primary-muted)] transition-colors duration-[var(--duration-base)]">
+          <div>
+            <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)] block">Leadership</span>
+            <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">Our Medical Team</h3>
+            <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)]">Meet the physicians, specialists, and caregivers leading modern medicine.</p>
+          </div>
+          <div class="flex items-center gap-[var(--space-2)] text-[var(--font-size-sm)] font-[var(--font-weight-medium)] text-[var(--color-primary)] mt-[var(--space-4)]">
+            <span>View team</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-[var(--duration-fast)]"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+        </a>
+
+        <a href="/milestones" class="group relative rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] p-[var(--space-6)] flex flex-col justify-between hover:border-[var(--color-primary-muted)] transition-colors duration-[var(--duration-base)]">
+          <div>
+            <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)] block">History</span>
+            <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">Milestones</h3>
+            <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)]">Decades of breakthroughs, expansions, and community care.</p>
+          </div>
+          <div class="flex items-center gap-[var(--space-2)] text-[var(--font-size-sm)] font-[var(--font-weight-medium)] text-[var(--color-primary)] mt-[var(--space-4)]">
+            <span>Explore milestones</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-[var(--duration-fast)]"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
