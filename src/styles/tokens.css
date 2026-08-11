@@ -57,6 +57,7 @@
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-hover: 0 12px 24px -6px rgb(0 0 0 / 0.25);
   --shadow-glow: 0 0 40px -10px rgb(255 255 255 / 0.1);
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -64,5 +65,41 @@
   --ease-standard: var(--ease-out);
   --duration-fast: 100ms;
   --duration-base: 200ms;
-  --duration-slow: 300ms;
+  --duration-slow: 400ms;
+}
+
+/* Scroll reveal initial states */
+.reveal {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity var(--duration-slow) var(--ease-standard),
+              transform var(--duration-slow) var(--ease-standard);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Restrained Card Lift and Shadow on Hover */
+.hover-lift {
+  transition: transform var(--duration-base) var(--ease-standard),
+              box-shadow var(--duration-base) var(--ease-standard),
+              border-color var(--duration-base) var(--ease-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .hover-lift {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }

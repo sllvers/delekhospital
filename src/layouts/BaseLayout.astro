@@ -27,5 +27,77 @@ const { title = "Hospital Name" } = Astro.props;
       <slot />
     </main>
     <Footer />
+
+    <script>
+      function initAnimations() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+          return;
+        }
+
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -50px 0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const target = entry.target;
+              const delay = target.getAttribute('data-reveal-delay');
+              if (delay) {
+                setTimeout(() => {
+                  target.classList.add('is-visible');
+                }, parseInt(delay, 10));
+              } else {
+                target.classList.add('is-visible');
+              }
+              observer.unobserve(target);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+          observer.observe(el);
+        });
+
+        // Counter animation observer
+        const statObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const targetNum = parseInt(el.getAttribute('data-count') || '0', 10);
+              const suffix = el.getAttribute('data-suffix') || '';
+              const duration = 800;
+              let startTime: number | null = null;
+
+              function updateCount(currentTime: number) {
+                if (!startTime) startTime = currentTime;
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const currentVal = Math.floor(progress * targetNum);
+                el.textContent = currentVal + suffix;
+
+                if (progress < 1) {
+                  requestAnimationFrame(updateCount);
+                } else {
+                  el.textContent = targetNum + suffix;
+                }
+              }
+
+              requestAnimationFrame(updateCount);
+              observer.unobserve(el);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('[data-count]').forEach(el => {
+          statObserver.observe(el);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', initAnimations);
+      document.addEventListener('astro:page-load', initAnimations);
+    </script>
   </body>
 </html>

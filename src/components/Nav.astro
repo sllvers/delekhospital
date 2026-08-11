@@ -1,9 +1,9 @@
 ---
 ---
 
-<header class="border-b border-[var(--color-surface-alt)] bg-[var(--color-surface)]/80 backdrop-blur sticky top-0 z-50">
+<header class="border-b border-[var(--color-surface-alt)] bg-[var(--color-surface)]/80 backdrop-blur sticky top-0 z-50 transition-all duration-[var(--duration-base)] ease-[var(--ease-standard)]">
   <nav class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-    <a href="/" class="text-[var(--color-primary)] font-semibold text-lg tracking-tight">Hospital Name</a>
+    <a href="/" class="text-[var(--color-primary)] font-semibold text-lg tracking-tight hover:opacity-80 transition-opacity">Hospital Name</a>
     <div class="hidden md:flex items-center gap-8 text-sm font-medium text-[var(--color-text-muted)]">
       <a href="/about" class="hover:text-[var(--color-primary)] transition-colors">About</a>
       <a href="/team" class="hover:text-[var(--color-primary)] transition-colors">Team</a>
@@ -11,7 +11,7 @@
       <a href="/contact" class="hover:text-[var(--color-primary)] transition-colors">Contact</a>
     </div>
     <div>
-      <a href="/contact" class="inline-flex items-center justify-center px-4 py-2 rounded-[var(--radius-md)] bg-[var(--color-primary)] text-[var(--color-surface)] text-sm font-medium hover:opacity-90 transition-opacity">
+      <a href="/contact" class="inline-flex items-center justify-center px-4 py-2 rounded-[var(--radius-md)] bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent)]/90 transition-colors duration-[var(--duration-base)]">
         Emergency Care
       </a>
     </div>
