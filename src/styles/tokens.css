@@ -13,14 +13,14 @@
   --space-12: 96px;
   --space-16: 128px;
 
-  /* Color Roles (Semantic dark-tech wellness aesthetic inspired by Biograph ref) */
-  --color-surface: #0a0a0a;
-  --color-surface-alt: #141414;
-  --color-primary: #ffffff;
-  --color-primary-muted: #a1a1aa;
-  --color-text: #ededed;
-  --color-text-muted: #888888;
-  --color-accent: #3b82f6;
+  /* Color Roles (Warm Dark Wellness Aesthetic) */
+  --color-surface: #121210;
+  --color-surface-alt: #1a1a17;
+  --color-primary: #f4f4f0;
+  --color-primary-muted: #9c9c96;
+  --color-text: #e6e6e0;
+  --color-text-muted: #9c9c96;
+  --color-accent: #4a6c5d;
 
   /* Type Scale, Weights & Line Heights */
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -58,7 +58,7 @@
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   --shadow-hover: 0 12px 24px -6px rgb(0 0 0 / 0.25);
-  --shadow-glow: 0 0 40px -10px rgb(255 255 255 / 0.1);
+  --shadow-glow: 0 0 40px -10px rgb(255 255 255 / 0.05);
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
