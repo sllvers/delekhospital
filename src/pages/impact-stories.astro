@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const stories = [
+  {
+    title: 'Young Yangzom: Finding Joy Amidst TB',
+    excerpt: 'A personal journey of courage, resilience, and recovery at Tibetan Delek Hospital.'
+  },
+  {
+    title: 'Reena\'s Heart: A Journey to Wholeness',
+    excerpt: 'A touching testament to compassionate care and renewed life beyond the clinic.'
+  }
+];
+---
+
+<BaseLayout title="Impact Stories — Tibetan Delek Hospital">
+  <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
+    <!-- Header & Intro Copy -->
+    <div class="max-w-3xl mb-[var(--space-16)] reveal">
+      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
+        Real Stories from Delek
+      </span>
+      <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-6xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-6)] leading-[var(--leading-tight)]">
+        Impact Stories
+      </h1>
+      <p class="text-[var(--font-size-lg)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+        We invite you to delve into the heart of Delek's mission by exploring the personal journeys of our patients. Beyond the clinical expertise and advanced treatments, you'll discover incredibly moving stories of courage, resilience, and hope. These are not just case studies; they are powerful testaments to the human spirit and the profound impact of compassionate care. Prepare to be touched by real-life experiences that demonstrate how our work extends far beyond the clinic, fostering recovery and renewed lives.
+      </p>
+    </div>
+
+    <!-- Stories Editorial List -->
+    <div class="space-y-[var(--space-12)]">
+      {stories.map((story, index) => (
+        <div class="reveal p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] flex flex-col md:flex-row gap-[var(--space-8)] items-center" data-reveal-delay={index * 100}>
+          <div class="w-full md:w-1/3 aspect-[4/3] rounded-[var(--radius-md)] overflow-hidden bg-[var(--color-surface)] flex items-center justify-center border border-[var(--color-surface-alt)]">
+            <span class="text-[var(--font-size-xs)] text-[var(--color-text-muted)] uppercase tracking-wider">Patient Photo</span>
+          </div>
+          <div class="w-full md:w-2/3">
+            <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Patient Journey</span>
+            <h2 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">
+              {story.title}
+            </h2>
+            <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)] mb-[var(--space-6)]">
+              {story.excerpt}
+            </p>
+            <!-- TODO: Full story body copy pending consent verification and writing -->
+            <span class="inline-block text-[var(--font-size-xs)] text-[var(--color-primary-muted)] bg-[var(--color-surface)] px-[var(--space-3)] py-[var(--space-1)] rounded-[var(--radius-sm)] border border-[var(--color-surface-alt)]">
+              Full story coming soon
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

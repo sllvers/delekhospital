@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const supportCategories = [
+  {
+    title: 'TB Control Project'
+  },
+  {
+    title: 'Medical Equipment'
+  },
+  {
+    title: 'Hospital Renovation'
+  },
+  {
+    title: 'Staff Salary'
+  }
+];
+---
+
+<BaseLayout title="Ways to Support Us — Tibetan Delek Hospital">
+  <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
+    <!-- Header -->
+    <div class="max-w-2xl mb-[var(--space-16)] reveal">
+      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
+        Support Our Mission
+      </span>
+      <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)]">
+        Ways to Support Us
+      </h1>
+      <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+        Your contributions enable Tibetan Delek Hospital to continue providing accessible, compassionate care and vital community health programs.
+      </p>
+    </div>
+
+    <!-- Support Categories Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-6)]">
+      {supportCategories.map((category, index) => (
+        <div class="reveal p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] hover-lift flex flex-col justify-between min-h-[220px]" data-reveal-delay={index * 80}>
+          <div>
+            <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-3)] block">Contribution Area</span>
+            <h3 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-4)]">
+              {category.title}
+            </h3>
+          </div>
+          <div>
+            <!-- TODO: Detailed descriptions pending real copy from hospital -->
+            <span class="inline-block text-[var(--font-size-xs)] text-[var(--color-primary-muted)] bg-[var(--color-surface)] px-[var(--space-3)] py-[var(--space-1)] rounded-[var(--radius-sm)] border border-[var(--color-surface-alt)]">
+              Detailed descriptions pending review
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

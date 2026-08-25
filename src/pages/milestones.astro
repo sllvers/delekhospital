@@ -3,62 +3,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const milestones = [
   {
-    year: '2024',
-    title: 'Advanced Robotic Surgery Suite',
-    description: 'Launched our state-of-the-art robotic surgical center, enabling ultra-precise minimally invasive procedures across oncology and cardiology.',
-    tag: 'Technology'
+    year: '1971',
+    title: 'Official Inauguration',
+    description: 'Officially inaugurated on October 4th, 1971, with His Holiness the XIV Dalai Lama\'s blessings, following proposal by Mr. Tsewang Rinchen Rishing.',
+    tag: 'Founding'
+  },
+  {
+    year: '1979',
+    title: 'Handover to CTA',
+    description: 'Formally handed over to the Central Tibetan Administration (CTA) on January 1, 1979, and renamed Tibetan Delek Hospital.',
+    tag: 'Administration'
+  },
+  {
+    year: '1982',
+    title: 'TB Ward Inauguration',
+    description: 'His Holiness the 14th Dalai Lama visits Delek to inaugurate the TB ward.',
+    tag: 'Expansion'
+  },
+  {
+    year: '2018',
+    title: 'Overcoming Tuberculosis Book Launch',
+    description: 'Former Health Minister Mr. Choekyong-Wangchuk launches Delek\'s TB-book, "Overcoming Tuberculosis".',
+    tag: 'Publication'
   },
   {
     year: '2021',
-    title: 'Regional Trauma Center Designation',
-    description: 'Officially designated as a Level-1 Trauma Center, providing round-the-clock critical emergency care for the entire metropolitan region.',
-    tag: 'Emergency'
-  },
-  {
-    year: '2016',
-    title: 'Institute for Clinical Research',
-    description: 'Established our dedicated clinical trials wing, bringing breakthrough therapeutic protocols directly to our patients.',
-    tag: 'Research'
-  },
-  {
-    year: '2010',
-    title: 'Pediatric Care Expansion',
-    description: 'Opened the comprehensive Children’s Health Pavilion, featuring specialized neonatal intensive care and family support facilities.',
-    tag: 'Pediatrics'
-  },
-  {
-    year: '2002',
-    title: 'Community Outreach Initiative',
-    description: 'Launched mobile wellness clinics providing preventative screenings and health education to underserved neighborhoods.',
-    tag: 'Community'
-  },
-  {
-    year: '1995',
-    title: 'Hospital Name Foundation',
-    description: 'Founded as an independent, non-profit healthcare institution committed to uncompromised medical excellence and patient-first values.',
-    tag: 'Heritage'
+    title: 'New OPD Inauguration',
+    description: 'His Eminence-Yongzin Ling Rinpoche inaugurates Delek\'s new OPD on July 6, 2021.',
+    tag: 'Facility'
   }
 ];
 ---
 
-<BaseLayout title="Milestones & History — Hospital Name">
+<BaseLayout title="Milestones & History — Tibetan Delek Hospital">
   <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
     <!-- Header -->
-    <div class="max-w-2xl mb-[var(--space-16)]">
+    <div class="max-w-2xl mb-[var(--space-16)] reveal">
       <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
         Our History
       </span>
       <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)]">
-        Decades of breakthroughs, built on trust.
+        Over 50 years of care and resilience.
       </h1>
       <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
-        Trace the key milestones that shaped Hospital Name into a leading non-profit medical institution dedicated to lifelong community wellness.
+        Trace the historical milestones of Tibetan Delek Hospital since its inception in the foothills of the Himalayas.
       </p>
     </div>
 
     <!-- Timeline Container -->
     <div class="relative">
-      <!-- Center Line (Desktop) / Left Line (Mobile) -->
       <div class="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[1px] bg-[var(--color-surface-alt)] -translate-x-1/2"></div>
 
       <div class="space-y-[var(--space-12)]">
@@ -66,8 +59,7 @@ const milestones = [
           const isEven = index % 2 === 0;
           return (
             <div class={`relative flex flex-col md:flex-row items-start ${isEven ? 'md:flex-row-reverse' : ''}`}>
-              <!-- Content Box -->
-              <div class="w-full md:w-[calc(50%-40px)] pl-[50px] md:pl-0">
+              <div class="w-full md:w-[calc(50%-40px)] pl-[50px] md:pl-0 reveal" data-reveal-delay={index * 60}>
                 <div class="p-[var(--space-6)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] hover:border-[var(--color-primary-muted)] transition-colors duration-[var(--duration-base)]">
                   <div class="flex items-center justify-between mb-[var(--space-2)]">
                     <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)]">
@@ -86,10 +78,8 @@ const milestones = [
                 </div>
               </div>
 
-              <!-- Timeline Dot -->
               <div class="absolute left-[20px] md:left-1/2 top-[var(--space-6)] w-[12px] h-[12px] rounded-full bg-[var(--color-primary)] border-4 border-[var(--color-surface)] -translate-x-1/2 z-10"></div>
 
-              <!-- Spacer for alternating side on desktop -->
               <div class="hidden md:block md:w-[calc(50%-40px)]"></div>
             </div>
           );
