@@ -1,9 +1,12 @@
 ---
+import logo from '../assets/Delek-Logo-2023-1.png';
 ---
 
 <header class="border-b border-[var(--color-surface-alt)] bg-[var(--color-surface)]/85 backdrop-blur sticky top-0 z-50 transition-all duration-[var(--duration-base)] ease-[var(--ease-standard)]">
   <nav class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-    <a href="/" class="text-[var(--color-primary)] font-semibold text-lg tracking-tight hover:opacity-80 transition-opacity">Tibetan Delek Hospital</a>
+    <a href="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+      <img src={logo.src} alt="Tibetan Delek Hospital" class="h-10 w-auto" />
+    </a>
     <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-[var(--color-text-muted)]">
       <a href="/about" class="hover:text-[var(--color-primary)] transition-colors">About</a>
       <a href="/team" class="hover:text-[var(--color-primary)] transition-colors">Team</a>
