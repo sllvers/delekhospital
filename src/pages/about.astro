@@ -50,6 +50,58 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Expanded Mission Points -->
+    <div class="mb-[var(--space-16)] p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Comprehensive Objectives</span>
+      <h2 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-6)]">Our Four Pillars of Service</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-6)]">
+        <li class="flex items-start gap-[var(--space-3)]">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-primary)] text-[var(--color-surface)] text-[var(--font-size-xs)] font-bold shrink-0">1</span>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">To provide effective, affordable, and accessible medical treatment to all sections of the community without discrimination.</p>
+        </li>
+        <li class="flex items-start gap-[var(--space-3)]">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-primary)] text-[var(--color-surface)] text-[var(--font-size-xs)] font-bold shrink-0">2</span>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">To execute dedicated prevention and control programs for major regional public health challenges, especially tuberculosis.</p>
+        </li>
+        <li class="flex items-start gap-[var(--space-3)]">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-primary)] text-[var(--color-surface)] text-[var(--font-size-xs)] font-bold shrink-0">3</span>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">To train qualified healthcare professionals and support workers dedicated to compassionate community service.</p>
+        </li>
+        <li class="flex items-start gap-[var(--space-3)]">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-primary)] text-[var(--color-surface)] text-[var(--font-size-xs)] font-bold shrink-0">4</span>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">To foster international solidarity and cooperation in medical humanitarian aid and clinical excellence.</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Founder Section -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-[var(--space-10)] items-center mb-[var(--space-16)]">
+      <div class="md:col-span-5">
+        <div class="aspect-[3/4] rounded-[var(--radius-lg)] overflow-hidden bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+          <img 
+            src="https://picsum.photos/seed/founder-tsewang-rinchen/600/800" 
+            alt="Mr. Tsewang Rinchen Rishing" 
+            class="w-full h-full object-cover opacity-90"
+          />
+        </div>
+      </div>
+      <div class="md:col-span-7">
+        <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Founder Legacy</span>
+        <h2 class="text-[var(--font-size-3xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-4)]">
+          Mr. Tsewang Rinchen Rishing (1922–1982)
+        </h2>
+        <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)] mb-[var(--space-4)]">
+          Born in Tibet, Mr. Tsewang Rinchen Rishing experienced the harrowing exile journey in 1962. Witnessing the severe medical hardships and health crises facing refugees in India, he conceived the vision for a dedicated charitable clinic.
+        </p>
+        <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)] mb-[var(--space-4)]">
+          He formally proposed the establishment of the hospital directly to His Holiness the Dalai Lama. Facing insurmountable financial hurdles during early planning, Mr. Rishing famously pledged his own wife’s jewelry as collateral to secure initial funds for construction.
+        </p>
+        <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+          His relentless dedication culminated in the hospital's official inauguration in 1971. He served as its guiding force until his passing in 1982, leaving an indelible legacy of selfless community service and compassion.
+        </p>
+      </div>
+    </div>
+
     <!-- Founding Story Section -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-[var(--space-10)] items-center mb-[var(--space-16)]">
       <div class="md:col-span-6">
@@ -75,11 +127,78 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </div>
 
+    <!-- Board of Directors Section -->
+    <div class="mb-[var(--space-16)]">
+      <div class="mb-[var(--space-8)]">
+        <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Governance</span>
+        <h2 class="text-[var(--font-size-3xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)]">Board of Directors</h2>
+      </div>
+
+      <div class="overflow-x-auto rounded-[var(--radius-lg)] border border-[var(--color-surface-alt)] bg-[var(--color-surface-alt)]">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-[var(--color-surface-alt)] text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)]">
+              <th class="p-[var(--space-4)]">Name</th>
+              <th class="p-[var(--space-4)]">Institutional Role</th>
+              <th class="p-[var(--space-4)]">Board Position</th>
+            </tr>
+          </thead>
+          <tbody class="text-[var(--font-size-sm)] text-[var(--color-text)] divide-y divide-[var(--color-surface-alt)]">
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Mr. Dawa Phunkyi</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Health Secretary, CTA</td>
+              <td class="p-[var(--space-4)]">Chairman</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Dr. Tsetan Dorji</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Chief Medical Officer, Delek Hospital</td>
+              <td class="p-[var(--space-4)]">Member Secretary</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Mr. Tashi Dhondup</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Administrator</td>
+              <td class="p-[var(--space-4)]">Member</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Dr. Tsering Damdhul</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Senior Physician</td>
+              <td class="p-[var(--space-4)]">Member</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Mr. Tenzin Shenyen</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Finance Director</td>
+              <td class="p-[var(--space-4)]">Treasurer</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Dr. Tenzin Dasel</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Medical Specialist</td>
+              <td class="p-[var(--space-4)]">Member</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Tenzin Nangsel</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Head Nurse</td>
+              <td class="p-[var(--space-4)]">Member</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Mr. Karma Gyalpo</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Community Representative</td>
+              <td class="p-[var(--space-4)]">Member</td>
+            </tr>
+            <tr>
+              <td class="p-[var(--space-4)] font-[var(--font-weight-medium)]">Mrs. Pema Yangzom</td>
+              <td class="p-[var(--space-4)] text-[var(--color-text-muted)]">Social Welfare Officer</td>
+              <td class="p-[var(--space-4)]">Member</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
     <!-- Photo Grid Section -->
     <div>
       <div class="mb-[var(--space-8)]">
         <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Facilities & Care</span>
-<h2 class="text-[var(--font-size-3xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)]">Inside our medical center</h2>
+        <h2 class="text-[var(--font-size-3xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)]">Inside our medical center</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-[var(--space-6)]">
