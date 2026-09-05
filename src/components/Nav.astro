@@ -1,5 +1,13 @@
 ---
 import logo from '../assets/Delek-Logo-2023-1.png';
+
+const pathname = Astro.url.pathname;
+const isActive = (path: string) => {
+  if (path === '/') {
+    return pathname === '/';
+  }
+  return pathname === path || pathname.startsWith(path + '/');
+};
 ---
 
 <header class="border-b border-[var(--color-surface-alt)] bg-[var(--color-surface)]/85 backdrop-blur sticky top-0 z-50 transition-all duration-[var(--duration-base)] ease-[var(--ease-standard)]">
@@ -8,12 +16,42 @@ import logo from '../assets/Delek-Logo-2023-1.png';
       <img src={logo.src} alt="Tibetan Delek Hospital" class="h-10 w-auto" />
     </a>
     <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-[var(--color-text-muted)]">
-      <a href="/about" class="hover:text-[var(--color-primary)] transition-colors">About</a>
-      <a href="/team" class="hover:text-[var(--color-primary)] transition-colors">Team</a>
-      <a href="/milestones" class="hover:text-[var(--color-primary)] transition-colors">Milestones</a>
-      <a href="/impact-stories" class="hover:text-[var(--color-primary)] transition-colors">Impact Stories</a>
-      <a href="/support" class="hover:text-[var(--color-primary)] transition-colors">Support Us</a>
-      <a href="/contact" class="hover:text-[var(--color-primary)] transition-colors">Contact</a>
+      <a 
+        href="/about" 
+        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/about') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
+      >
+        About
+      </a>
+      <a 
+        href="/team" 
+        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/team') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
+      >
+        Team
+      </a>
+      <a 
+        href="/milestones" 
+        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/milestones') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
+      >
+        Milestones
+      </a>
+      <a 
+        href="/impact-stories" 
+        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/impact-stories') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
+      >
+        Impact Stories
+      </a>
+      <a 
+        href="/support" 
+        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/support') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
+      >
+        Support Us
+      </a>
+      <a 
+        href="/contact" 
+        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/contact') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
+      >
+        Contact
+      </a>
     </div>
     <div>
       <a href="/contact" class="inline-flex items-center justify-center px-4 py-2 rounded-[var(--radius-md)] bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent)]/90 transition-colors duration-[var(--duration-base)]">
