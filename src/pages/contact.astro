@@ -2,8 +2,174 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contact Us — Hospital Name">
-  <div class="max-w-[1400px] mx-auto px-6 py-20">
-    <h1 class="text-4xl font-bold tracking-tight text-[var(--color-primary)]">Contact Us</h1>
+<BaseLayout title="Contact Us — Delek Hospital">
+  <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
+    <!-- Header -->
+    <div class="max-w-3xl mb-[var(--space-16)] reveal">
+      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
+        Get in Touch
+      </span>
+      <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-6xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)] leading-[var(--leading-tight)]">
+        We are here for your care and inquiries.
+      </h1>
+      <p class="text-[var(--font-size-lg)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+        Reach out to our administrative staff, medical departments, or emergency services using the details below.
+      </p>
+    </div>
+
+    <!-- Main Grid: Info & Form -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-[var(--space-10)] mb-[var(--space-16)]">
+      <!-- Contact Details Column -->
+      <div class="lg:col-span-5 space-y-[var(--space-8)] reveal">
+        <!-- Address Card -->
+        <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+          <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Address</h3>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+            Tibetan Delek Hospital<br />
+            Gangchen Kyishong, Dharamsala (H.P.)<br />
+            Distt. - Kangra, INDIA – 176215
+          </p>
+        </div>
+
+        <!-- Phone Numbers Card -->
+        <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+          <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Phone Numbers</h3>
+          <ul class="space-y-[var(--space-2)] text-[var(--font-size-sm)]">
+            <li>
+              <a href="tel:+911892222053" class="text-[var(--color-primary)] font-[var(--font-weight-medium)] hover:underline">+91 1892 222053 <span class="text-[var(--color-text-muted)] font-normal">(Primary)</span></a>
+            </li>
+            <li>
+              <a href="tel:+911892223381" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">+91 1892 223381</a>
+            </li>
+            <li>
+              <a href="tel:+911892222406" class="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors">+91 1892 222406</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Hours Card -->
+        <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+          <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Hours of Operation</h3>
+          <ul class="space-y-[var(--space-2)] text-[var(--font-size-sm)] text-[var(--color-text-muted)]">
+            <li class="flex justify-between"><span>Monday – Friday:</span> <span class="font-[var(--font-weight-medium)] text-[var(--color-primary)]">9:00am – 5:00pm</span></li>
+            <li class="flex justify-between"><span>Saturday:</span> <span class="font-[var(--font-weight-medium)] text-[var(--color-primary)]">9:00am – 1:00pm</span></li>
+            <li class="flex justify-between"><span>Sunday:</span> <span class="font-[var(--font-weight-medium)] text-[var(--color-primary)]">Emergency only, 24x7</span></li>
+            <li class="flex justify-between border-t border-[var(--color-surface)] pt-[var(--space-2)] mt-[var(--space-2)]"><span>Emergency Services:</span> <span class="font-[var(--font-weight-medium)] text-[var(--color-primary)]">24x7 Daily</span></li>
+          </ul>
+        </div>
+
+        <!-- Email & Socials Card -->
+        <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)]">
+          <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Direct & Social</h3>
+          <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] mb-[var(--space-4)]">
+            Email: <span id="obfuscated-email" class="font-[var(--font-weight-medium)] text-[var(--color-primary)]">hospitaldelek [at] yahoo [dot] com</span>
+          </p>
+          <div class="flex items-center space-x-3">
+            <a 
+              href="https://www.facebook.com/Delek-Hospital-Dharamsala-220833531445744/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Facebook"
+              class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[var(--color-surface)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a 
+              href="https://instagram.com/delekmenkhang" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              aria-label="Instagram"
+              class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[var(--color-surface)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white transition-colors"
+            >
+              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form Column -->
+      <div class="lg:col-span-7 reveal">
+        <div class="p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">Send Us a Message</h3>
+            <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] mb-[var(--space-6)]">Fill out the form below and our team will get back to you shortly.</p>
+            
+            <!-- Note: Form action endpoint is pending form backend confirmation (e.g. Formspree / Cloudflare Pages Forms) -->
+            <form action="#" method="POST" class="space-y-[var(--space-4)]">
+              <div>
+                <label for="name" class="block text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)]">Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required 
+                  class="w-full px-[var(--space-4)] py-[var(--space-3)] rounded-[var(--radius-md)] bg-[var(--color-surface)] border border-[var(--color-surface-alt)] text-[var(--color-primary)] text-[var(--font-size-sm)] focus:outline-none focus:border-[var(--color-primary-muted)]"
+                  placeholder="Your full name"
+                />
+              </div>
+              <div>
+                <label for="email" class="block text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)]">Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required 
+                  class="w-full px-[var(--space-4)] py-[var(--space-3)] rounded-[var(--radius-md)] bg-[var(--color-surface)] border border-[var(--color-surface-alt)] text-[var(--color-primary)] text-[var(--font-size-sm)] focus:outline-none focus:border-[var(--color-primary-muted)]"
+                  placeholder="Your email address"
+                />
+              </div>
+              <div>
+                <label for="subject" class="block text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)]">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject" 
+                  required 
+                  class="w-full px-[var(--space-4)] py-[var(--space-3)] rounded-[var(--radius-md)] bg-[var(--color-surface)] border border-[var(--color-surface-alt)] text-[var(--color-primary)] text-[var(--font-size-sm)] focus:outline-none focus:border-[var(--color-primary-muted)]"
+                  placeholder="Subject of your inquiry"
+                />
+              </div>
+              <div>
+                <label for="message" class="block text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)]">Message</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="5" 
+                  required 
+                  class="w-full px-[var(--space-4)] py-[var(--space-3)] rounded-[var(--radius-md)] bg-[var(--color-surface)] border border-[var(--color-surface-alt)] text-[var(--color-primary)] text-[var(--font-size-sm)] focus:outline-none focus:border-[var(--color-primary-muted)] resize-none"
+                  placeholder="How can we help you?"
+                ></textarea>
+              </div>
+              <button 
+                type="submit" 
+                class="w-full inline-flex items-center justify-center px-[var(--space-6)] py-[var(--space-3)] rounded-[var(--radius-md)] bg-[var(--color-accent)] text-white text-[var(--font-size-sm)] font-[var(--font-weight-medium)] hover:bg-[var(--color-accent)]/90 transition-colors duration-[var(--duration-fast)]"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embedded Google Map -->
+    <div class="reveal">
+      <div class="mb-[var(--space-4)]">
+        <h3 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)]">Location</h3>
+        <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)]">Gangchen Kyishong, Dharamsala, Himachal Pradesh</p>
+      </div>
+      <div class="aspect-[16/9] md:aspect-[21/9] w-full rounded-[var(--radius-lg)] overflow-hidden border border-[var(--color-surface-alt)] bg-[var(--color-surface-alt)]">
+        <iframe 
+          title="Tibetan Delek Hospital Location Map"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.796336341258!2d76.320499!3d32.219599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3904870c55555555%3A0x6b42b87f5d680190!2sTibetan%20Delek%20Hospital!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin" 
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
   </div>
 </BaseLayout>
