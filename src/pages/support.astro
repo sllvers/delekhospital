@@ -3,16 +3,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const supportCategories = [
   {
-    title: 'TB Control Project'
+    title: 'TB Control Project',
+    description: 'Supporting crucial diagnostic, treatment, and prevention programs for tuberculosis across the community.'
   },
   {
-    title: 'Medical Equipment'
+    title: 'Medical Equipment',
+    description: 'Acquiring and maintaining modern diagnostic tools, digital X-rays, and essential care equipment.'
   },
   {
-    title: 'Hospital Renovation'
+    title: 'Hospital Renovation',
+    description: 'Upgrading patient wards, isolation units, and facilities to ensure a safe, modern healing environment.'
   },
   {
-    title: 'Staff Salary'
+    title: 'Staff Salary',
+    description: 'Ensuring fair compensation for our dedicated resident doctors, nurses, pharmacists, and support personnel.'
   }
 ];
 ---
@@ -20,15 +24,34 @@ const supportCategories = [
 <BaseLayout title="Ways to Support Us — Tibetan Delek Hospital">
   <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
     <!-- Header -->
-    <div class="max-w-2xl mb-[var(--space-16)] reveal">
+    <div class="max-w-3xl mb-[var(--space-12)] reveal">
       <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
         Support Our Mission
       </span>
       <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)]">
         Ways to Support Us
       </h1>
+      <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)] mb-[var(--space-6)]">
+        Your contributions directly enable Tibetan Delek Hospital to continue providing accessible, compassionate care and vital community health programs. Funds are distributed across key areas such as our TB Control Project, Medical Equipment acquisition, Hospital Renovations, and Staff Support.
+      </p>
+      <div>
+        <a 
+          href="https://www.paypal.com/donate/?hosted_button_id=9FRFJXDYCWULS" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center justify-center px-[var(--space-8)] py-[var(--space-4)] rounded-[var(--radius-md)] bg-[var(--color-accent)] text-white text-[var(--font-size-base)] font-[var(--font-weight-medium)] hover:bg-[var(--color-accent)]/90 transition-colors duration-[var(--duration-fast)] shadow-md hover-lift"
+        >
+          Donate via PayPal
+        </a>
+      </div>
+    </div>
+
+    <!-- Transparency & Financial Accountability Box -->
+    <div class="mb-[var(--space-16)] p-[var(--space-8)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] reveal">
+      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">Financial Transparency</span>
+      <h3 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-3)]">Accountability & Trust</h3>
       <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
-        Your contributions enable Tibetan Delek Hospital to continue providing accessible, compassionate care and vital community health programs.
+        Hospital finances are meticulously managed by our dedicated accountants and audited annually by the Central Tibetan Administration's (CTA) Auditor General. Detailed financial reports and impact updates are regularly provided to our valued donors to maintain complete transparency and trust.
       </p>
     </div>
 
@@ -41,12 +64,9 @@ const supportCategories = [
             <h3 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-4)]">
               {category.title}
             </h3>
-          </div>
-          <div>
-            <!-- TODO: Detailed descriptions pending real copy from hospital -->
-            <span class="inline-block text-[var(--font-size-xs)] text-[var(--color-primary-muted)] bg-[var(--color-surface)] px-[var(--space-3)] py-[var(--space-1)] rounded-[var(--radius-sm)] border border-[var(--color-surface-alt)]">
-              Detailed descriptions pending review
-            </span>
+            <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
+              {category.description}
+            </p>
           </div>
         </div>
       ))}
