@@ -22,6 +22,8 @@ const pageDescriptions: Record<string, string> = {
   '/contact': 'Find contact details, visiting information and directions for Delek Hospital in Gangchen Kyishong, Dharamsala.',
 };
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Match trailingSlash: 'always'; omit query strings and fragments, including previews.
+const canonical = new URL(pathname === '/' ? '/' : `${pathname}/`, Astro.site);
 const { title: suppliedTitle = 'Delek Hospital', description = pageDescriptions[pathname] ?? pageDescriptions['/'] } = Astro.props;
 const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
 ---
@@ -34,6 +36,7 @@ const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Delek Hospital" />
     <meta property="og:title" content={title} />
