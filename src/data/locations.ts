@@ -1,0 +1,6 @@
+// Add exact branch addresses, map URLs and hours only after hospital confirmation.
+export const locations = [
+ {id:'main-hospital',name:'Delek Hospital',place:'Dharamshala',label:'Main hospital',address:'Gangchen Kyishong, Dharamshala, District Kangra, Himachal Pradesh, India – 176215',description:'Outpatient and inpatient care, diagnostic services, pharmacy and laboratory.',services:['General OPD','Inpatient care','TB care','Diagnostics','Pharmacy','Laboratory'],directions:'https://www.google.com/maps/search/?api=1&query=Tibetan+Delek+Hospital+Dharamshala',map:'https://maps.google.com/maps?q=Tibetan%20Delek%20Hospital%20Dharamshala&output=embed',schedule:true},
+ {id:'mcleod-ganj',name:'McLeod Ganj Branch Clinic',place:'McLeod Ganj',label:'Branch clinic',address:null,description:'Selected general outpatient care, nursing support and pharmacy services. Contact the main hospital for directions and availability.',services:['General OPD','Nursing support','Pharmacy'],directions:null,map:null,schedule:true},
+ {id:'chandigarh',name:'Delek House',place:'Chandigarh',label:'Patient support',address:null,description:'Contact the hospital for current patient support services, directions and arrangements before travelling.',services:[],directions:null,map:null,schedule:false},
+];

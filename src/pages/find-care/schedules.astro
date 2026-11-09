@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { schedule } from '../../data/care';
+const days = ['Monday','Tuesday','Wednesday','Thursday','Friday'];
+const clinicDays = (day: string | null) => day === 'Monday–Friday' ? days : days.filter(d => day?.startsWith(d));
+---
+<BaseLayout title="Clinics & Schedules — Delek Hospital" description="Browse Delek Hospital’s weekly clinic timetable by facility and day, with specialist and Saturday hours.">
+<div class="content-wrap"><PageIntro eyebrow="Find Care" title="Your week at Delek." description="Choose a facility and day to find clinic hours. Call before travelling to confirm availability and appointments." />
+<div class="clinic-planner" data-schedule>
+ <div class="planner-tools" hidden><div class="facility-switch" role="group" aria-label="Choose a facility"><button type="button" data-facility="main" aria-pressed="true">Main Hospital</button><button type="button" data-facility="branch" aria-pressed="false">McLeod Ganj</button></div><div class="day-switch" role="group" aria-label="Filter by day"><button type="button" data-day="all" aria-pressed="true">Full week</button>{days.map(day => <button type="button" data-day={day} aria-pressed="false">{day.slice(0,3)}</button>)}</div></div>
+ <div class="service-filter" hidden><span></span><button type="button">Show all clinics</button></div>
+ <p class="planner-status" role="status" aria-live="polite">Weekly clinic information · Monday–Friday</p>
+ <div class="timetable"><table><caption class="sr-only">Clinic hours and appointment information</caption><thead><tr><th scope="col">Clinic / service</th><th scope="col">Days</th><th scope="col">Hours</th><th scope="col">Before you visit</th></tr></thead><tbody>{schedule.clinics.map(clinic => <tr data-clinic={clinic.id} data-site={clinic.name.includes('McLeod') ? 'branch' : 'main'} data-days={clinicDays(clinic.days).join(',')}><th scope="row">{clinic.name}</th><td data-label="Days">{clinic.days ?? 'By arrangement'}</td><td data-label="Hours"><span class:list={['hours',{'needs-confirmation':!clinic.hours}]}>{clinic.hours ?? 'Call to confirm'}</span></td><td data-label="Visit information">{clinic.note}</td></tr>)}</tbody></table></div>
+ <p class="empty-schedule" hidden>No regular clinics are listed for this selection. Please call the hospital for availability.</p>
+ <p class="note planner-footnote">By-arrangement clinics are shown for every weekday; this does not confirm an appointment. {schedule.reviewedOn && `Schedule confirmed: ${schedule.reviewedOn}.`}</p>
+</div>
+<section class="saturday-section"><div><span class="eyebrow">Planning a Saturday visit?</span><h2>Which Saturday<br />of the month?</h2><p class="note">For General OPD, Dentistry, Laboratory and Pharmacy at the main hospital.</p></div><ol class="saturday-strip">{schedule.saturdays.map((day,index) => <li class:list={{closed:day.hours==='Closed',unconfirmed:!day.hours}}><span class="saturday-number">{index+1}<small>{['st','nd','rd','th','th'][index]}</small></span><span class="saturday-label">Saturday</span><strong>{day.hours ?? 'Call to confirm'}</strong></li>)}</ol></section>
+<div class="schedule-contact"><p>Need help arranging your visit?</p><a class="text-link" href="tel:+911892222053">Call +91 1892 222053 →</a><a class="text-link" href="/find-care/locations">Find your clinic →</a></div>
+</div></BaseLayout>
+<style>
+.service-filter{display:flex;gap:20px;align-items:center;flex-wrap:wrap;padding:20px;background:#edf1e9}.service-filter[hidden]{display:none}.service-filter button{text-decoration:underline;cursor:pointer;color:var(--color-accent)}
+
+.planner-tools{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;padding-bottom:24px;border-bottom:1px solid #d8ddd3}.planner-tools[hidden]{display:none}.facility-switch,.day-switch{display:flex;flex-wrap:wrap;gap:4px}.facility-switch{padding:4px;border:1px solid #d8ddd3;border-radius:10px}.planner-tools button{padding:11px 16px;border-radius:6px;font-size:14px;cursor:pointer}.planner-tools button[aria-pressed=true]{background:var(--color-accent);color:white}.day-switch button[aria-pressed=false]{color:var(--color-text-muted)}button:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px}.planner-status{font-size:13px;color:var(--color-accent);padding-block:22px}.timetable table{width:100%;border-collapse:collapse;text-align:left}.timetable thead{background:#edf1e9}.timetable th,.timetable td{padding:22px 18px;vertical-align:top;line-height:1.65;font-size:14px;border-bottom:1px solid #d8ddd3}.timetable thead th{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:600}.timetable tbody th{width:25%;font-size:17px;font-weight:500}.timetable td:last-child{width:32%;color:var(--color-text-muted)}.timetable tr[hidden]{display:none}.hours{color:var(--color-accent);font-weight:600}.needs-confirmation{color:#85612e;font-weight:500}.planner-footnote{padding-top:20px}.empty-schedule{padding:24px 0}.saturday-section{display:grid;grid-template-columns:1fr 2fr;gap:48px;padding-block:64px}.saturday-section h2{font-size:30px;line-height:1.2;margin-bottom:16px;font-weight:500}.saturday-strip{display:grid;grid-template-columns:repeat(5,1fr);list-style:none;gap:12px;margin:0;padding:0}.saturday-strip li{border-top:3px solid #8ca17e;padding:18px 4px}.saturday-number{font-size:42px;display:block;line-height:1.2;font-weight:500;color:var(--color-accent)}.saturday-number small{font-size:14px;margin-left:2px}.saturday-label{display:block;font-size:12px;color:var(--color-text-muted);margin-block:6px 18px}.saturday-strip strong{font-size:12px;line-height:1.6;font-weight:500;display:block}.saturday-strip .closed{border-color:#b9b9ad}.closed .saturday-number{color:#77796f}.saturday-strip .unconfirmed{border-color:#bc9d6b}.schedule-contact{display:flex;flex-wrap:wrap;gap:24px;padding:28px 0 64px;border-top:1px solid #d8ddd3}.schedule-contact p{margin-right:auto}
+@media(max-width:767px){.planner-tools{align-items:start;gap:16px}.planner-tools button{padding:10px 12px}.timetable thead{display:none}.timetable table,.timetable tbody,.timetable tr,.timetable td,.timetable tbody th{display:block;width:100%}.timetable tbody tr{padding:20px 0;border-top:1px solid #d8ddd3}.timetable tbody tr[hidden]{display:none}.timetable tbody th{padding:0 0 14px;border:0;font-size:20px}.timetable td{padding:6px 0;border:0}.timetable td:before{content:attr(data-label);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:3px}.timetable td:last-child{width:100%}.saturday-section{grid-template-columns:1fr;gap:28px;padding-block:40px}.saturday-strip{grid-template-columns:repeat(3,1fr)}.schedule-contact{gap:16px}}
+</style>
+<script>
+function initSchedule(){
+ const planner=document.querySelector<HTMLElement>('[data-schedule]');if(!planner)return;
+ const tools=planner.querySelector<HTMLElement>('.planner-tools')!;tools.hidden=false;
+ let site='main',day='all';
+ const requested=new URLSearchParams(location.search).get('clinic');
+ const selected=Array.from(planner.querySelectorAll<HTMLElement>('[data-clinic]')).find(row=>row.dataset.clinic===requested);
+ let clinic=selected?.dataset.clinic ?? '';
+ if(selected)site=selected.dataset.site!;
+ const filter=planner.querySelector<HTMLElement>('.service-filter')!;
+ filter.hidden=!clinic;
+ filter.querySelector('span')!.textContent=selected?.querySelector('th')?.textContent ?? '';
+ const render=()=>{
+  let count=0;planner.querySelectorAll<HTMLElement>('[data-clinic]').forEach(row=>{row.hidden=(!!clinic&&row.dataset.clinic!==clinic)||row.dataset.site!==site||(day!=='all'&&!!row.dataset.days&&!row.dataset.days.split(',').includes(day));if(!row.hidden)count++;});
+  planner.querySelectorAll<HTMLButtonElement>('[data-facility]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.facility===site)));
+  planner.querySelectorAll<HTMLButtonElement>('[data-day]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.day===day)));
+  planner.querySelector<HTMLElement>('.planner-status')!.textContent=`${site==='main'?'Main Hospital':'McLeod Ganj'} · ${day==='all'?'Monday–Friday':day} · ${count} listed ${count===1?'service':'services'}`;
+  planner.querySelector<HTMLElement>('.empty-schedule')!.hidden=count>0;
+ };
+ filter.querySelector('button')!.addEventListener('click',()=>{clinic='';filter.hidden=true;const url=new URL(location.href);url.searchParams.delete('clinic');history.replaceState(null,'',url);render();});
+ tools.addEventListener('click',e=>{const b=(e.target as Element).closest<HTMLButtonElement>('button');if(!b)return;if(b.dataset.facility){site=b.dataset.facility;clinic='';filter.hidden=true;const url=new URL(location.href);url.searchParams.delete('clinic');history.replaceState(null,'',url);}if(b.dataset.day)day=b.dataset.day;render();});render();
+}
+document.addEventListener('astro:page-load',initSchedule);
+</script>

@@ -1,107 +1,49 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import PageIntro from '../components/PageIntro.astro';
+import portrait0 from '../assets/1-Dawa-Phunkyi.jpg';
+import portrait1 from '../assets/2-Tashi-Dhondup.jpg';
+import portrait2 from '../assets/3-Tsering-Damdhul.jpg';
+import portrait3 from '../assets/4-Tenzin-Shenyen.jpg';
+import portrait4 from '../assets/5-Tsetan-Dorji.jpg';
+import portrait5 from '../assets/6-Sonam-Topgyal.jpg';
+import portrait6 from '../assets/11-Jigme-Kalsang.jpg';
 const administration = [
-  { name: 'Mr. Dawa Phunkyi', role: 'Administrator' },
-  { name: 'Mr. Tashi Dhondup', role: 'Administration' },
-  { name: 'Mr. Tsering Damdhul', role: 'Administration' },
-  { name: 'Mr. Tenzin Shenyen', role: 'Administration' }
+  { name: 'Mr. Dawa Phunkyi', photo: portrait0, role: 'Administrator' },
+  { name: 'Mr. Tashi Dhondup', photo: portrait1, role: 'Administration' },
+  { name: 'Mr. Tsering Damdhul', photo: portrait2, role: 'Administration' },
+  { name: 'Mr. Tenzin Shenyen', photo: portrait3, role: 'Administration' }
 ];
 
 const seniorMedicalOfficers = [
-  { 
-    name: 'Dr. Tsetan Dorji', 
+  {
+    name: 'Dr. Tsetan Dorji', photo: portrait4,
     role: 'Senior Medical Officer',
     bio: 'Dedicated clinical care and community health service.'
   },
-  { 
-    name: 'Dr. Sonam Topgyal', 
+  {
+    name: 'Dr. Sonam Topgyal', photo: portrait5,
     role: 'Senior Medical Officer',
     bio: 'Committed to comprehensive patient diagnosis and treatment.'
   },
-  { 
-    name: 'Dr. Tenzin Namdon', 
+  {
+    name: 'Dr. Tenzin Namdon',
     role: 'Senior Medical Officer',
     school: 'TCV Gopalpur / St. John\'s Medical College',
     joined: 'Joined Delek in 2017',
     bio: 'I was born in India, in the Bylakkupe settlement. I knew I wanted to be a doctor from ......'
   },
-  { 
-    name: 'Dr. Jigme Kalsang', 
+  {
+    name: 'Dr. Jigme Kalsang', photo: portrait6,
     role: 'Senior Medical Officer',
     bio: 'Specialized medical care and acute intervention.'
   }
 ];
 ---
-
-<BaseLayout title="Our Medical Team — Tibetan Delek Hospital">
-  <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
-    <!-- Header -->
-    <div class="max-w-2xl mb-[var(--space-16)] reveal">
-      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
-        Hospital Leadership & Staff
-      </span>
-      <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)]">
-        Our Administration & Medical Officers
-      </h1>
-      <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
-        Meet the dedicated team guiding Tibetan Delek Hospital's mission of compassionate, accessible healthcare in Dharamsala.
-      </p>
-    </div>
-
-    <!-- Senior Medical Officers Section -->
-    <div class="mb-[var(--space-16)]">
-      <h2 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-8)] reveal">
-        Senior Medical Officers
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-[var(--space-6)]">
-        {seniorMedicalOfficers.map((doc, idx) => (
-          <div class="reveal p-[var(--space-6)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] hover-lift flex flex-col justify-between" data-reveal-delay={idx * 80}>
-            <div>
-              <div class="flex items-center justify-between mb-[var(--space-2)]">
-                <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)]">
-                  {doc.role}
-                </span>
-                {doc.joined && (
-                  <span class="text-[var(--font-size-xs)] text-[var(--color-text-muted)] font-[var(--font-weight-medium)]">
-                    {doc.joined}
-                  </span>
-                )}
-              </div>
-              <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">
-                {doc.name}
-              </h3>
-              {doc.school && (
-                <div class="text-[var(--font-size-xs)] text-[var(--color-primary-muted)] mb-[var(--space-3)]">
-                  {doc.school}
-                </div>
-              )}
-              <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)] italic">
-                "{doc.bio}"
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Administration Section -->
-    <div>
-      <h2 class="text-[var(--font-size-2xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-8)] reveal">
-        Administration
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-[var(--space-6)]">
-        {administration.map((admin, idx) => (
-          <div class="reveal p-[var(--space-6)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] hover-lift" data-reveal-delay={idx * 60}>
-            <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)] mb-[var(--space-1)] block">
-              {admin.role}
-            </span>
-            <h3 class="text-[var(--font-size-lg)] font-[var(--font-weight-semibold)] text-[var(--color-primary)]">
-              {admin.name}
-            </h3>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</BaseLayout>
+<BaseLayout title="Our Medical Team — Delek Hospital"><div class="content-wrap"><PageIntro eyebrow="The people behind Delek" title="Care begins with people." description="Meet the medical officers and administration serving Delek Hospital and its community." />
+<section class="team-section"><div class="team-section-heading"><span class="eyebrow">Medical care</span><h2>Senior Medical Officers</h2></div><div class="portrait-grid">{seniorMedicalOfficers.map(doc => <article class="person">{'photo' in doc && doc.photo ? <img src={doc.photo.src} width={doc.photo.width} height={doc.photo.height} alt={doc.name} loading="lazy" /> : <div class="portrait-initials" aria-label="Portrait unavailable">TN</div>}<div class="person-copy"><h3>{doc.name}</h3><p class="person-role">{doc.role}</p>{doc.joined && <p class="person-detail">{doc.joined}</p>}{doc.school && <p class="person-detail">{doc.school}</p>}{!doc.bio.includes('......') && <p class="person-bio">{doc.bio}</p>}</div></article>)}</div></section>
+<section class="team-section"><div class="team-section-heading"><span class="eyebrow">Keeping Delek moving</span><h2>Administration</h2></div><div class="portrait-grid">{administration.map(person => <article class="person"><img src={person.photo.src} width={person.photo.width} height={person.photo.height} alt={person.name} loading="lazy" /><div class="person-copy"><h3>{person.name}</h3><p class="person-role">{person.role}</p></div></article>)}</div></section>
+</div></BaseLayout>
+<style>
+.team-section{padding-block:24px 64px}.team-section-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:24px;border-bottom:1px solid #d8ddd3;margin-bottom:32px}.team-section h2{font-size:28px;font-weight:500;letter-spacing:-.02em}.portrait-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}.person{min-width:0}.person>img,.portrait-initials{width:100%;aspect-ratio:1;object-fit:cover;object-position:top center;background:#edf1e9}.portrait-initials{display:flex;align-items:center;justify-content:center;color:#74866c;font-family:Georgia,serif;font-size:56px}.person-copy{padding-top:20px}.person h3{font-size:20px;font-weight:500;line-height:1.3;margin-bottom:8px}.person-role{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-accent);line-height:1.6}.person-detail{font-size:12px;color:var(--color-text-muted);line-height:1.7;margin-top:8px}.person-bio{font-size:14px;line-height:1.7;color:var(--color-text-muted);margin-top:12px}@media(max-width:900px){.portrait-grid{grid-template-columns:repeat(2,1fr);gap:32px 24px}}@media(max-width:480px){.team-section-heading{display:block}.team-section h2{font-size:24px}.person h3{font-size:17px}.portrait-grid{gap:28px 16px}.person-copy{padding-top:14px}}
+</style>

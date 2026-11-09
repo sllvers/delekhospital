@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import general from '../../assets/services/general.jpg';
+import dental from '../../assets/services/dental.jpg';
+import endoscopy from '../../assets/services/endoscopy.jpg';
+import xray from '../../assets/services/xray.jpg';
+import ecg from '../../assets/services/ecg.jpg';
+import checkup from '../../assets/services/checkup.jpg';
+import women from '../../assets/services/women.jpg';
+import pharmacy from '../../assets/services/pharmacy.jpg';
+import laboratory from '../../assets/services/laboratory.jpg';
+import { careServices } from '../../data/care';
+const photos = [
+{src:general,alt:'Hands holding a stethoscope'},
+{src:dental,alt:'Sterilised dental instruments being prepared'},
+{src:endoscopy,alt:'An endoscopy examination at Delek Hospital'},
+{src:xray,alt:'A clinician examining a chest X-ray'},
+{src:ecg,alt:'An ECG machine in an examination room'},
+{src:checkup,alt:'A clinician checking a patient’s blood pressure'},
+{src:women,alt:'A woman speaking with a clinician during a consultation'},
+{src:pharmacy,alt:'A customer speaking with a pharmacist'},
+{src:laboratory,alt:'Laboratory equipment and work surfaces at Delek Hospital'},
+];
+---
+<BaseLayout title="Medical Services — Delek Hospital" description="Explore medical, diagnostic, dental, pharmacy and laboratory services, with clinic schedules and visit information.">
+<div class="services-page"><div class="content-wrap">
+<header class="services-intro"><p class="eyebrow">Find care / Medical services</p><h1>Care for your everyday health.</h1><p>Explore our services and find the relevant clinic hours.<br />Please call to confirm availability before travelling.</p></header>
+<section class="service-directory" aria-label="Medical services">{careServices.map((service,index)=><article>
+<div class="service-photo"><Image src={photos[index].src} alt={photos[index].alt} widths={[400,640,900]} sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw" loading="lazy" /></div>
+<div class="service-body"><h2>{service.title}</h2><p>{service.description}</p><div class="service-next"><p>{service.clinic?.days ?? 'Availability by confirmation'}<small>{service.clinic?.hours ?? 'Call to confirm hours'}</small></p>{service.clinic ? <a href={`/find-care/schedules?clinic=${service.clinic.id}`}>View clinic schedule <span aria-hidden="true">↗</span></a> : <a href="tel:+911892222053">Call to confirm <span aria-hidden="true">↗</span></a>}</div></div>
+</article>)}</section>
+<p class="photo-note">Stock photographs illustrate services; endoscopy and laboratory photographs are from Delek Hospital.</p>
+<aside class="callout"><h2>Looking for TB care?</h2><p>Find information about diagnosis, treatment, follow-up and patient support.</p><div class="actions"><a class="button" href="/find-care/tb-care">TB care at Delek</a><a class="text-link" href="/find-care/locations#main-hospital">Hospital directions →</a></div></aside></div></div>
+</BaseLayout>
+<style>
+.services-page{background:#f3f0e8;color:#263c31}.content-wrap{max-width:1320px}.services-intro{text-align:center;padding:20px 0 48px}.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:20px}.services-intro h1{font:400 clamp(38px,4.8vw,64px)/1.12 Georgia,serif;letter-spacing:-.035em;margin-bottom:22px}.services-intro>p:last-child{font-size:16px;line-height:1.8;color:#586357}.service-directory{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}.service-directory article{display:flex;flex-direction:column;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 7px 24px #263c310c;border:1px solid #e2e5dc}.service-photo{overflow:hidden;aspect-ratio:4/3}.service-photo img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}.service-directory article:hover .service-photo img{transform:scale(1.025)}.service-body{display:flex;flex-direction:column;flex:1;text-align:center;padding:26px}.service-body h2{font-size:22px;font-weight:600;line-height:1.3;margin-bottom:12px}.service-body>p{font-size:15px;line-height:1.75;color:#586357;margin-bottom:24px}.service-next{margin-top:auto;padding-top:18px;border-top:1px solid #e3e7df}.service-next p{font-size:13px;line-height:1.8}.service-next small{display:block;font-size:12px;color:#586357}.service-next a{display:inline-flex;gap:18px;align-items:center;margin-top:14px;font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:5px}.service-next a:focus-visible{outline:2px solid #3b5a4b;outline-offset:6px}.photo-note{font-size:11px;line-height:1.7;color:#586357;margin-top:20px}.callout{margin-top:48px}.callout .actions{align-items:center}
+@media(max-width:1000px){.service-directory{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.service-directory{grid-template-columns:1fr;gap:24px}.services-intro{padding-top:0;padding-bottom:32px}.service-body{padding:24px}.service-body h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.service-photo img{transition:none;transform:none!important}}
+</style>

@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import photo from '../../assets/partners/specialists.jpg';
+import '../../styles/partners.css';
+---
+<BaseLayout title="Visiting medical specialists — Delek Hospital" description="Share your expertise through specialist care, clinical teaching and mentorship alongside our hospital team.">
+<div class="partner-page">
+<header class="partner-hero"><div class="partner-wrap partner-hero-grid"><div><a class="partner-back" href="/partner-with-us">← All partnership opportunities</a><p class="partner-label">Working together / Delek Hospital</p><h1>Visiting medical specialists</h1><p class="partner-intro">Share your expertise through specialist care, clinical teaching and mentorship alongside our hospital team.</p><a class="hero-jump" href="#partnership-information">Explore the details ↓</a></div><figure><Image src={photo} alt="Delek staff and volunteer doctors in an archival group photograph" widths={[480,800,1100]} sizes="(max-width: 760px) 100vw, 45vw" loading="eager" /><figcaption>Hospital archive · Staff and volunteer doctors</figcaption></figure></div></header>
+<section id="partnership-information" class="partner-wrap partner-cards " aria-label="Partnership information"><article class="partner-card"><h2>How you can contribute</h2><p>Support patient consultations, case discussions, Continuing Medical Education and practical training within your area of expertise. Placements depend on patient needs and current hospital priorities.</p></article><article class="partner-card"><h2>Who can enquire?</h2><p>Qualified specialists with a current medical license, relevant training and a willingness to teach. Ask Delek to confirm specialty needs, eligibility, placement length and required documents.</p></article></section>
+<section class="partner-wrap partner-enquiry" aria-labelledby="enquiry-heading"><div><p class="partner-label">Next step</p><h2 id="enquiry-heading">Discuss a placement</h2><p>Introduce your specialty, relevant experience and preferred dates. Contact the hospital before arranging travel; the team will guide you through the current application process.</p></div><div class="partner-enquiry-actions"><a class="partner-button" href="mailto:hospitaldelek@yahoo.com?subject=Visiting%20specialist%20enquiry">Email the hospital <span aria-hidden="true">↗</span></a><span class="email-hint">Opens your email app</span><a class="partner-contact" href="/contact">Other ways to contact us →</a></div></section>
+</div></BaseLayout>

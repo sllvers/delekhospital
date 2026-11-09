@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import photo from '../../assets/partners/learning.jpg';
+import '../../styles/partners.css';
+---
+<BaseLayout title="Clinical observerships — Delek Hospital" description="Learn about patient care and community healthcare through an educational observation placement alongside hospital staff.">
+<div class="partner-page">
+<header class="partner-hero"><div class="partner-wrap partner-hero-grid"><div><a class="partner-back" href="/partner-with-us">← All partnership opportunities</a><p class="partner-label">Working together / Delek Hospital</p><h1>Clinical observerships</h1><p class="partner-intro">Learn about patient care and community healthcare through an educational observation placement alongside hospital staff.</p><a class="hero-jump" href="#partnership-information">Explore the details ↓</a></div><figure><Image src={photo} alt="Delek staff with participants at a professional training workshop" widths={[480,800,1100]} sizes="(max-width: 760px) 100vw, 45vw" loading="eager" /><figcaption>Hospital archive · Staff training workshop</figcaption></figure></div></header>
+<section id="partnership-information" class="partner-wrap partner-cards " aria-label="Partnership information"><article class="partner-card"><h2>What to expect</h2><p>Students and aspiring healthcare professionals can learn through observation. Activities depend on hospital workload, staff availability and patient consent.</p></article><article class="partner-card"><h2>Your role as an observer</h2><p>Respect patient privacy, confidentiality, staff direction and hospital policies. Observers do not independently examine patients, perform procedures, administer treatment or make clinical decisions.</p></article></section>
+<section class="partner-wrap partner-enquiry" aria-labelledby="enquiry-heading"><div><p class="partner-label">Next step</p><h2 id="enquiry-heading">Ask about an observership</h2><p>Share your course or professional background, learning interests and preferred dates. Confirm eligibility, supervision, fees and application requirements with Delek before making arrangements.</p></div><div class="partner-enquiry-actions"><a class="partner-button" href="mailto:hospitaldelek@yahoo.com?subject=Clinical%20observership%20enquiry">Email the hospital <span aria-hidden="true">↗</span></a><span class="email-hint">Opens your email app</span><a class="partner-contact" href="/contact">Other ways to contact us →</a></div></section>
+</div></BaseLayout>

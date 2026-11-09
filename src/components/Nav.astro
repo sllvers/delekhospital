@@ -1,65 +1,83 @@
 ---
 import logo from '../assets/Delek-Logo-2023-1.png';
-
-const pathname = Astro.url.pathname;
-const isActive = (path: string) => {
-  if (path === '/') {
-    return pathname === '/';
-  }
-  return pathname === path || pathname.startsWith(path + '/');
+import { navigation } from '../data/navigation';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const active = (href: string) => path === href;
+const descriptions: Record<string, string> = {
+  '/about': 'Our purpose, values and commitment to care.',
+  '/milestones': 'The people and moments that shaped Delek.',
+  '/team': 'Meet the people behind the hospital.',
+  '/our-impact': 'Care and prevention beyond our hospital.',
+  '/impact-stories': 'Our patients and the communities we serve.',
+  '/find-care': 'Everything you need to plan your visit.',
+  '/find-care/schedules': 'OPD hours and specialist clinic information.',
+  '/find-care/services': 'Medical, diagnostic and patient services.',
+  '/find-care/tb-care': 'Diagnosis, treatment and ongoing support.',
+  '/find-care/locations': 'Find the hospital and our other facilities.',
+  '/contact': 'Speak with the Delek team.',
+  '/partner-with-us': 'Share knowledge and strengthen care.',
+  '/partner-with-us/visiting-specialists': 'Contribute clinical expertise and teaching.',
+  '/partner-with-us/observerships': 'Learn through educational observation.',
+  '/partner-with-us/institutions': 'Build a lasting collaboration with Delek.',
 };
 ---
-
-<header class="border-b border-[var(--color-surface-alt)] bg-[var(--color-surface)]/85 backdrop-blur sticky top-0 z-50 transition-all duration-[var(--duration-base)] ease-[var(--ease-standard)]">
-  <nav class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-      <img src={logo.src} alt="Tibetan Delek Hospital" class="h-10 w-auto" />
-    </a>
-    <div class="hidden lg:flex items-center gap-6 text-sm font-medium text-[var(--color-text-muted)]">
-      <a 
-        href="/about" 
-        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/about') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
-      >
-        About
-      </a>
-      <a 
-        href="/team" 
-        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/team') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
-      >
-        Team
-      </a>
-      <a 
-        href="/milestones" 
-        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/milestones') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
-      >
-        Milestones
-      </a>
-      <a 
-        href="/impact-stories" 
-        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/impact-stories') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
-      >
-        Impact Stories
-      </a>
-      <a 
-        href="/support" 
-        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/support') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
-      >
-        Support Us
-      </a>
-      <a 
-        href="/contact" 
-        class={`transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:text-[var(--color-primary)] ${isActive('/contact') ? 'text-[var(--color-accent)] font-semibold' : ''}`}
-      >
-        Contact
-      </a>
+<header class="site-header">
+  <nav aria-label="Main navigation" class="site-nav">
+    <a href="/" class="brand"><img src={logo.src} alt="Delek Hospital — home" width={logo.width} height={logo.height} /></a>
+    <div class="desktop-nav">
+      {navigation.map(group => <details class="nav-group">
+        <summary class:list={{'current-group': group.children.some(link => active(link.href))}}>{group.label}<svg class="menu-chevron" width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg></summary>
+        <div class="nav-dropdown"><div class="dropdown-links">{group.children.map(link => <a href={link.href} aria-current={active(link.href) ? 'page' : undefined}><span class="dropdown-title">{link.label}<span class="dropdown-arrow" aria-hidden="true">↗</span></span><span class="dropdown-description">{descriptions[link.href]}</span></a>)}</div><div class="dropdown-footer">Delek Hospital <span>Care since 1971</span></div></div>
+      </details>)}
     </div>
-    <div>
-      <a 
-        href="https://www.paypal.com/donate/?hosted_button_id=9FRFJXDYCWULS" 
-        class="inline-flex items-center justify-center px-4 py-2 rounded-[var(--radius-md)] bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent)]/90 transition-colors duration-[var(--duration-base)]"
-      >
-        Donate
-      </a>
+    <div class="nav-actions">
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <div class="mobile-menu-links">
+          <a href="/" aria-current={active('/') ? 'page' : undefined}>Home</a>
+          {navigation.map(group => <details><summary>{group.label}</summary><div>{group.children.map(link => <a href={link.href} aria-current={active(link.href) ? 'page' : undefined}>{link.label}</a>)}</div></details>)}
+        </div>
+      </details>
+      <a href="/support" class="button button-small" aria-current={active('/support') ? 'page' : undefined}>Donate</a>
     </div>
   </nav>
 </header>
+<style>
+.site-header{position:sticky;top:0;z-index:50;background:var(--color-surface);border-bottom:1px solid var(--color-surface-alt)}
+.site-nav{max-width:1400px;margin:auto;padding:0 24px;height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative}
+.brand{min-width:0}.brand img{height:40px;width:auto;max-width:100%;object-fit:contain}
+.desktop-nav,.nav-actions{display:flex;align-items:center;gap:28px}.nav-actions{gap:12px;flex-shrink:0}
+summary{cursor:pointer;padding:12px 6px;font-size:14px;font-weight:500;list-style:none}summary::-webkit-details-marker{display:none}
+.nav-group{position:relative}.nav-group>summary{display:flex;align-items:center;gap:8px;transition:color .18s ease}.menu-chevron{transition:transform .2s ease;flex-shrink:0}.nav-group[open] .menu-chevron{transform:rotate(180deg)}
+.nav-group[open]>summary,.nav-group>summary:hover,.current-group,.nav-dropdown [aria-current=page],.mobile-menu-links [aria-current=page]{color:var(--color-accent)}
+.nav-dropdown{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%);width:340px;max-width:calc(100vw - 48px);background:#fff;border:1px solid #e9eae4;border-radius:12px;box-shadow:0 18px 60px -12px rgb(27 43 33 / .18),0 4px 16px rgb(27 43 33 / .04);overflow:hidden;transform-origin:top center}
+.nav-group[open] .nav-dropdown{animation:dropdown-in .2s cubic-bezier(.2,.8,.2,1)}
+.dropdown-links{padding:10px 18px;max-height:calc(100dvh - 200px);overflow-y:auto;overscroll-behavior:contain}.nav-dropdown a{display:block;padding:17px 10px;position:relative;transition:background .16s ease;border-radius:6px}.nav-dropdown a+a:before{content:'';position:absolute;left:10px;right:10px;top:0;height:1px;background:#eff0eb}.nav-dropdown a:hover,.nav-dropdown a:focus-visible{background:#f2f5ef}.dropdown-title{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;font-weight:600;line-height:1.4;color:var(--color-primary)}.nav-dropdown a:hover .dropdown-title,.nav-dropdown [aria-current=page] .dropdown-title{color:var(--color-accent)}.dropdown-description{display:block;margin-top:6px;font-size:13px;line-height:1.6;color:var(--color-text-muted);max-width:30ch}.dropdown-arrow{color:var(--color-accent);opacity:0;transform:translate(-4px,4px);transition:opacity .18s ease,transform .18s ease}.nav-dropdown a:hover .dropdown-arrow,.nav-dropdown a:focus-visible .dropdown-arrow{opacity:1;transform:translate(0,0)}.dropdown-footer{display:flex;justify-content:space-between;gap:12px;padding:14px 26px;background:#f5f6f2;border-top:1px solid #eceee7;font-size:10px;letter-spacing:.03em;color:var(--color-text-muted)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--color-accent);outline-offset:4px}.nav-dropdown a:focus-visible{outline-offset:-2px}
+.mobile-menu{display:none}.mobile-menu>summary{display:flex;align-items:center;gap:8px}.mobile-menu>summary:before{content:'';width:16px;height:10px;border-block:1.5px solid currentColor}.mobile-menu-links{position:absolute;top:100%;left:0;right:0;padding:16px 24px 24px;background:#fff;border-bottom:1px solid #e9eae4;max-height:calc(100dvh - 80px);overflow:auto;box-shadow:0 16px 28px -20px rgb(27 43 33 / .25)}.mobile-menu-links>a,.mobile-menu-links details{border-bottom:1px solid #eff0eb}.mobile-menu-links a{display:block;padding:13px 12px;font-size:14px;border-radius:6px}.mobile-menu-links a:hover{background:#f2f5ef}.mobile-menu-links details>div{padding:0 0 12px 14px}.mobile-menu-links summary{padding:16px 12px;display:flex;justify-content:space-between}.mobile-menu-links summary:after{content:'+';font-size:18px;line-height:1;color:var(--color-accent)}.mobile-menu-links details[open]>summary{color:var(--color-accent)}.mobile-menu-links details[open]>summary:after{content:'−'}
+@keyframes dropdown-in{from{opacity:0;transform:translate(-50%,8px) scale(.98)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.nav-group[open] .nav-dropdown{animation:none}.menu-chevron,.dropdown-arrow{transition:none}}
+@media(max-width:1023px){.desktop-nav{display:none}.mobile-menu{display:block}}
+@media(max-width:380px){.site-nav{padding:0 12px;gap:8px}.nav-actions{gap:6px}.brand img{height:32px}}
+</style>
+<script>
+ document.addEventListener('click', event => {
+   if (!(event.target instanceof Element)) return;
+   const selected = event.target.closest('details');
+   document.querySelectorAll<HTMLDetailsElement>('.nav-group[open], .mobile-menu[open]').forEach(menu => {
+     if (!menu.contains(event.target as Node) && menu !== selected) menu.open = false;
+   });
+ });
+ document.addEventListener('focusin', event => {
+   document.querySelectorAll<HTMLDetailsElement>('.nav-group[open]').forEach(menu => {
+     if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+   });
+ });
+ document.addEventListener('keydown', event => {
+   if (event.key !== 'Escape') return;
+   const focused = document.activeElement?.closest('details[open]');
+   const menu = focused ?? document.querySelector('.nav-group[open], .mobile-menu[open]');
+   if (menu instanceof HTMLDetailsElement) { menu.open=false; menu.querySelector('summary')?.focus(); }
+ });
+ document.addEventListener('astro:before-swap', () => document.querySelectorAll<HTMLDetailsElement>('header details').forEach(menu => {menu.open=false;}));
+</script>

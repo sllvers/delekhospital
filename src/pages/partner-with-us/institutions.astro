@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import photo from '../../assets/partners/institutions.jpg';
+import '../../styles/partners.css';
+---
+<BaseLayout title="Institutional partnerships — Delek Hospital" description="Bring your organization’s strengths to collaborations in clinical care, education, research and community health.">
+<div class="partner-page">
+<header class="partner-hero"><div class="partner-wrap partner-hero-grid"><div><a class="partner-back" href="/partner-with-us">← All partnership opportunities</a><p class="partner-label">Working together / Delek Hospital</p><h1>Institutional partnerships</h1><p class="partner-intro">Bring your organization’s strengths to collaborations in clinical care, education, research and community health.</p><a class="hero-jump" href="#partnership-information">Explore the details ↓</a></div><figure><Image src={photo} alt="Delek representatives with a colleague at a conference in Taiwan" widths={[480,800,1100]} sizes="(max-width: 760px) 100vw, 45vw" loading="eager" /><figcaption>Hospital archive · Professional exchange in Taiwan</figcaption></figure></div></header>
+<section id="partnership-information" class="partner-wrap partner-cards " aria-label="Partnership information"><article class="partner-card"><h2>Clinical care & education</h2><p>Share specialist knowledge, mentorship and clinical training. Support workshops, teaching and continued professional development.</p></article><article class="partner-card"><h2>Research & public health</h2><p>Explore ethical, community-focused research that responds to local health needs. Collaborate on screening, prevention, health education and outreach.</p></article></section>
+<section class="partner-wrap partner-enquiry" aria-labelledby="enquiry-heading"><div><p class="partner-label">Next step</p><h2 id="enquiry-heading">Explore a partnership</h2><p>Send your organization’s name, area of interest and a brief outline of your proposed collaboration. The hospital can discuss how it aligns with current priorities.</p></div><div class="partner-enquiry-actions"><a class="partner-button" href="mailto:hospitaldelek@yahoo.com?subject=Institutional%20partnership%20enquiry">Email the hospital <span aria-hidden="true">↗</span></a><span class="email-hint">Opens your email app</span><a class="partner-contact" href="/contact">Other ways to contact us →</a></div></section>
+</div></BaseLayout>

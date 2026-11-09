@@ -1,10 +1,18 @@
 ---
 ---
 
-<footer class="border-t border-[var(--color-surface-alt)] bg-[var(--color-surface)] text-[var(--color-text-muted)] py-16">
+<footer class="ornament-footer border-t border-[var(--color-surface-alt)] bg-[var(--color-surface)] text-[var(--color-text-muted)] py-16">
+  {['top-left', 'top-right', 'bottom-right', 'bottom-left'].map(corner => (
+    <svg class={`footer-corner ${corner}`} viewBox="0 0 210 210" fill="none" aria-hidden="true" focusable="false">
+      <g stroke="currentColor" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter">
+        <path d="M16 192V152H40V130H16V106H62V22H86V46H16V22H44V88H16V66H104V22H128V50H150V22H196" />
+      </g>
+    </svg>
+  ))}
+
   <div class="max-w-[1400px] mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
     <div>
-      <h3 class="text-[var(--color-primary)] font-semibold text-base mb-4">Hospital Name</h3>
+      <h3 class="text-[var(--color-primary)] font-semibold text-base mb-4">Delek Hospital</h3>
       <p class="text-sm mb-4">Dedicated to compassionate care, medical excellence, and community well-being.</p>
       <div class="flex items-center space-x-3">
         <a 
@@ -36,15 +44,26 @@
       </ul>
     </div>
     <div>
-      <h4 class="text-[var(--color-primary)] font-medium text-sm mb-3">Support</h4>
+      <h4 class="text-[var(--color-primary)] font-medium text-sm mb-3">Care & Support</h4>
       <ul class="space-y-2 text-sm">
         <li><a href="/contact" class="hover:text-[var(--color-primary)] transition-colors">Contact</a></li>
-        <li><a href="/contact" class="hover:text-[var(--color-primary)] transition-colors">Emergency Services</a></li>
+        <li><a href="/find-care" class="hover:text-[var(--color-primary)] transition-colors">Find Care</a></li>
+        <li><a href="/our-impact" class="hover:text-[var(--color-primary)] transition-colors">Our Impact</a></li>
+        <li><a href="/partner-with-us" class="hover:text-[var(--color-primary)] transition-colors">Partner With Us</a></li>
+        <li><a href="/support" class="hover:text-[var(--color-primary)] transition-colors">Donate</a></li>
       </ul>
     </div>
     <div>
       <h4 class="text-[var(--color-primary)] font-medium text-sm mb-3">Legal</h4>
-      <p class="text-xs">© {new Date().getFullYear()} Hospital Name. Non-profit healthcare institution.</p>
+      <p class="text-xs">© {new Date().getFullYear()} Delek Hospital. Non-profit healthcare institution.</p>
     </div>
   </div>
 </footer>
+
+<style>
+.ornament-footer{position:relative;padding:100px 90px;isolation:isolate}
+.footer-corner{position:absolute;width:100px;height:100px;color:#ed2929;pointer-events:none;z-index:-1}
+.top-left{top:12px;left:12px}.top-right{top:12px;right:12px;transform:rotate(90deg)}
+.bottom-right{bottom:12px;right:12px;transform:rotate(180deg)}.bottom-left{bottom:12px;left:12px;transform:rotate(270deg)}
+@media(max-width:767px){.ornament-footer{padding:76px 24px}.footer-corner{width:62px;height:62px}.top-left,.top-right{top:8px}.bottom-left,.bottom-right{bottom:8px}.top-left,.bottom-left{left:8px}.top-right,.bottom-right{right:8px}}
+</style>

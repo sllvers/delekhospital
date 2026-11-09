@@ -3,13 +3,27 @@ import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/tokens.css';
+import '../styles/sections.css';
+import '../styles/heritage-preview.css';
 import favicon from '../assets/logo.png';
 
 interface Props {
   title?: string;
+  description?: string;
 }
 
-const { title = "Hospital Name" } = Astro.props;
+const pageDescriptions: Record<string, string> = {
+  '/': 'Delek Hospital provides compassionate, accessible healthcare in Dharamsala. Explore our team, history, community work and ways to support us.',
+  '/about': 'Learn about Delek Hospital, our history, mission and commitment to accessible healthcare for the community in Dharamsala.',
+  '/team': 'Meet the medical officers and administration serving Delek Hospital and its community in Dharamsala.',
+  '/milestones': 'Explore the history and milestones of Delek Hospital, from its founding in 1971 to its community healthcare work.',
+  '/impact-stories': 'Explore patient journeys and the impact of compassionate community care at Delek Hospital.',
+  '/support': 'Support Delek Hospital’s community healthcare work, including tuberculosis care, medical equipment, hospital facilities and staff.',
+  '/contact': 'Find contact details, visiting information and directions for Delek Hospital in Gangchen Kyishong, Dharamsala.',
+};
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const { title: suppliedTitle = 'Delek Hospital', description = pageDescriptions[pathname] ?? pageDescriptions['/'] } = Astro.props;
+const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
 ---
 
 <html lang="en">
@@ -19,11 +33,29 @@ const { title = "Hospital Name" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Delek Hospital" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <ClientRouter />
+    <script is:inline>
+      function setHeritagePreview() {
+        const variant = new URLSearchParams(location.search).get('header-preview');
+        if (variant === 'glass' || variant === 'shambu') document.documentElement.dataset.heritagePreview = variant;
+        else delete document.documentElement.dataset.heritagePreview;
+      }
+      setHeritagePreview();
+      document.addEventListener('astro:page-load', setHeritagePreview);
+    </script>
   </head>
-  <body class="bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased min-h-[100dvh] flex flex-col selection:bg-[var(--color-accent)] selection:text-[var(--color-primary)]">
+  <body data-section={pathname.split('/')[1] || 'home'} class="bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased min-h-[100dvh] flex flex-col selection:bg-[var(--color-accent)] selection:text-[var(--color-primary)]">
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <Nav />
-    <main class="flex-grow">
+    <main id="main-content" tabindex="-1" class="flex-grow">
       <slot />
     </main>
     <Footer />

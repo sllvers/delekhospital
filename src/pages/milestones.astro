@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import archive from '../assets/archive-care.jpg';
+import ward1982 from '../assets/tb-ward-1982.jpg';
 
 const milestones = [
   {
@@ -11,14 +13,16 @@ const milestones = [
   {
     year: '1979',
     title: 'Handover to CTA',
-    description: 'Formally handed over to the Central Tibetan Administration (CTA) on January 1, 1979, and renamed Tibetan Delek Hospital.',
+    description: 'Formally handed over to the Central Tibetan Administration (CTA) on January 1, 1979, and renamed Delek Hospital.',
     tag: 'Administration'
   },
   {
     year: '1982',
     title: 'TB Ward Inauguration',
     description: 'His Holiness the 14th Dalai Lama visits Delek to inaugurate the TB ward.',
-    tag: 'Expansion'
+    tag: 'Expansion',
+    photo: ward1982,
+    photoAlt: 'Archival photograph of the 1982 visit for the TB ward inauguration'
   },
   {
     year: '2018',
@@ -35,7 +39,7 @@ const milestones = [
 ];
 ---
 
-<BaseLayout title="Milestones & History — Tibetan Delek Hospital">
+<BaseLayout title="Milestones & History — Delek Hospital">
   <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
     <!-- Header -->
     <div class="max-w-2xl mb-[var(--space-16)] reveal">
@@ -46,10 +50,18 @@ const milestones = [
         Over 50 years of care and resilience.
       </h1>
       <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
-        Trace the historical milestones of Tibetan Delek Hospital since its inception in the foothills of the Himalayas.
+        Trace the historical milestones of Delek Hospital since its inception in the foothills of the Himalayas.
       </p>
     </div>
 
+    <div class="history-opening">
+    <figure class="archive-photo"><img src={archive.src} width={archive.width} height={archive.height} alt="Black-and-white photograph of a child drinking from a cup beside a Red Cross supply box" loading="lazy" /><figcaption>From the hospital’s collection · Date unknown</figcaption></figure>
+    <section class="section" id="founder">
+      <span class="eyebrow">The founder</span><h2>The vision behind Delek</h2>
+      <p>Mr. Tsewang Rinchen Rishing proposed a dedicated medical clinic to serve the Tibetan refugee community in Dharamshala. His determination helped establish Delek Hospital, which opened in 1971 with the blessing of His Holiness the XIV Dalai Lama.</p>
+      <p>His legacy continues through the hospital’s commitment to compassionate, accessible care.</p>
+    </section>
+    </div>
     <!-- Timeline Container -->
     <div class="relative">
       <div class="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[1px] bg-[var(--color-surface-alt)] -translate-x-1/2"></div>
@@ -75,6 +87,7 @@ const milestones = [
                   <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
                     {item.description}
                   </p>
+                  {item.photo && <figure class="milestone-photo"><img src={item.photo.src} width={item.photo.width} height={item.photo.height} alt={item.photoAlt} loading="lazy" /><figcaption>TB ward inauguration, 1982 · Hospital archive</figcaption></figure>}
                 </div>
               </div>
 
@@ -88,3 +101,10 @@ const milestones = [
     </div>
   </div>
 </BaseLayout>
+
+<style>
+.milestone-photo{margin:24px 0 0}.milestone-photo img{width:100%;height:auto}.milestone-photo figcaption{font-size:12px;line-height:1.6;color:var(--color-text-muted);margin-top:10px}
+
+.history-opening{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:clamp(32px,6vw,80px);margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid #d8ddd3}.archive-photo{margin:0;padding:16px;background:#eeece4}.archive-photo img{display:block;width:100%;height:auto}.archive-photo figcaption{font-size:12px;line-height:1.6;color:var(--color-text-muted);padding-top:12px}.history-opening .section{padding:0;margin:0}.history-opening h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,40px)}
+@media(max-width:767px){.history-opening{grid-template-columns:1fr;gap:28px;margin-bottom:48px;padding-bottom:32px}.archive-photo{padding:10px}}
+</style>

@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { stories } from '../../data/editorial';
+export function getStaticPaths() {return stories.map(item => ({params:{slug:item.slug},props:{item}}));}
+const { item } = Astro.props;
+---
+<BaseLayout title={`${item.title} — Delek Hospital`} description={item.excerpt}><div class="content-wrap"><PageIntro eyebrow="Patient & Community Stories" title={item.title} description={item.excerpt} /><article class="section">{item.body.map((paragraph: string) => <p>{paragraph}</p>)}</article><div class="actions"><a class="text-link" href="/impact-stories">All patient & community stories →</a></div></div></BaseLayout>
