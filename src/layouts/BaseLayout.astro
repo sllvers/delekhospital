@@ -22,7 +22,7 @@ const pageDescriptions: Record<string, string> = {
   '/contact': 'Find contact details, visiting information and directions for Delek Hospital in Gangchen Kyishong, Dharamsala.',
 };
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
-// Match trailingSlash: 'always'; omit query strings and fragments, including previews.
+// Prefer directory URLs with trailing slashes; omit queries and fragments.
 const canonical = new URL(pathname === '/' ? '/' : `${pathname}/`, Astro.site);
 const { title: suppliedTitle = 'Delek Hospital', description = pageDescriptions[pathname] ?? pageDescriptions['/'] } = Astro.props;
 const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
