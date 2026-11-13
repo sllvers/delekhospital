@@ -4,6 +4,7 @@ import { navigation } from '../data/navigation';
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const active = (href: string) => path === href;
 const descriptions: Record<string, string> = {
+  '/news': 'Approved hospital announcements and updates.',
   '/about': 'Our purpose, values and commitment to care.',
   '/milestones': 'The people and moments that shaped Delek.',
   '/team': 'Meet the people behind the hospital.',
