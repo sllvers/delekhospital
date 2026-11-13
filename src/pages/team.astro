@@ -1,49 +1,85 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PageIntro from '../components/PageIntro.astro';
-import portrait0 from '../assets/1-Dawa-Phunkyi.jpg';
-import portrait1 from '../assets/2-Tashi-Dhondup.jpg';
-import portrait2 from '../assets/3-Tsering-Damdhul.jpg';
-import portrait3 from '../assets/4-Tenzin-Shenyen.jpg';
-import portrait4 from '../assets/5-Tsetan-Dorji.jpg';
-import portrait5 from '../assets/6-Sonam-Topgyal.jpg';
-import portrait6 from '../assets/11-Jigme-Kalsang.jpg';
-const administration = [
-  { name: 'Mr. Dawa Phunkyi', photo: portrait0, role: 'Administrator' },
-  { name: 'Mr. Tashi Dhondup', photo: portrait1, role: 'Administration' },
-  { name: 'Mr. Tsering Damdhul', photo: portrait2, role: 'Administration' },
-  { name: 'Mr. Tenzin Shenyen', photo: portrait3, role: 'Administration' }
+import '../styles/editorial.css';
+import dawa from '../assets/1-Dawa-Phunkyi.jpg';
+import tashi from '../assets/2-Tashi-Dhondup.jpg';
+import tsering from '../assets/3-Tsering-Damdhul.jpg';
+import shenyen from '../assets/4-Tenzin-Shenyen.jpg';
+import tsetan from '../assets/5-Tsetan-Dorji.jpg';
+import sonam from '../assets/6-Sonam-Topgyal.jpg';
+import jigme from '../assets/11-Jigme-Kalsang.jpg';
+import tsundue from '../assets/7-Tenzin-Tsundue.jpg';
+import firstNurse from '../assets/history/first-nurse.jpg';
+
+type Person = { name: string; role: string; bio?: string; detail?: string; photo?: ImageMetadata };
+const initials = (name: string) => name.replace(/^(Dr|Mr|Mrs|Ms)\.?\s+/, '').split(/\s+/).map(part => part[0]).slice(0, 2).join('');
+
+const leadership: Person[] = [
+  { name: 'Dr. Tsetan Dorji Sadutshang', role: 'Chief Medical Officer', photo: tsetan, bio: 'Oversees clinical care and guides Delek Hospital’s medical services and standards. Dr. Sadutshang also serves as personal physician to His Holiness the Dalai Lama.' },
+  { name: 'Dr. Tenzin Tsundue', role: 'Chief Administrator', photo: tsundue, bio: 'Oversees hospital administration, operations and organizational management. Appointed Chief Administrator by the Board of Directors in May 2025.' },
 ];
 
-const seniorMedicalOfficers = [
-  {
-    name: 'Dr. Tsetan Dorji', photo: portrait4,
-    role: 'Senior Medical Officer',
-    bio: 'Dedicated clinical care and community health service.'
-  },
-  {
-    name: 'Dr. Sonam Topgyal', photo: portrait5,
-    role: 'Senior Medical Officer',
-    bio: 'Committed to comprehensive patient diagnosis and treatment.'
-  },
-  {
-    name: 'Dr. Tenzin Namdon',
-    role: 'Senior Medical Officer',
-    school: 'TCV Gopalpur / St. John\'s Medical College',
-    joined: 'Joined Delek in 2017',
-    bio: 'I was born in India, in the Bylakkupe settlement. I knew I wanted to be a doctor from ......'
-  },
-  {
-    name: 'Dr. Jigme Kalsang', photo: portrait6,
-    role: 'Senior Medical Officer',
-    bio: 'Specialized medical care and acute intervention.'
-  }
+const board = [
+  { name: 'Mrs. Pema Tso', title: 'Health Minister, CTA', role: 'Chairperson' },
+  { name: 'Mr. Jampa Phuntsok', title: 'Health Secretary, CTA', role: 'Vice Chairperson' },
+  { name: 'Mrs. Tsering Youdon', title: 'Home Secretary, CTA', role: 'Member' },
+  { name: 'Mrs. Tenzin Chonzom', title: 'Director, Tibetan Medical Centre', role: 'Member' },
+  { name: 'Mr. Tsering Dhondup', title: 'Director, Sambhota Tibetan School Society', role: 'Member' },
+  { name: 'Mr. Sonam Sichoe', title: 'President, TCV School', role: 'Member' },
+  { name: 'Mr. Kunchok Migmar', title: 'Settlement Officer, Dharamshala', role: 'Member' },
+  { name: 'Dr. Tsetan Dorji Sadutshang', title: 'Chief Medical Officer, Delek Hospital', role: 'Member' },
+  { name: 'Dr. Tenzin Tsundue', title: 'Chief Administrator, Delek Hospital', role: 'Executive' },
+];
+
+const medicalOfficers: Person[] = [
+  { name: 'Dr. Sonam Topgyal', role: 'Senior Medical Officer', photo: sonam, bio: 'Committed to comprehensive patient diagnosis and treatment.' },
+  { name: 'Dr. Tenzin Namdon', role: 'Senior Medical Officer', detail: 'Joined Delek in 2017 · TCV Gopalpur / St. John’s Medical College' },
+  { name: 'Dr. Jigme Kalsang', role: 'Senior Medical Officer', photo: jigme, bio: 'Specialized medical care and acute intervention.' },
+];
+
+const administration: Person[] = [
+  { name: 'Mr. Tashi Dhondup', role: 'Administration', photo: tashi },
+  { name: 'Mr. Tsering Damdhul', role: 'Administration', photo: tsering },
+  { name: 'Mr. Tenzin Shenyen', role: 'Administration', photo: shenyen },
+];
+
+const honoured: Person[] = [
+  { name: 'Mrs. Kesang Yangkyi Takla', role: 'First Administrator', bio: 'Developed a four-room clinic into a 45-bed hospital with inpatient care, a TB ward and community health services.' },
+  { name: 'Dr. Greg White', role: 'First full-time doctor', bio: 'An Australian volunteer doctor who later founded the Tibetan TB Programme.' },
+  { name: 'Mrs. Sonam Gyamo', role: 'Delek’s first nurse', photo: firstNurse },
+  { name: 'Mr. Dawa Phunkyi', role: 'Chief Administrator, until 2025', photo: dawa, bio: 'Served Delek from 1987, including 19 years as Chief Administrator, before his election as Justice Commissioner in 2025.' },
 ];
 ---
-<BaseLayout title="Our Medical Team — Delek Hospital"><div class="content-wrap"><PageIntro eyebrow="The people behind Delek" title="Care begins with people." description="Meet the medical officers and administration serving Delek Hospital and its community." />
-<section class="team-section"><div class="team-section-heading"><span class="eyebrow">Medical care</span><h2>Senior Medical Officers</h2></div><div class="portrait-grid">{seniorMedicalOfficers.map(doc => <article class="person">{'photo' in doc && doc.photo ? <img src={doc.photo.src} width={doc.photo.width} height={doc.photo.height} alt={doc.name} loading="lazy" /> : <div class="portrait-initials" aria-label="Portrait unavailable">TN</div>}<div class="person-copy"><h3>{doc.name}</h3><p class="person-role">{doc.role}</p>{doc.joined && <p class="person-detail">{doc.joined}</p>}{doc.school && <p class="person-detail">{doc.school}</p>}{!doc.bio.includes('......') && <p class="person-bio">{doc.bio}</p>}</div></article>)}</div></section>
-<section class="team-section"><div class="team-section-heading"><span class="eyebrow">Keeping Delek moving</span><h2>Administration</h2></div><div class="portrait-grid">{administration.map(person => <article class="person"><img src={person.photo.src} width={person.photo.width} height={person.photo.height} alt={person.name} loading="lazy" /><div class="person-copy"><h3>{person.name}</h3><p class="person-role">{person.role}</p></div></article>)}</div></section>
-</div></BaseLayout>
+<BaseLayout title="Leadership & Team — Delek Hospital" description="Meet the leadership, Board of Directors, medical officers and administration of Delek Hospital, Dharamshala.">
+<div class="editorial-page team-page">
+<header class="ed-intro ed-wrap"><p class="ed-label">Leadership & Team</p><div class="ed-intro-grid"><h1>The people<br />behind Delek.</h1><p>From doctors and nurses to laboratory staff, pharmacists, support staff and the Board of Directors, every part of the Delek team contributes to the hospital’s mission of compassionate service.</p></div></header>
+
+<section class="ed-wrap team-block" aria-labelledby="leadership-title">
+  <div class="block-heading"><p class="ed-label">Hospital leadership</p><div><h2 id="leadership-title">Guiding care,<br />every day.</h2><p>Delek’s leadership works closely with doctors, nurses, program teams and support staff to guide the hospital’s daily work and ensure patients continue to receive thoughtful, compassionate care.</p></div></div>
+  <div class="leaders">{leadership.map(person => <article class="leader"><figure>{person.photo && <img src={person.photo.src} width={person.photo.width} height={person.photo.height} alt={`Portrait of ${person.name}`} loading="lazy" />}</figure><div><p class="ed-label">{person.role}</p><h3>{person.name}</h3><p>{person.bio}</p></div></article>)}</div>
+</section>
+
+<section class="board-band" aria-labelledby="board-title"><div class="ed-wrap">
+  <div class="block-heading"><p class="ed-label">Governance</p><div><h2 id="board-title">Board of Directors</h2><p>The Board provides guidance and oversight, helping the hospital stay true to its mission while responding to the changing health needs of the communities it serves.</p></div></div>
+  <ol class="board-list">{board.map(member => <li><span class="board-role">{member.role}</span><strong>{member.name}</strong><span>{member.title}</span></li>)}</ol>
+</div></section>
+
+{[{label:'Clinical care', title:'Medical officers', people:medicalOfficers},{label:'Keeping Delek moving', title:'Administration', people:administration}].map(group => <section class="ed-wrap team-block"><div class="group-heading"><p class="ed-label">{group.label}</p><h2>{group.title}</h2></div><div class="portrait-grid">{group.people.map(person => <article class="person">{person.photo ? <img src={person.photo.src} width={person.photo.width} height={person.photo.height} alt={`Portrait of ${person.name}`} loading="lazy" /> : <div class="portrait-initials" aria-hidden="true">{initials(person.name)}</div>}<h3>{person.name}</h3><p class="person-role">{person.role}</p>{person.detail && <p class="person-detail">{person.detail}</p>}{person.bio && <p class="person-bio">{person.bio}</p>}</article>)}</div></section>)}
+
+<section class="honour-band" aria-labelledby="honour-title"><div class="ed-wrap">
+  <div class="block-heading"><p class="ed-label">Those who helped shape Delek</p><div><h2 id="honour-title">With gratitude.</h2><p>Delek’s story has been shaped by generations of doctors, nurses, administrators and staff who dedicated years of their lives to caring for the community. We honour former members of the Delek family and the lasting contribution they made.</p></div></div>
+  <div class="portrait-grid">{honoured.map(person => <article class="person">{person.photo ? <img src={person.photo.src} width={person.photo.width} height={person.photo.height} alt={`Portrait of ${person.name}`} loading="lazy" /> : <div class="portrait-initials" aria-hidden="true">{initials(person.name)}</div>}<h3>{person.name}</h3><p class="person-role">{person.role}</p>{person.bio && <p class="person-bio">{person.bio}</p>}</article>)}</div>
+  <a class="ed-link history-link" href="/milestones">Read Delek’s history <span aria-hidden="true">↗</span></a>
+</div></section>
+</div>
+</BaseLayout>
 <style>
-.team-section{padding-block:24px 64px}.team-section-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--color-border);margin-bottom:32px}.team-section h2{font-size:28px;font-weight:500;letter-spacing:-.02em}.portrait-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}.person{min-width:0}.person>img,.portrait-initials{width:100%;aspect-ratio:1;object-fit:cover;object-position:top center;background:var(--color-surface-alt)}.portrait-initials{display:flex;align-items:center;justify-content:center;color:#7892b6;font-family:Georgia,serif;font-size:56px}.person-copy{padding-top:20px}.person h3{font-size:20px;font-weight:500;line-height:1.3;margin-bottom:8px}.person-role{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--color-accent);line-height:1.6}.person-detail{font-size:12px;color:var(--color-text-muted);line-height:1.7;margin-top:8px}.person-bio{font-size:14px;line-height:1.7;color:var(--color-text-muted);margin-top:12px}@media(max-width:900px){.portrait-grid{grid-template-columns:repeat(2,1fr);gap:32px 24px}}@media(max-width:480px){.team-section-heading{display:block}.team-section h2{font-size:24px}.person h3{font-size:17px}.portrait-grid{gap:28px 16px}.person-copy{padding-top:14px}}
+.team-block{padding-block:72px}.block-heading{display:grid;grid-template-columns:1fr 2fr;gap:48px;margin-bottom:48px}.block-heading h2{margin-bottom:20px}.block-heading p:not(.ed-label){font-size:17px;line-height:1.8;color:var(--color-text-muted);max-width:62ch}
+.leaders{display:grid;grid-template-columns:1fr 1fr;gap:48px}.leader{display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:start;border-top:1px solid var(--color-border);padding-top:32px}.leader img{aspect-ratio:1;object-position:top center}.leader h3{font-family:Georgia,serif;font-size:30px;font-weight:400;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px}.leader .ed-label{margin-bottom:12px}.leader p:not(.ed-label){font-size:15px;line-height:1.8;color:var(--color-text-muted)}
+.board-band{background:var(--color-surface-alt);padding-block:72px}.board-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);column-gap:40px}.board-list li{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--color-border);padding:22px 0 26px}.board-list strong{font-size:18px;font-weight:500;color:var(--color-primary);line-height:1.35}.board-list span{font-size:14px;line-height:1.6;color:var(--color-text-muted)}.board-list .board-role{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-primary)}
+.group-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;border-bottom:1px solid var(--color-border);padding-bottom:20px;margin-bottom:36px}.group-heading .ed-label{margin:0}.group-heading h2{font-size:clamp(28px,3vw,40px)}
+.portrait-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 32px}.person{min-width:0}.person>img,.portrait-initials{width:100%;aspect-ratio:1;object-fit:cover;object-position:top center;background:#e4e8ee;margin-bottom:20px}.portrait-initials{display:flex;align-items:center;justify-content:center;color:#7892b6;font-family:Georgia,serif;font-size:56px}.person h3{font-size:19px;font-weight:500;line-height:1.3;margin-bottom:8px}.person-role{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--color-primary);line-height:1.6}.person-detail{font-size:13px;color:var(--color-text-muted);line-height:1.7;margin-top:8px}.person-bio{font-size:14px;line-height:1.7;color:var(--color-text-muted);margin-top:10px}
+.honour-band{border-top:1px solid var(--color-border);padding-block:72px}.honour-band .person>img{filter:grayscale(1)}.history-link{margin-top:48px;max-width:420px}
+@media(max-width:1000px){.leaders{grid-template-columns:1fr}.board-list{grid-template-columns:1fr 1fr}.portrait-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:767px){.team-block,.board-band,.honour-band{padding-block:48px}.block-heading{grid-template-columns:1fr;gap:12px;margin-bottom:32px}.block-heading p:not(.ed-label){font-size:16px}.leader{grid-template-columns:110px 1fr;gap:20px;padding-top:24px}.leader h3{font-size:24px}.board-list{grid-template-columns:1fr}.portrait-grid{grid-template-columns:1fr 1fr;gap:32px 16px}.person h3{font-size:16px}.portrait-initials{font-size:40px}.group-heading{display:block}.group-heading .ed-label{margin-bottom:8px}}
 </style>

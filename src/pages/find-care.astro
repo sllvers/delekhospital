@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import VisitPlanner from '../components/VisitPlanner.astro';
-import exterior from '../assets/hospital-exterior.jpg';
+import exterior from '../assets/home/ward-round.jpg';
 import consultation from '../assets/clinical-consultation.jpg';
 import tbClinic from '../assets/tb-clinic.jpg';
 ---
 <BaseLayout title="Find Care — Delek Hospital" description="Plan your visit to Delek Hospital in Dharamshala. Explore clinic hours, medical services, TB care and directions.">
 <div class="care-editorial">
 <header class="care-hero">
- <img class="hero-image" src={exterior.src} width={exterior.width} height={exterior.height} alt="Delek Hospital overlooking Dharamshala at sunset" fetchpriority="high" />
+ <img class="hero-image" src={exterior.src} width={exterior.width} height={exterior.height} alt="A Delek doctor examining a patient with a stethoscope" fetchpriority="high" />
  <div class="hero-shade"></div>
  <div class="hero-content"><p class="kicker">Delek Hospital / Dharamshala</p><h1>Care, close<br />to community.</h1><div class="hero-bottom"><p>Find the care you need.<br />Plan your visit with us.</p><a href="#plan-visit" class="hero-link">Find your clinic <span aria-hidden="true">↓</span></a></div></div>
  <span class="hero-caption">Serving our community since 1971</span>

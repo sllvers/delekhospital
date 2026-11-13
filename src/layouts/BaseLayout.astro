@@ -4,12 +4,11 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/tokens.css';
 import '../styles/sections.css';
-import '../styles/heritage-preview.css';
-import favicon from '../assets/logo.png';
 
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const pageDescriptions: Record<string, string> = {
@@ -24,6 +23,7 @@ const pageDescriptions: Record<string, string> = {
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 // Prefer directory URLs with trailing slashes; omit queries and fragments.
 const canonical = new URL(pathname === '/' ? '/' : `${pathname}/`, Astro.site);
+const { noindex = false } = Astro.props;
 const { title: suppliedTitle = 'Delek Hospital', description = pageDescriptions[pathname] ?? pageDescriptions['/'] } = Astro.props;
 const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
 ---
@@ -31,12 +31,15 @@ const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href={favicon.src} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Delek Hospital" />
     <meta property="og:title" content={title} />
@@ -45,15 +48,6 @@ const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <ClientRouter />
-    <script is:inline>
-      function setHeritagePreview() {
-        const variant = new URLSearchParams(location.search).get('header-preview');
-        if (variant === 'glass' || variant === 'shambu') document.documentElement.dataset.heritagePreview = variant;
-        else delete document.documentElement.dataset.heritagePreview;
-      }
-      setHeritagePreview();
-      document.addEventListener('astro:page-load', setHeritagePreview);
-    </script>
   </head>
   <body data-section={pathname.split('/')[1] || 'home'} class="bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased min-h-[100dvh] flex flex-col selection:bg-[var(--color-accent)] selection:text-[var(--color-primary)]">
     <a class="skip-link" href="#main-content">Skip to content</a>

@@ -23,3 +23,9 @@ body[data-section="home"] .cards-two .card{border-top:0;border-bottom:1px solid 
 
 /* Shared headings carry the brand; paragraphs retain neutral text colors. */
 .page-intro h1,.section h2,.card h2,.card h3,.callout h2,.planner-heading h2,.visit-results h3{color:var(--color-primary)}
+
+/* Unified editorial system: serif display headings and warm paper on every content page (Support keeps its own styling). */
+.page-intro h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(44px,6vw,84px);line-height:1.04;letter-spacing:-.04em}
+.page-intro .intro-copy{font-size:17px;line-height:1.8}
+.section h2,.callout h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(28px,3.4vw,44px);letter-spacing:-.03em;line-height:1.12}
+body:not([data-section=support]) main{background:var(--color-paper)}

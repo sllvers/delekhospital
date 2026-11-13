@@ -3,6 +3,6 @@ import { stories } from '../data/editorial';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageIntro from '../components/PageIntro.astro';
 ---
-<BaseLayout title="Patient & Community Stories — Delek Hospital" description="Care at Delek is shaped by the people and communities it serves.">
+<BaseLayout noindex={stories.length===0} title="Patient & Community Stories — Delek Hospital" description="Care at Delek is shaped by the people and communities it serves.">
 <div class="content-wrap"><PageIntro eyebrow="Our Impact" title="Patient & Community Stories" description="Care at Delek is shaped by the people and communities it serves." />{stories.length > 0 && <section class="section"><div class="cards">{stories.map(story => <a class="card" href={`/impact-stories/${story.slug}`}><h2>{story.title}</h2><p>{story.excerpt}</p><span class="text-link">Read story →</span></a>)}</div></section>}<section class="section"><h2>Care beyond the numbers</h2><p>Explore the hospital’s public health programs and community work.</p><div class="actions"><a class="button" href="/our-impact">Explore our impact</a></div></section></div>
 </BaseLayout>

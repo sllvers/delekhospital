@@ -12,7 +12,7 @@ Originals retained unchanged. Captions use the supplied filenames and visible co
 
 Placements: Locations (OPD, branch waiting area, Chandigarh hostel); History (1982 TB ward milestone); Cardiac Screening and Clinical Education program pages.
 
-- `contact-opd.jpg` ← `2023/03/OPD-scaled-1.jpg`: Contact page only; outpatient department interior.
+- `contact-opd.jpg` was removed as unused; the original is still at `2023/03/OPD-scaled-1.jpg`.
 
 ## Partnership pages
 Each photograph is reserved for its corresponding page. Captions describe archival context, not current placements.
@@ -20,3 +20,9 @@ Each photograph is reserved for its corresponding page. Captions describe archiv
 - `partners/specialists.jpg`: `2023/04/Dr.-Tsetan-Sadutshang-and-Dr.-Nyima-Chokpa-with-volunteer-doctors-and-Delek-nurses-in-1980s.jpeg`
 - `partners/learning.jpg`: `2023/04/Delek-staff-at-Quality-control-trainingworkshop-held-at-the-Wisconsin-University-US.jpg`
 - `partners/institutions.jpg`: `2023/04/Dr.-Pocheng-Tsai-with-Delek-doctors-and-Secretary-during-the-conference-in-Tzu-Chi-Taiwan-scaled.jpg`
+
+## Added November 13
+- `home/ward-round.jpg` ← `2023/04/TB-ward-round-1-scaled.jpg` (Find Care hero)
+- `home/inpatient-ward.jpg` ← `2023/03/Inpatient-female-ward-1-1.jpg` (homepage "Our services" card)
+- `home/immunization.jpg` ← `2023/03/immunization30.jpg` (homepage children's health slide)
+- `history/*` ← archive photos from `2023/04`, `2023/12` and `old-pic-4.jpg` (History timeline); dates come from the original filenames.

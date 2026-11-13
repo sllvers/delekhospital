@@ -3,9 +3,10 @@
 export const schedule = {
   reviewedOn: null as string | null, // YYYY-MM-DD, set when the hospital confirms this schedule
   clinics: [
-    {id: 'general-opd', name: 'General OPD', days: 'Monday–Friday', hours: '9:00 am–5:00 pm', note: 'Lunch break: 1:00–2:00 pm. Ground floor.'},
+    {id: 'general-opd', name: 'General OPD', days: 'Monday–Friday', hours: '9:00 am–5:00 pm', note: 'Lunch break: 1:00–2:00 pm. Ground floor. On official holidays, only emergency services are available.'},
     {id: 'dental', name: 'Dental Clinic', days: 'Monday–Friday', hours: '9:00 am–5:00 pm', note: 'Lunch break: 1:00–2:00 pm. Ground floor.'},
     {id: 'pharmacy-laboratory', name: 'Pharmacy & Laboratory', days: 'Monday–Friday', hours: '9:00 am–5:00 pm', note: 'Lunch break: 1:00–2:00 pm. Ground floor.'},
+    {id: 'immunization', name: 'Immunization Clinic', days: 'Tuesday (second Tuesday of each month)', hours: '10:30 am–1:00 pm', note: 'Held once a month. Call to confirm vaccines available for your child.'},
     {id: 'obgyn', name: 'Obstetrics & Gynecology', days: 'Friday', hours: null, note: 'Please call to confirm clinic hours before travelling.'},
     {id: 'endoscopy', name: 'Endoscopy', days: 'Tuesday morning', hours: null, note: 'Prior appointment required. Call to arrange your visit.'},
     {id: 'check-up', name: 'Preventive Health Check-Up / Private OPD', days: null, hours: null, note: 'Contact the hospital for appointments, location and availability.'},
@@ -16,7 +17,7 @@ export const schedule = {
     {day:'2nd Saturday',hours:'Closed'},
     {day:'3rd Saturday',hours:'9:00 am–1:00 pm'},
     {day:'4th Saturday',hours:'9:00 am–1:00 pm'},
-    {day:'5th Saturday',hours:null},
+    {day:'5th Saturday',hours:'9:00 am–1:00 pm'},
   ],
 };
 export const services = [

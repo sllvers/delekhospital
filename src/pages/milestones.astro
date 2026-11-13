@@ -1,110 +1,133 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/editorial.css';
 import archive from '../assets/archive-care.jpg';
 import ward1982 from '../assets/tb-ward-1982.jpg';
+import hhWard from '../assets/history/hh-ward-1982.jpg';
+import firstNurse from '../assets/history/first-nurse.jpg';
+import earlyConsult from '../assets/history/early-consultation.jpg';
+import cataract from '../assets/history/cataract-surgery.jpg';
+import volunteers2003 from '../assets/history/volunteers-2003.jpg';
+import award2007 from '../assets/history/award-2007.jpg';
+import audience2013 from '../assets/history/audience-2013.jpg';
+import quarters2014 from '../assets/history/doctors-quarters-2014.jpg';
+import zeroTb2016 from '../assets/history/zero-tb-2016.jpg';
+import book2018 from '../assets/history/tb-book-2018.jpg';
+import opd2021 from '../assets/history/new-opd-2021.jpg';
+import audience2022 from '../assets/history/audience-2022.jpg';
 
-const milestones = [
-  {
-    year: '1971',
-    title: 'Official Inauguration',
-    description: 'Officially inaugurated on October 4th, 1971, with His Holiness the XIV Dalai Lama\'s blessings, following proposal by Mr. Tsewang Rinchen Rishing.',
-    tag: 'Founding'
-  },
-  {
-    year: '1979',
-    title: 'Handover to CTA',
-    description: 'Formally handed over to the Central Tibetan Administration (CTA) on January 1, 1979, and renamed Delek Hospital.',
-    tag: 'Administration'
-  },
-  {
-    year: '1982',
-    title: 'TB Ward Inauguration',
-    description: 'His Holiness the 14th Dalai Lama visits Delek to inaugurate the TB ward.',
-    tag: 'Expansion',
-    photo: ward1982,
-    photoAlt: 'Archival photograph of the 1982 visit for the TB ward inauguration'
-  },
-  {
-    year: '2018',
-    title: 'Overcoming Tuberculosis Book Launch',
-    description: 'Former Health Minister Mr. Choekyong-Wangchuk launches Delek\'s TB-book, "Overcoming Tuberculosis".',
-    tag: 'Publication'
-  },
-  {
-    year: '2021',
-    title: 'New OPD Inauguration',
-    description: 'His Eminence-Yongzin Ling Rinpoche inaugurates Delek\'s new OPD on July 6, 2021.',
-    tag: 'Facility'
-  }
+type Photo = { image: ImageMetadata; alt: string; caption: string };
+type Entry = { year: string; title: string; text: string; photo?: Photo };
+type Decade = { id: string; label: string; title: string; feature?: Photo; entries: Entry[] };
+
+const decades: Decade[] = [
+  { id: 'd1970s', label: '1970s', title: 'A clinic is born',
+    feature: { image: firstNurse, alt: 'Portrait of Mrs. Sonam Gyamo in a nurse’s uniform', caption: 'Mrs. Sonam Gyamo, Delek’s first nurse · Date unknown' },
+    entries: [
+      { year: '1971', title: 'Delek opens its doors', text: 'On October 4, Tibetan Delek Hospital is inaugurated by His Holiness the XIV Dalai Lama on land he donated. It begins as a small outpatient clinic with a visiting doctor, its health workers translating between patients and the visiting Indian doctor.', photo: { image: earlyConsult, alt: 'Colour photograph of an early outpatient consultation at Delek', caption: 'An early outpatient consultation · Date unknown' } },
+      { year: '1977', title: 'TB care in McLeod Ganj', text: 'The McLeod Ganj clinic begins providing tuberculosis care.' },
+      { year: '1979', title: 'Handover to the CTA', text: 'Delek is formally handed over to the Central Tibetan Administration, continuing as an administratively and financially autonomous charitable institution under the Department of Health. The first formal plan for a dedicated TB program is developed.' },
+    ] },
+  { id: 'd1980s', label: '1980s', title: 'Care reaches into the community',
+    feature: { image: hhWard, alt: 'Black-and-white photograph of His Holiness the Dalai Lama speaking with a patient in the inpatient ward', caption: 'His Holiness visits the inpatient ward, 1982 · Hospital archive' },
+    entries: [
+      { year: '1980', title: 'The TB program begins', text: 'A dedicated tuberculosis program officially begins, alongside a new Community Health Worker program that takes TB care beyond the hospital.' },
+      { year: '1982', title: 'TB ward and clinic open', text: 'His Holiness the XIV Dalai Lama inaugurates Delek’s dedicated TB ward. An outpatient TB clinic is established.', photo: { image: ward1982, alt: 'Archival photograph of the 1982 visit for the TB ward inauguration', caption: 'TB ward inauguration, 1982 · Hospital archive' } },
+      { year: '1985', title: 'Diagnosis closer to home', text: 'Community Health Workers are trained in sputum microscopy, bringing TB diagnosis and treatment closer to Tibetan settlements.' },
+    ] },
+  { id: 'd1990s', label: '1990s', title: 'Restoring sight',
+    entries: [
+      { year: '1999', title: 'The first free cataract camp', text: 'Delek partners with the Association for Ophthalmic Cooperation in Asia, Japan, and the Rotary Club of Dharamshala to hold its first annual free cataract surgery camp, a partnership that continues today.', photo: { image: cataract, alt: 'Surgeons performing cataract surgery in an operating theatre', caption: 'Cataract surgery at Delek · Date unknown' } },
+    ] },
+  { id: 'd2000s', label: '2000s', title: 'Partners in care',
+    entries: [
+      { year: '2003', title: 'Volunteer doctors', text: 'Delek’s volunteer doctors, part of a long tradition of visiting clinicians, meet His Holiness the Dalai Lama.', photo: { image: volunteers2003, alt: 'His Holiness the Dalai Lama standing with Delek’s volunteer doctors, all wearing white scarves', caption: 'Delek’s volunteer doctors with His Holiness, 2003' } },
+      { year: '2007', title: 'Anadi Kamal Award', text: 'The Voluntary Health Association of India honours Delek with the Anadi Kamal Award for its outstanding contribution to social work and community development.', photo: { image: award2007, alt: 'A Delek representative receiving the Anadi Kamal Award on stage', caption: 'Receiving the Anadi Kamal Award, 2007' } },
+    ] },
+  { id: 'd2010s', label: '2010s', title: 'Recognition and new ground',
+    entries: [
+      { year: '2013', title: 'The Kochon Prize', text: 'Delek’s TB program is selected for the Kochon Prize, recognising its contribution to the global effort to prevent and treat tuberculosis. In November, present and former staff receive a special audience with His Holiness.', photo: { image: audience2013, alt: 'Present and former Delek staff gathered with His Holiness the Dalai Lama', caption: 'Special audience with His Holiness, 5 November 2013' } },
+      { year: '2014', title: 'New doctors’ quarters', text: 'Gyalwang Karmapa Rinpoche visits Delek for the inauguration of the new doctors’ quarters.', photo: { image: quarters2014, alt: 'Gyalwang Karmapa Rinpoche addressing a gathering under a decorated canopy', caption: 'Inauguration of the doctors’ quarters, 2014' } },
+      { year: '2017', title: 'Zero TB in Tibetan Kids', text: 'Launched in partnership with Johns Hopkins University, the initiative protects children and young people through screening, contact tracing, preventive care and health education.', photo: { image: zeroTb2016, alt: 'The Zero TB in Kids project heads from the US and Delek with His Holiness', caption: 'Project heads from the US and Delek with His Holiness, 2016' } },
+      { year: '2018', title: 'Overcoming Tuberculosis', text: 'Former Health Minister Mr. Choekyong Wangchuk launches Delek’s TB book, “Overcoming Tuberculosis”.', photo: { image: book2018, alt: 'A book launch event with speakers seated at a long table', caption: 'Launch of Delek’s TB book' } },
+    ] },
+  { id: 'd2020s', label: '2020s', title: 'A continuing story',
+    entries: [
+      { year: '2021', title: 'A new OPD', text: 'His Eminence Yongzin Ling Rinpoche inaugurates Delek’s new outpatient department on July 6.', photo: { image: opd2021, alt: 'Yongzin Ling Rinpoche cutting a ribbon at the new OPD entrance', caption: 'Inauguration of the new OPD, 6 July 2021' } },
+      { year: '2022', title: 'Gratitude to our patron', text: 'Present and former staff receive a special audience with His Holiness on October 6 and present a statue of the Medicine Buddha.', photo: { image: audience2022, alt: 'Present and former Delek staff seated together during an audience with His Holiness', caption: 'Special audience with His Holiness, 6 October 2022' } },
+      { year: '2024', title: 'Women’s health', text: 'A cervical cancer and HPV prevention project brings screening, vaccination and health education to women in the community.' },
+      { year: '2025', title: 'New leadership', text: 'The Board of Directors appoints Dr. Tenzin Tsundue as Chief Administrator, succeeding Mr. Dawa Phunkyi.' },
+    ] },
+];
+
+const recognition = [
+  ['Centre of Excellence', 'A referral Centre of Excellence for TB treatment, recognised by the Government of India’s RNTCP and NTEP.'],
+  ['Nearly 28,000 screened', 'The TB REACH active case-finding project took screening into schools, monasteries, nunneries and other community settings.'],
+  ['Kochon Prize, 2013', 'Recognising Delek’s contribution to the global effort to prevent and treat tuberculosis.'],
+  ['Zero TB in Tibetan Kids', 'Since 2017, with Johns Hopkins University: screening, contact tracing, preventive care and education for young people.'],
+  ['Free cataract surgery', 'Every year since 1999, with AOCA and the Rotary Club of Dharamshala, restoring sight for members of the community.'],
+  ['Women’s health', 'Since 2024, hundreds of women screened for cervical cancer in the program’s first two phases.'],
 ];
 ---
+<BaseLayout title="History & Milestones — Delek Hospital">
+<div class="editorial-page history-page">
+<header class="ed-intro ed-wrap"><p class="ed-label">Our history / Since 1971</p><div class="ed-intro-grid"><h1>More than five<br />decades of care.</h1><p>What began as a small clinic has grown into a charitable hospital serving the Tibetan community and the wider population of Dharamshala.</p></div></header>
 
-<BaseLayout title="Milestones & History — Delek Hospital">
-  <div class="max-w-[1400px] mx-auto px-[var(--space-6)] py-[var(--space-16)]">
-    <!-- Header -->
-    <div class="max-w-2xl mb-[var(--space-16)] reveal">
-      <span class="text-[var(--font-size-xs)] uppercase tracking-[0.2em] text-[var(--color-text-muted)] mb-[var(--space-2)] block">
-        Our History
-      </span>
-      <h1 class="text-[var(--font-size-4xl)] md:text-[var(--font-size-5xl)] font-[var(--font-weight-semibold)] tracking-tight text-[var(--color-primary)] mb-[var(--space-4)]">
-        Over 50 years of care and resilience.
-      </h1>
-      <p class="text-[var(--font-size-base)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
-        Trace the historical milestones of Delek Hospital since its inception in the foothills of the Himalayas.
-      </p>
-    </div>
-
-    <div class="history-opening">
-    <figure class="archive-photo"><img src={archive.src} width={archive.width} height={archive.height} alt="Black-and-white photograph of a child drinking from a cup beside a Red Cross supply box" loading="lazy" /><figcaption>From the hospital’s collection · Date unknown</figcaption></figure>
-    <section class="section" id="founder">
-      <span class="eyebrow">The founder</span><h2>The vision behind Delek</h2>
-      <p>Mr. Tsewang Rinchen Rishing proposed a dedicated medical clinic to serve the Tibetan refugee community in Dharamshala. His determination helped establish Delek Hospital, which opened in 1971 with the blessing of His Holiness the XIV Dalai Lama.</p>
-      <p>His legacy continues through the hospital’s commitment to compassionate, accessible care.</p>
-    </section>
-    </div>
-    <!-- Timeline Container -->
-    <div class="relative">
-      <div class="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[1px] bg-[var(--color-surface-alt)] -translate-x-1/2"></div>
-
-      <div class="space-y-[var(--space-12)]">
-        {milestones.map((item, index) => {
-          const isEven = index % 2 === 0;
-          return (
-            <div class={`relative flex flex-col md:flex-row items-start ${isEven ? 'md:flex-row-reverse' : ''}`}>
-              <div class="w-full md:w-[calc(50%-40px)] pl-[50px] md:pl-0 reveal" data-reveal-delay={index * 60}>
-                <div class="p-[var(--space-6)] rounded-[var(--radius-lg)] bg-[var(--color-surface-alt)] border border-[var(--color-surface-alt)] hover:border-[var(--color-primary-muted)] transition-colors duration-[var(--duration-base)]">
-                  <div class="flex items-center justify-between mb-[var(--space-2)]">
-                    <span class="text-[var(--font-size-xs)] uppercase tracking-[0.15em] text-[var(--color-text-muted)]">
-                      {item.tag}
-                    </span>
-                    <span class="text-[var(--font-size-sm)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] px-[var(--space-2)].5 py-[var(--space-1)] rounded-[var(--radius-sm)] bg-[var(--color-surface)]">
-                      {item.year}
-                    </span>
-                  </div>
-                  <h3 class="text-[var(--font-size-xl)] font-[var(--font-weight-semibold)] text-[var(--color-primary)] mb-[var(--space-2)]">
-                    {item.title}
-                  </h3>
-                  <p class="text-[var(--font-size-sm)] text-[var(--color-text-muted)] leading-[var(--leading-relaxed)]">
-                    {item.description}
-                  </p>
-                  {item.photo && <figure class="milestone-photo"><img src={item.photo.src} width={item.photo.width} height={item.photo.height} alt={item.photoAlt} loading="lazy" /><figcaption>TB ward inauguration, 1982 · Hospital archive</figcaption></figure>}
-                </div>
-              </div>
-
-              <div class="absolute left-[20px] md:left-1/2 top-[var(--space-6)] w-[12px] h-[12px] rounded-full bg-[var(--color-primary)] border-4 border-[var(--color-surface)] -translate-x-1/2 z-10"></div>
-
-              <div class="hidden md:block md:w-[calc(50%-40px)]"></div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+<section class="origins ed-wrap" aria-labelledby="origins-title">
+  <figure class="archive"><img src={archive.src} width={archive.width} height={archive.height} alt="Archival black-and-white photograph of a child drinking from a cup beside a Red Cross supply box" /><figcaption>From the hospital’s collection · Date unknown</figcaption></figure>
+  <div class="ed-copy"><p class="ed-label">How it began</p><h2 id="origins-title">Care in a<br />familiar language.</h2>
+    <p>Delek was founded in 1971 to meet an urgent need for modern medical care within the Tibetan refugee community, a place where patients would not have to worry about being understood.</p>
+    <p>Under its first Administrator, Mrs. Kesang Yangkyi Takla, and with the encouragement of His Holiness, Delek grew from a four-room clinic into a 45-bed hospital with inpatient and outpatient care, a dedicated TB ward and clinic, and community health services. She brought Delek its first full-time doctor, Dr. Greg White, an Australian volunteer who later founded the Tibetan TB Programme.</p>
+    <p>Tuberculosis became one of Delek’s earliest priorities, leading to a community health-worker network, active case finding, research collaborations and prevention programs that continue to serve patients today.</p>
   </div>
+</section>
+
+<section class="founder" id="founder" aria-labelledby="founder-title"><div class="ed-wrap founder-grid">
+  <div><p class="ed-label">The founder</p><h2 id="founder-title">Mr. Tsewang<br />Rinchen Rishing</h2><p class="founder-dates">1914 – 1982</p></div>
+  <div class="founder-story">
+    <p>Born in Gyal Tsekyi-Khar, Tibet, Mr. Rishing sought refuge in Gangtok, Sikkim, in 1962 before making his home in Dharamshala. There he served two terms as a Community Leader and as a member of the Third and Fourth Tibetan People’s Deputies.</p>
+    <p>Seeing the community’s urgent need for dependable medical care, he proposed a small allopathic clinic to His Holiness the XIV Dalai Lama. His Holiness encouraged him to think beyond a clinic toward a larger institution, and donated the land on which the hospital stands.</p>
+    <blockquote><p>When funds ran short, the family pledged his wife’s traditional Tibetan jewellery as collateral. When the jewellery came back to them, he pledged it again to finish the hospital.</p></blockquote>
+    <p>Mr. Rishing guided the hospital until the end of 1978. He passed away on January 3, 1982. Each year on October 4, Founder’s Day, Delek remembers the vision, perseverance and generosity that made the hospital possible.</p>
+  </div>
+</div></section>
+
+<nav class="decade-nav" aria-label="Timeline by decade"><div class="ed-wrap">{decades.map(decade => <a href={`#${decade.id}`}>{decade.label}</a>)}</div></nav>
+
+<div class="timeline ed-wrap">
+{decades.map(decade => <section class="decade" id={decade.id} aria-labelledby={`${decade.id}-title`}>
+  <header class="decade-head"><p class="decade-label">{decade.label}</p><h2 id={`${decade.id}-title`}>{decade.title}</h2>{decade.feature && <figure class="decade-feature"><img src={decade.feature.image.src} width={decade.feature.image.width} height={decade.feature.image.height} alt={decade.feature.alt} loading="lazy" /><figcaption>{decade.feature.caption}</figcaption></figure>}</header>
+  <ol class="entries">{decade.entries.map(entry => <li class="entry"><p class="entry-year">{entry.year}</p><div><h3>{entry.title}</h3><p>{entry.text}</p>{entry.photo && <figure><img src={entry.photo.image.src} width={entry.photo.image.width} height={entry.photo.image.height} alt={entry.photo.alt} loading="lazy" /><figcaption>{entry.photo.caption}</figcaption></figure>}</div></li>)}</ol>
+</section>)}
+</div>
+
+<section class="recognition" aria-labelledby="recognition-title"><div class="ed-wrap">
+  <div class="recognition-head"><p class="ed-label">Milestones & recognition</p><div><h2 id="recognition-title">Decades of service,<br />measured in lives.</h2><p>From tuberculosis care to restoring sight and women’s health, these milestones reflect decades of service, partnership and commitment.</p></div></div>
+  <div class="recognition-grid">{recognition.map(([title, text]) => <article><h3>{title}</h3><p>{text}</p></article>)}</div>
+</div></section>
+
+<aside class="ed-closing"><div class="ed-wrap"><div><p class="ed-label">The story continues</p><h2>Meet the people<br />carrying it forward.</h2></div><div><p>Delek’s work continues through its doctors, nurses, staff and partners, and through the programs that connect the hospital with its communities.</p><a class="ed-link" href="/team">Leadership & team <span aria-hidden="true">↗</span></a><a class="ed-link" href="/our-impact">Our community work <span aria-hidden="true">↗</span></a></div></div></aside>
+</div>
 </BaseLayout>
-
 <style>
-.milestone-photo{margin:24px 0 0}.milestone-photo img{width:100%;height:auto}.milestone-photo figcaption{font-size:12px;line-height:1.6;color:var(--color-text-muted);margin-top:10px}
-
-.history-opening{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:clamp(32px,6vw,80px);margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid var(--color-border)}.archive-photo{margin:0;padding:16px;background:#eeece4}.archive-photo img{display:block;width:100%;height:auto}.archive-photo figcaption{font-size:12px;line-height:1.6;color:var(--color-text-muted);padding-top:12px}.history-opening .section{padding:0;margin:0}.history-opening h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(28px,3vw,40px)}
-@media(max-width:767px){.history-opening{grid-template-columns:1fr;gap:28px;margin-bottom:48px;padding-bottom:32px}.archive-photo{padding:10px}}
+.origins{display:grid;grid-template-columns:1fr 1.1fr;gap:88px;align-items:center;padding-block:16px 88px}.archive{padding:20px;background:#e8e4d9}.archive img{filter:sepia(.08)}
+.founder{background:var(--color-surface-alt);padding-block:80px}.founder-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:72px;align-items:start}.founder-dates{font-size:14px;letter-spacing:.08em;color:var(--color-text-muted);margin-top:20px}.founder-story>p{font-size:17px;line-height:1.85;color:var(--color-text-muted)}.founder-story>p+p,.founder-story blockquote+p{margin-top:18px}.founder-story blockquote{margin:36px 0;padding:8px 0 8px 32px;border-left:3px solid var(--color-primary)}.founder-story blockquote p{font-family:Georgia,serif;font-size:clamp(22px,2.4vw,30px);line-height:1.4;color:var(--color-primary);letter-spacing:-.01em}
+.decade-nav{position:sticky;top:80px;z-index:20;background:rgba(243,240,232,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--color-border)}.decade-nav .ed-wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.decade-nav a{flex:1;min-width:84px;text-align:center;padding:18px 8px;font-size:14px;color:var(--color-text-muted);border-bottom:2px solid transparent;transition:color .2s ease,border-color .2s ease}.decade-nav a:hover,.decade-nav a.is-active{color:var(--color-primary);border-bottom-color:var(--color-primary)}
+.decade{display:grid;grid-template-columns:1fr 1.6fr;gap:72px;padding-block:80px;border-bottom:1px solid var(--color-border);scroll-margin-top:150px}.decade:last-child{border-bottom:0}.decade-head{position:sticky;top:160px;align-self:start}.decade-label{font-family:Georgia,serif;font-size:clamp(56px,7vw,104px);line-height:1;letter-spacing:-.04em;color:var(--color-primary);margin-bottom:12px}.decade-head h2{font-size:clamp(24px,2.4vw,32px)}.decade-feature{margin-top:32px}.decade-feature img{max-height:420px;object-fit:contain;object-position:left top;background:transparent}
+.entries{list-style:none;margin:0;padding:0}.entry{display:grid;grid-template-columns:72px 1fr;gap:24px;padding-block:28px;border-top:1px solid var(--color-border)}.entry:first-child{border-top:0;padding-top:0}.entry-year{font-size:15px;font-weight:600;color:var(--color-primary);padding-top:4px}.entry h3{font-size:22px;font-weight:500;line-height:1.3;margin-bottom:10px}.entry p{font-size:16px;line-height:1.8;color:var(--color-text-muted)}.entry figure{margin-top:20px}.entry figure img{max-height:460px;object-fit:cover}
+.recognition{background:var(--color-surface-alt);padding-block:80px}.recognition-head{display:grid;grid-template-columns:1fr 2fr;gap:48px;margin-bottom:48px}.recognition-head h2{margin-bottom:20px}.recognition-head p:not(.ed-label){font-size:17px;line-height:1.8;color:var(--color-text-muted)}.recognition-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px}.recognition-grid article{border-top:1px solid var(--color-border);padding:28px 0 36px}.recognition-grid h3{font-family:Georgia,serif;font-size:26px;font-weight:400;line-height:1.2;margin-bottom:12px}.recognition-grid p{font-size:15px;line-height:1.75;color:var(--color-text-muted)}
+@media(max-width:900px){.decade,.founder-grid,.origins,.recognition-head{grid-template-columns:1fr;gap:32px}.decade-head{position:static}.recognition-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:767px){.origins{padding-bottom:48px}.archive{padding:12px}.founder,.recognition{padding-block:48px}.founder-story>p{font-size:16px}.founder-story blockquote{padding-left:20px;margin:28px 0}.decade-nav{top:80px}.decade-nav a{min-width:72px;padding:14px 6px;font-size:13px}.decade{padding-block:48px;scroll-margin-top:140px}.entry{grid-template-columns:1fr;gap:6px}.recognition-grid{grid-template-columns:1fr}.recognition-head{margin-bottom:24px}}
 </style>
+<script>
+document.addEventListener('astro:page-load', () => {
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('.decade-nav a')];
+  if (!links.length) return;
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    links.forEach(link => link.classList.toggle('is-active', link.hash === `#${entry.target.id}`));
+  }), { rootMargin: '-40% 0px -55% 0px' });
+  document.querySelectorAll('.decade').forEach(section => observer.observe(section));
+  document.addEventListener('astro:before-swap', () => observer.disconnect(), { once: true });
+});
+</script>
