@@ -20,3 +20,9 @@
 - Phase 2: data extraction, content collections, route migration, 404, metadata/JSON-LD, stylesheet consolidation, Tibetan routing, Worker and Decap implementation.
 - Phase 3: CI, preview/production deployment separation, headers, historical WordPress URL inventory/redirects, analytics and launch checklist.
 - No phases are marked complete until their remaining checks and implementation are finished.
+
+## Decap implementation checkpoint
+- Added validated news/story Markdown collections, publication filters, Decap editor configuration and setup documentation.
+- Production editor remains disabled pending PUBLIC_DECAP_AUTH_URL and OAuth account setup. Development uses an in-memory demo, not Git writes.
+- Drafts, stories without consent, empty indexes and admin are excluded from public sitemap output.
+- Live staff login, review permissions and publishing/deployment remain unverified pending account setup and deployment approval.
