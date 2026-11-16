@@ -50,7 +50,7 @@ const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
     <meta name="twitter:description" content={description} />
     <ClientRouter />
   </head>
-  <body data-section={pathname.split('/')[1] || 'home'} class:list={[pathname !== '/support' && pathname !== '/' && 'community-theme', "bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased min-h-[100dvh] flex flex-col selection:bg-[var(--color-accent)] selection:text-[var(--color-primary)]"]}>
+  <body data-section={pathname.split('/')[1] || 'home'} class:list={[pathname !== '/' && 'community-theme', "bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased min-h-[100dvh] flex flex-col selection:bg-[var(--color-accent)] selection:text-[var(--color-primary)]"]}>
     <a class="skip-link" href="#main-content">Skip to content</a>
     <Nav />
     <main id="main-content" tabindex="-1" class="flex-grow">
