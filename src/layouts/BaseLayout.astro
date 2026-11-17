@@ -29,7 +29,7 @@ const { title: suppliedTitle = 'Delek Hospital', description = pageDescriptions[
 const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
 ---
 
-<html lang="en">
+<html lang="en" transition:animate="none">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -48,7 +48,7 @@ const title = suppliedTitle.replace('Hospital Name', 'Delek Hospital');
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <ClientRouter />
+    <ClientRouter fallback="swap" />
   </head>
   <body data-section={pathname.split('/')[1] || 'home'} class:list={[pathname !== '/' && 'community-theme', "bg-[var(--color-surface)] text-[var(--color-text)] font-sans antialiased min-h-[100dvh] flex flex-col selection:bg-[var(--color-accent)] selection:text-[var(--color-primary)]"]}>
     <a class="skip-link" href="#main-content">Skip to content</a>
