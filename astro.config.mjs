@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import { readFileSync } from 'node:fs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,8 +11,16 @@ export default defineConfig({
   // Accept existing slashless links in dev. Directory output, sitemap and
   // canonicals retain trailing slashes; Cloudflare normalizes production URLs.
   trailingSlash: 'ignore',
-  // All current generated routes are public and indexable.
-  integrations: [sitemap()],
+  // Exclude admin and any generated page explicitly marked noindex.
+  integrations: [sitemap({
+    filter(page) {
+      const pathname = new URL(page).pathname;
+      if (pathname.startsWith('/admin')) return false;
+      const file = new URL(`./dist${pathname.replace(/\/$/, '')}/index.html`, import.meta.url);
+      const html = readFileSync(file, 'utf8');
+      return !/<meta\s+[^>]*name="robots"[^>]*content="[^"]*noindex/i.test(html);
+    },
+  })],
   vite: {
     plugins: [tailwindcss()]
   }

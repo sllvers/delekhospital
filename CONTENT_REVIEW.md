@@ -6,8 +6,8 @@ Clinic schedule lives in `src/data/care.ts`. Update the confirmed date after che
 - Founder birth year differs: current site 1922, client draft 1914. Founder/history copy needs sign-off.
 - Confirm current leadership, board membership and names before changing team profiles.
 - Verify screening figures, outcome percentages and reporting periods before adding homepage statistics.
-- Approve patient stories and image publication consent. Add approved stories to src/data/editorial.ts; homepage and story routes populate automatically.
-- Add confirmed news to src/data/editorial.ts. Homepage news appears only when entries exist.
+- Approve patient stories and image publication consent. Add approved stories to src/content/stories; homepage and story routes populate automatically.
+- Add confirmed news to src/content/news. Homepage news appears only when entries exist.
 - Confirm addresses, contacts and services for McLeod Ganj and Delek House, Chandigarh.
 - Supply application links, correct application email and confirmed fees/eligibility for partnerships. Enquiries currently lead to Contact.
 - Confirm recurring donation support and gift amounts before adding payment choices. Existing PayPal destination remains unchanged.
@@ -21,4 +21,13 @@ Clinic schedule lives in `src/data/care.ts`. Update the confirmed date after che
 - Cervical cancer slide on the homepage uses the stock services/women.jpg. Replace it with a real screening-camp photo when one is available.
 - Schedule: 5th Saturday (9 am–1 pm), the Immunization Clinic (2nd Tuesday, 10:30 am–1 pm) and "emergency services only on official holidays" come from the hospital's 2024 opening-hours graphic (media-images/2024/08). Reconfirm they are still current.
 - Urgent-care bar uses the main number +91 1892 222053. Confirm whether there is a separate 24-hour emergency or ambulance number.
-- Patient & Community Stories and News are hidden from the menu (and set to noindex) until entries are added to src/data/editorial.ts. The homepage story carousel appears automatically once stories exist (optional fields: quote, name).
+- Patient & Community Stories and News are hidden from the menu (and set to noindex) until approved entries are published through the content collections. The homepage story carousel appears automatically once stories exist (optional fields: quote, name).
+
+## CMS setup confirmations
+- Confirm staff GitHub accounts, maintainer/reviewer and main-branch protection before enabling Decap. OAuth service URL and GitHub OAuth app setup are pending; see CMS_SETUP.md.
+- Replace or delete draft editor-guide Markdown placeholders with approved content. They are excluded from public pages. No news date, patient name or story has been invented.
+
+## Client reference homepage — November 16
+- Reference image is a layout model only. Confirm bed count, annual outpatient/inpatient figures, vaccinations, staff count and their reporting period. Homepage uses dashes until confirmed; do not reuse the TB screening count as outpatient visits.
+- Reference testimonial, patient identity and portrait are not approved source content. Homepage uses existing hospital copy and a clear story-approval placeholder until a consent-confirmed story is published through the CMS.
+- Existing hospital/clinical photographs stand in for the reference's hero and volunteer images. Confirm final approved selections. Existing contact details and donation destination are preserved.

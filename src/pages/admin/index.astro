@@ -1,0 +1,28 @@
+---
+import { cmsConfig } from '../../cms/config';
+const authUrl = import.meta.env.PUBLIC_DECAP_AUTH_URL;
+if (authUrl && new URL(authUrl).protocol !== 'https:') {
+  throw new Error('PUBLIC_DECAP_AUTH_URL must be an HTTPS OAuth service URL.');
+}
+const demo = import.meta.env.DEV && !authUrl;
+const enabled = demo || Boolean(authUrl);
+const config = cmsConfig(authUrl);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Content editor — Delek Hospital</title>
+  </head>
+  <body>
+    {demo && <p role="status">Local editor demo: changes stay in memory and are not saved to GitHub or published.</p>}
+    {!enabled && <main><h1>Content editor setup pending</h1><p>GitHub authentication must be configured before staff can sign in. See CMS_SETUP.md in the repository.</p><a href="/">Return to Delek Hospital</a></main>}
+    {enabled && <>
+      <script is:inline>window.CMS_MANUAL_INIT = true;</script>
+      <script is:inline src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"></script>
+      <script define:vars={{ config }}>window.CMS.init({ config });</script>
+    </>}
+  </body>
+</html>

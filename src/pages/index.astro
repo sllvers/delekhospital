@@ -1,123 +1,65 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import exterior from '../assets/hospital-exterior.jpg';
 import elders from '../assets/elder-care.jpg';
-import opd from '../assets/opd-entrance.jpg';
-import tbClinic from '../assets/tb-clinic.jpg';
-import ward from '../assets/home/inpatient-ward.jpg';
-import branch from '../assets/branch-waiting-area.jpg';
-import outreach from '../assets/tb-outreach.jpg';
-import women from '../assets/services/women.jpg';
-import children from '../assets/home/immunization.jpg';
+import exterior from '../assets/hospital-exterior.jpg';
 import teaching from '../assets/clinical-teaching.jpg';
 import { stories, news } from '../data/editorial';
-import { locations } from '../data/locations';
-const main = locations[0];
-const help = [
-  { title: 'OPD clinics & schedules', text: 'Find clinic hours and visiting specialist schedules.', href: '/find-care/schedules', cta: 'View schedules', image: opd, alt: 'The entrance to Delek’s outpatient department' },
-  { title: 'TB care', text: 'TB screening, diagnosis, treatment and where to seek care.', href: '/find-care/tb-care', cta: 'Get TB help', image: tbClinic, alt: 'The TB clinic sign at Delek Hospital' },
-  { title: 'Our services', text: 'Medical and diagnostic services available at Delek.', href: '/find-care/services', cta: 'View services', image: ward, alt: 'Doctors and nurses attending to patients in an inpatient ward' },
-  { title: 'Our locations', text: 'Find Delek Hospital and our other facilities.', href: '/find-care/locations', cta: 'Find a location', image: branch, alt: 'Waiting area at the McLeod Ganj branch clinic' },
+import '../styles/home-community.css';
+const values = [
+  { title: 'People-centred care', text: 'Serving our diverse community with dignity, kindness and respect.', icon: 'people' },
+  { title: 'Essential services', text: 'Outpatient and inpatient care, diagnostics, pharmacy and laboratory.', icon: 'care' },
+  { title: 'Care beyond the hospital', text: 'Prevention, public health and education connect people with care.', icon: 'heart' },
+  { title: 'Supported by donors', text: 'Your support helps sustain affordable healthcare and community services.', icon: 'leaf' },
 ];
-const impact = [
-  { title: 'TB care & prevention', text: 'For decades, Delek has worked to prevent, detect and treat tuberculosis while supporting patients throughout their journey to recovery.', href: '/our-impact/tibetan-tb-program', cta: 'Explore our TB program', image: outreach, alt: 'Healthcare workers carrying out outdoor community TB screening' },
-  { title: 'Cervical cancer & HPV prevention', text: 'Through screening, education and HPV vaccination, we are helping protect women and girls from preventable cervical cancer.', href: '/our-impact/womens-health', cta: 'Learn about our prevention work', image: women, alt: 'A clinician speaking with a woman during a consultation' },
-  { title: 'Children’s health & vaccinations', text: 'From routine vaccinations to school-based health initiatives, Delek works to give children a healthier start.', href: '/our-impact/childrens-vaccinations', cta: 'Explore children’s health', image: children, alt: 'Parents and young children gathered at Delek’s immunization clinic' },
-];
-// Figures from the client’s content document. Confirm before launch (see CONTENT_REVIEW.md).
-const reach = [
-  { value: '50+', label: 'Years of service in Dharamshala' },
-  { value: '28,000', label: 'People screened for TB in schools, monasteries and communities' },
-  { value: '800', label: 'Women screened for cervical cancer' },
-  { value: '1999', label: 'Free cataract surgery camps held every year since' },
-];
+const figures = ['Hospital beds', 'Annual outpatient visits', 'Annual inpatient admissions', 'People vaccinated', 'Hospital team'];
+const story = stories[0];
 ---
 <BaseLayout title="Delek Hospital — Compassionate Care in Dharamshala">
-<div class="home-editorial">
-<header class="home-opening page-width"><div class="opening-top"><p class="label">Dharamshala, India / Since 1971</p><a class="quiet-link" href="/find-care/schedules">Clinic hours <span aria-hidden="true">↗</span></a></div><div class="opening-title"><h1>Care, rooted<br />in compassion.</h1><div class="opening-aside"><p>Accessible healthcare for Tibetan refugees and the local communities of Dharamshala.</p><div class="opening-actions"><a class="primary-link" href="/find-care">Find care <span aria-hidden="true">↗</span></a><a class="quiet-link" href="/support">Support Delek <span aria-hidden="true">↗</span></a></div></div></div></header>
-<figure class="hospital-panorama"><img src={exterior.src} width={exterior.width} height={exterior.height} alt="Delek Hospital and the surrounding hills of Dharamshala at sunset" fetchpriority="high" /><figcaption><span>Delek Hospital</span><span>Gangchen Kyishong, Dharamshala</span></figcaption></figure>
+<div class="community-home">
+  <section class="community-hero" aria-labelledby="home-title">
+    <Picture src={elders} formats={['avif','webp']} widths={[640,960,1440,1920]} sizes="100vw" alt="A healthcare worker caring for an older patient" loading="eager" fetchpriority="high" />
+    <div class="community-width hero-copy">
+      <p class="home-eyebrow">Delek Hospital · Dharamshala</p>
+      <h1 id="home-title">Community care<br />in the Himalayas.</h1>
+      <p>Accessible, compassionate healthcare for Tibetan refugees and the local communities of Dharamshala.</p>
+      <div class="home-actions"><a class="home-button home-donate" href="/support/"><span aria-hidden="true">♡</span> Donate now</a><a class="home-button home-outline" href="/find-care/services/">Our services <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
 
-<section class="help page-width" aria-labelledby="help-title"><div class="help-heading"><p class="label">Find care</p><h2 id="help-title">How can we help?</h2></div><div class="help-grid">{help.map(card => <a class="help-card" href={card.href}><figure><img src={card.image.src} width={card.image.width} height={card.image.height} alt={card.alt} loading="lazy" /></figure><h3>{card.title}</h3><p>{card.text}</p><span class="help-cta">{card.cta} <span aria-hidden="true">→</span></span></a>)}</div></section>
+  <section class="home-values" aria-label="Care at Delek"><div class="community-width values-grid">
+    {values.map(value => <article>
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        {value.icon==='people' && <><circle cx="24" cy="12" r="6"/><circle cx="8" cy="17" r="4"/><circle cx="40" cy="17" r="4"/><path d="M14 40V31a10 10 0 0 1 20 0v9H14ZM14 26a8 8 0 0 0-13 6v8h10m23-14a8 8 0 0 1 13 6v8H37"/></>}
+        {value.icon==='care' && <><path d="M9 5v13a11 11 0 0 0 22 0V5M9 7h6m16 0h-6M20 29v5a9 9 0 0 0 18 0v-8"/><circle cx="38" cy="21" r="5"/></>}
+        {value.icon==='heart' && <><path d="M24 24 12 13a7 7 0 0 1 12-7 7 7 0 0 1 12 7L24 24ZM20 44V33l-8-9a3 3 0 0 0-4 4l5 7M8 27V18a3 3 0 0 0-6 0v16l10 10m16 0V33l8-9a3 3 0 0 1 4 4l-5 7m5-8V18a3 3 0 0 1 6 0v16L36 44"/></>}
+        {value.icon==='leaf' && <><path d="M9 35C-1 11 23 6 43 3c-1 22-7 39-28 34M5 45 32 16m-13 13-2-9m8 3 10 1"/></>}
+      </svg><div><h2>{value.title}</h2><p>{value.text}</p></div>
+    </article>)}
+  </div></section>
 
-<section class="mission page-width" aria-labelledby="mission-title"><div class="mission-copy"><p class="label">What drives us</p><h2 id="mission-title">Every person.<br />Every act of care.</h2><p>Everyone who comes through our doors deserves dignity, kindness and respect, regardless of their background or financial circumstances.</p><p>For more than five decades, that belief has shaped Delek’s work in the hospital and beyond.</p><a class="line-link" href="/about">Get to know Delek <span aria-hidden="true">↗</span></a><div class="small-links"><a href="/milestones">Our history ↗</a><a href="/team">Meet our team ↗</a></div></div><figure class="mission-photo home-photo"><img src={elders.src} width={elders.width} height={elders.height} alt="A healthcare worker checking an older woman’s finger with a pulse oximeter" loading="lazy" /><figcaption>Care reaching across generations.</figcaption></figure></section>
+  <section class="home-impact community-width" aria-labelledby="impact-title">
+    <div><h2 id="impact-title">Our impact at a glance</h2><p>Care in the hospital.<br />Support in the community.</p><p class="confirmation-note">Figures awaiting hospital confirmation.</p></div>
+    <dl>{figures.map(label => <div><dt>{label}</dt><dd aria-label="Awaiting confirmation">—</dd></div>)}</dl>
+  </section>
 
-<section class="impact-section" aria-labelledby="impact-title"><div class="page-width"><div class="impact-heading"><p class="label">Our impact</p><div><h2 id="impact-title">Care that reaches<br />beyond our hospital.</h2><p>Our commitment to health extends far beyond treatment within the hospital.</p></div></div>
-<div class="slider" data-slider aria-roledescription="carousel" aria-label="Our public health work"><div class="slider-track" data-track>{impact.map((slide, index) => <article class="impact-slide" aria-roledescription="slide" aria-label={`${index + 1} of ${impact.length}`}><figure><img src={slide.image.src} width={slide.image.width} height={slide.image.height} alt={slide.alt} loading="lazy" /></figure><div class="impact-copy"><p class="label">0{index + 1} / 0{impact.length}</p><h3>{slide.title}</h3><p>{slide.text}</p><a class="line-link" href={slide.href}>{slide.cta} <span aria-hidden="true">↗</span></a></div></article>)}</div>
-<div class="slider-controls"><button type="button" data-prev aria-label="Previous program">←</button><span data-status aria-live="polite">1 / {impact.length}</span><button type="button" data-next aria-label="Next program">→</button><a class="quiet-link" href="/our-impact">All public health programs <span aria-hidden="true">↗</span></a></div></div>
-</div></section>
+  <section class="home-involvement community-width" aria-label="Our community">
+    <article class="home-story">
+      <Picture src={exterior} formats={['avif','webp']} widths={[360,640,900]} sizes="(max-width: 700px) 100vw, 25vw" alt="Delek Hospital and the surrounding hills of Dharamshala" loading="lazy" />
+      <div><p class="home-eyebrow">{story ? 'Patient & community story' : 'People at the heart of care'}</p>
+        <h2>{story?.title ?? 'Every person deserves dignity, kindness and respect.'}</h2>
+        <p>{story?.excerpt ?? 'Everyone who comes through our doors deserves compassionate care, regardless of their background or financial circumstances.'}</p>
+        {!story && <p class="confirmation-note">Patient story awaiting approval and publication consent.</p>}
+        <a class="home-button home-secondary" href={story ? `/impact-stories/${story.slug}/` : '/about/'}>{story ? 'Read their story' : 'About Delek'} <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <article class="home-partner">
+      <Picture src={teaching} formats={['avif','webp']} widths={[480,800,1200]} sizes="(max-width: 900px) 100vw, 40vw" alt="A visiting specialist sharing expertise with Delek doctors" loading="lazy" />
+      <div><h2>Share your expertise.</h2><p>Clinical work, teaching and institutional partnerships help strengthen care for the future.</p><a class="home-button home-light" href="/partner-with-us/">Partner with us <span aria-hidden="true">→</span></a></div>
+    </article>
+  </section>
 
-<section class="reach page-width" aria-labelledby="reach-title"><p class="label" id="reach-title">Our reach</p><dl class="reach-grid">{reach.map(item => <div><dt>{item.label}</dt><dd>{item.value}</dd></div>)}</dl></section>
-
-{stories.length>0&&<section class="stories page-width" aria-labelledby="stories-title"><p class="label">Patient stories</p><h2 id="stories-title" class="sr-only">Patient stories</h2><div class="slider" data-slider aria-roledescription="carousel" aria-label="Patient stories"><div class="slider-track" data-track>{stories.map((story, index) => <article class="story-slide" aria-roledescription="slide" aria-label={`${index + 1} of ${stories.length}`}><blockquote><p>“{story.quote ?? story.excerpt}”</p></blockquote><p class="story-meta">{story.name ?? story.title}</p><a class="line-link" href={`/impact-stories/${story.slug}`}>Read their story <span aria-hidden="true">↗</span></a></article>)}</div>{stories.length>1&&<div class="slider-controls"><button type="button" data-prev aria-label="Previous story">←</button><span data-status aria-live="polite">1 / {stories.length}</span><button type="button" data-next aria-label="Next story">→</button></div>}</div></section>}
-
-<section class="partner" aria-labelledby="partner-title"><figure class="partner-photo"><img src={teaching.src} width={teaching.width} height={teaching.height} alt="A visiting specialist sharing expertise with Delek doctors" loading="lazy" /></figure><div class="partner-copy"><p class="label">Partner with us</p><h2 id="partner-title">Share knowledge.<br />Strengthen care.</h2><p>At Delek, partnership is about learning from one another and using shared knowledge to make care stronger. Whether you are a medical specialist, student, researcher or institution, there are many ways to contribute your experience while building skills and relationships that keep benefiting patients and our team.</p><a class="line-link" href="/partner-with-us">Explore opportunities <span aria-hidden="true">↗</span></a></div></section>
-
-{news.length>0&&<section class="updates page-width"><p class="label">Latest from Delek</p><h2>See what’s happening.</h2><div class="update-list">{news.slice(0,3).map(item=><a href={`/news/${item.slug}`}><time datetime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.summary}</p><span>Read update ↗</span></a>)}</div><a class="quiet-link" href="/news">All news & updates ↗</a></section>}
-
-<section class="participate"><div class="page-width support-band"><div><p class="label">Support Delek</p><h2>Help care continue.</h2></div><div><p>Your support helps sustain affordable healthcare, medicines, screening and community services.</p><a class="line-link" href="/support">Ways to give <span aria-hidden="true">↗</span></a></div></div></section>
-
-<section class="visit page-width" aria-labelledby="visit-title"><div><p class="label">Visit Delek</p><h2 id="visit-title">Here in Dharamshala.</h2><p>Gangchen Kyishong, District Kangra<br />Himachal Pradesh, India – 176215</p><a class="line-link" href={main.directions} target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a><a class="line-link" href="/find-care/locations">All locations <span aria-hidden="true">↗</span></a><div class="small-links"><a href="tel:+911892222053">+91 1892 222053</a><a href="/contact">Contact us ↗</a></div></div><div class="visit-map"><iframe src={main.map} title="Map showing Delek Hospital in Gangchen Kyishong, Dharamshala" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></section>
+  <nav class="home-quicklinks community-width" aria-label="Plan your visit"><h2>Here when you need us.</h2><a href="/find-care/schedules/">Clinics & schedules <span aria-hidden="true">→</span></a><a href="/find-care/tb-care/">TB care <span aria-hidden="true">→</span></a><a href="/find-care/locations/">Directions & locations <span aria-hidden="true">→</span></a><a href="/contact/">Contact Delek <span aria-hidden="true">→</span></a></nav>
+  {news.length>0 && <section class="home-news community-width"><h2>News & updates</h2><div>{news.slice(0,3).map(item=><a href={`/news/${item.slug}/`}><time datetime={item.date}>{item.date}</time><h3>{item.title}</h3><p>{item.summary}</p></a>)}</div></section>}
 </div>
 </BaseLayout>
-<style>
-.home-editorial{--ink:var(--color-primary);--paper:var(--color-paper);color:#2a2a26;background:var(--paper)}.page-width{width:min(100% - 96px,1240px);margin-inline:auto}.label{font-size:11px;line-height:1.6;font-weight:500;letter-spacing:.16em;text-transform:uppercase;margin-bottom:24px}.home-opening{padding-block:32px 48px}.opening-top{display:flex;justify-content:space-between;align-items:baseline;gap:24px}.opening-title{display:grid;grid-template-columns:1.6fr 1fr;gap:48px;align-items:end}.opening-title h1{font-family:Georgia,serif;font-size:clamp(58px,7.7vw,114px);line-height:1.01;font-weight:400;letter-spacing:-.045em}.opening-aside{padding-bottom:8px}.opening-aside>p{font-size:17px;line-height:1.75;max-width:35ch}.opening-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap;margin-top:28px}.primary-link{display:inline-flex;justify-content:space-between;gap:36px;background:var(--ink);color:#fffdf5;padding:16px 20px;font-size:14px}.quiet-link{display:inline-flex;gap:28px;align-items:center;font-size:14px;border-bottom:1px solid #9aaabe;padding-bottom:8px}.hospital-panorama{position:relative;margin:0}.hospital-panorama img{width:100%;height:clamp(340px,43vw,620px);object-fit:cover;object-position:center 53%;display:block}.hospital-panorama figcaption{position:absolute;bottom:0;left:0;right:0;color:white;padding:44px 48px 20px;background:linear-gradient(transparent,rgba(14,27,45,.6));display:flex;justify-content:space-between;font-size:11px;letter-spacing:.04em}.patient-links{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #bcc6d3;padding-block:8px}.patient-links a{display:flex;justify-content:space-between;gap:16px;padding:22px 24px;border-right:1px solid #ccd3dd;font-size:14px}.patient-links a:first-child{padding-left:0}.patient-links a:last-child{border-right:0;padding-right:0}.mission{display:grid;grid-template-columns:1fr 1.2fr;gap:100px;align-items:center;padding-block:96px}.home-editorial h2{font-family:Georgia,serif;font-size:clamp(36px,4.5vw,64px);font-weight:400;letter-spacing:-.035em;line-height:1.08}.mission-copy h2{margin-bottom:28px}.mission-copy>p:not(.label){font-size:17px;line-height:1.8;color:#555d68;margin-bottom:16px}.line-link{display:flex;justify-content:space-between;gap:24px;padding:18px 0;border-bottom:1px solid #a9b6c8;font-size:14px}.small-links{display:flex;flex-wrap:wrap;gap:24px;font-size:13px;margin-top:22px}.small-links a{text-decoration:underline;text-underline-offset:5px}figure{margin:0}figure img{display:block;width:100%;object-fit:cover}.mission-photo img{aspect-ratio:5/6;object-position:55% center}figcaption{font-size:11px;color:#555d68;line-height:1.6;padding-top:12px}.impact-section{padding-block:72px;background:#edf1f6}.impact-heading{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start;margin-bottom:40px}.impact-heading .label{padding-top:8px}.impact-heading h2{margin-bottom:24px}.impact-heading p:not(.label){font-size:17px;line-height:1.7;color:#555d68}.outreach-photo img{aspect-ratio:2.1/1;object-position:center 48%}.programs{display:grid;grid-template-columns:1fr 2fr;gap:48px;margin-top:48px}.program-link{display:grid;grid-template-columns:24px 1fr 20px;gap:24px;border-top:1px solid #b1bece;padding:24px 0}.number{font-size:11px;padding-top:6px}.program-link h3{font-size:22px;font-weight:500;line-height:1.3;margin-bottom:8px}.program-link p{font-size:14px;line-height:1.7;color:#555d68}.participate{background:var(--ink);color:#fffdf5;padding-block:72px}.participate .label{color:#d5e1f1}.participation-options{display:grid;grid-template-columns:1fr 1fr;gap:100px;margin-top:48px}.participation-options h3{font-family:Georgia,serif;font-size:32px;font-weight:400;margin-bottom:20px}.participation-options p{color:#e0e8f4;font-size:16px;line-height:1.8;max-width:42ch}.participation-options .line-link{margin-top:16px;border-color:#7892b6}.participate a:focus-visible{outline-color:white}.visit{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;padding-block:72px}.visit h2{font-size:clamp(36px,4vw,52px)}.visit p:not(.label){font-size:16px;line-height:1.8}.updates{padding-block:64px}.update-list{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-block:32px}.update-list a{border-top:1px solid #bcc6d3;padding-top:24px}.update-list h3{font-size:24px;margin-bottom:16px}.update-list p{font-size:15px;line-height:1.7;margin-bottom:24px}.update-list span,.update-list time{font-size:12px}.primary-link span,.quiet-link span,.line-link span,.patient-links span,.program-link>span:last-child{transition:transform .2s ease}a:hover>span:last-child{transform:translate(3px,-3px)}.home-photo.entered{animation:photo-in .4s ease-out both}@keyframes photo-in{from{opacity:.65;transform:translateY(10px)}to{opacity:1;transform:none}}
-@media(max-width:950px){.opening-title{grid-template-columns:1.3fr 1fr;gap:32px}.opening-actions{gap:16px}.mission{gap:48px}.participation-options{gap:48px}.patient-links a{font-size:12px;padding-inline:16px}}
-@media(max-width:767px){.page-width{width:calc(100% - 40px)}.home-opening{padding-block:24px 32px}.opening-top .label{font-size:9px}.opening-top .quiet-link{font-size:12px;gap:12px;white-space:nowrap}.opening-title{grid-template-columns:1fr;gap:24px}.opening-title h1{font-size:clamp(48px,12vw,72px)}.opening-aside>p{font-size:16px}.opening-actions{margin-top:20px;gap:24px}.hospital-panorama img{height:340px;object-position:58% center}.hospital-panorama figcaption{padding:36px 20px 16px;gap:16px;font-size:9px}.patient-links{grid-template-columns:1fr 1fr}.patient-links a,.patient-links a:first-child,.patient-links a:last-child{padding:18px 12px;font-size:12px;border-right:0}.patient-links a:nth-child(odd){padding-left:0;border-right:1px solid #ccd3dd}.patient-links a:nth-child(even){padding-right:0}.patient-links a:nth-child(-n+2){border-bottom:1px solid #ccd3dd}.mission,.impact-heading,.programs,.participation-options,.visit,.update-list{grid-template-columns:1fr;gap:28px}.mission{padding-block:48px}.mission-photo img{aspect-ratio:4/3}.mission-copy>p:not(.label){font-size:16px}.impact-section,.participate{padding-block:48px}.impact-heading .label{margin:0;padding:0}.impact-heading{margin-bottom:28px}.outreach-photo img{aspect-ratio:4/3}.programs{margin-top:28px}.program-link{gap:16px}.program-link h3{font-size:20px}.participation-options{margin-top:32px;gap:40px}.participation-options h3{font-size:28px}.visit{padding-block:48px}.updates{padding-block:48px}}
-@media(prefers-reduced-motion:reduce){.home-photo.entered{animation:none}.home-editorial a span{transition:none;transform:none!important}}
-/* Separate brand emphasis from readable body text. */
-.home-editorial :is(h1,h2,h3,.label,.quiet-link,.line-link,.small-links a,.patient-links a,.program-link){color:var(--ink)}
-.home-editorial .participate :is(h2,h3,.line-link){color:#fffdf5}
-.home-editorial .participate .label{color:#d5e1f1}
-.home-editorial a:focus-visible{outline:2px solid var(--ink);outline-offset:5px}
-.home-editorial .participate a:focus-visible{outline-color:#fffdf5}
-
-/* How can we help */
-.help{padding-block:72px 24px}.help-heading{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:32px}.help-heading .label{margin:0}.help-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.help-card{display:flex;flex-direction:column}.help-card figure{overflow:hidden;aspect-ratio:4/3;margin-bottom:20px;background:#e4e8ee}.help-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}.help-card:hover img,.help-card:focus-visible img{transform:scale(1.045)}.help-card h3{font-size:20px;font-weight:500;line-height:1.3;margin-bottom:8px}.help-card p{font-size:14px;line-height:1.7;color:#555d68;margin-bottom:16px}.help-cta{margin-top:auto;font-size:14px;color:var(--ink);border-bottom:1px solid #a9b6c8;padding-bottom:10px;display:flex;justify-content:space-between}.help-cta span{transition:transform .2s ease}.help-card:hover .help-cta span{transform:translateX(4px)}
-/* Slider */
-.slider-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}.slider-track::-webkit-scrollbar{display:none}.slider-track>*{flex:0 0 100%;scroll-snap-align:start;min-width:0}.slider-controls{display:flex;align-items:center;gap:16px;margin-top:28px}.slider-controls button{width:44px;height:44px;border:1px solid #a9b6c8;border-radius:50%;color:var(--ink);font-size:18px;cursor:pointer;transition:background .2s ease,color .2s ease}.slider-controls button:hover:not(:disabled){background:var(--ink);color:#fffdf5}.slider-controls button:disabled{opacity:.35;cursor:default}.slider-controls [data-status]{font-size:13px;min-width:44px;text-align:center;color:#555d68}.slider-controls .quiet-link{margin-left:auto}
-.impact-slide{display:grid;grid-template-columns:1.35fr 1fr;gap:56px;align-items:center}.impact-slide img{aspect-ratio:3/2;width:100%;object-fit:cover}.impact-copy h3{font-family:Georgia,serif;font-size:clamp(28px,3vw,40px);font-weight:400;line-height:1.15;letter-spacing:-.02em;margin-bottom:20px}.impact-copy>p:not(.label){font-size:16px;line-height:1.8;color:#555d68;margin-bottom:12px}
-/* Our reach */
-.reach{padding-block:72px}.reach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin:0}.reach-grid div{display:flex;flex-direction:column-reverse;justify-content:flex-end;border-top:1px solid #a9b6c8;padding-top:24px}.reach-grid dd{font-family:Georgia,serif;font-size:clamp(48px,5.4vw,76px);line-height:1;letter-spacing:-.04em;color:var(--ink);margin:0 0 16px}.reach-grid dt{font-size:14px;line-height:1.6;color:#555d68;max-width:24ch}
-/* Patient stories */
-.stories{padding-block:24px 88px}.story-slide blockquote{margin:0 0 24px}.story-slide blockquote p{font-family:Georgia,serif;font-size:clamp(28px,3.4vw,46px);line-height:1.25;letter-spacing:-.02em;color:var(--ink);max-width:26ch}.story-meta{font-size:14px;color:#555d68;margin-bottom:8px}.story-slide .line-link{max-width:360px}
-/* Partner */
-.partner{display:grid;grid-template-columns:1fr 1fr;background:#edf1f6}.partner-photo img{height:100%;min-height:440px;object-fit:cover}.partner-copy{padding:80px clamp(24px,6vw,96px);align-self:center}.partner-copy h2{margin-bottom:24px}.partner-copy>p:not(.label){font-size:16px;line-height:1.8;color:#555d68;max-width:52ch;margin-bottom:12px}.partner-copy .line-link{max-width:420px}
-/* Support band and visit */
-.support-band{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:end}.support-band p:not(.label){color:#e0e8f4;font-size:16px;line-height:1.8;max-width:44ch;margin-bottom:12px}.support-band .line-link{border-color:#7892b6}
-.visit{align-items:stretch}.visit h2{margin-bottom:24px}.visit p:not(.label){margin-bottom:12px}.visit-map{min-height:360px;background:#e4e8ee}.visit-map iframe{width:100%;height:100%;min-height:360px;border:0;display:block}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-@media(max-width:950px){.help-grid{grid-template-columns:1fr 1fr}.reach-grid{grid-template-columns:1fr 1fr}.impact-slide{gap:32px}}
-@media(max-width:767px){.help{padding-block:48px 8px}.help-grid{gap:28px 16px}.help-card h3{font-size:16px}.help-card p{font-size:13px}.impact-slide,.partner,.support-band{grid-template-columns:1fr;gap:24px}.slider-controls{flex-wrap:wrap}.slider-controls .quiet-link{margin-left:0;width:100%;justify-content:space-between}.reach{padding-block:48px}.reach-grid{gap:28px 20px}.stories{padding-bottom:56px}.partner-photo img{min-height:260px;aspect-ratio:4/3}.partner-copy{padding:40px 20px 48px}.visit-map,.visit-map iframe{min-height:300px}}
-@media(prefers-reduced-motion:reduce){.help-card img,.help-cta span{transition:none;transform:none!important}}
-.home-editorial .help-card h3,.home-editorial .reach .label{color:var(--ink)}
-.home-editorial a.help-card:hover>span:last-child{transform:none}
-</style>
-<script>
-document.addEventListener('astro:page-load',()=>{
- if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('entered');observer.unobserve(entry.target);}}),{threshold:.1});
- document.querySelectorAll('.home-photo').forEach(photo=>observer.observe(photo));
- document.addEventListener('astro:before-swap',()=>observer.disconnect(),{once:true});
-});
-</script>
-
-<script>
-document.addEventListener('astro:page-load',()=>{
- const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
- document.querySelectorAll<HTMLElement>('[data-slider]').forEach(slider=>{
-  const track=slider.querySelector<HTMLElement>('[data-track]');
-  if(!track)return;
-  const slides=[...track.children] as HTMLElement[];
-  const prev=slider.querySelector<HTMLButtonElement>('[data-prev]');
-  const next=slider.querySelector<HTMLButtonElement>('[data-next]');
-  const status=slider.querySelector<HTMLElement>('[data-status]');
-  const current=()=>Math.round(track.scrollLeft/Math.max(track.clientWidth,1));
-  const go=(i:number)=>track.scrollTo({left:Math.max(0,Math.min(slides.length-1,i))*track.clientWidth,behavior:reduced?'auto':'smooth'});
-  const update=()=>{const i=current();if(status)status.textContent=`${i+1} / ${slides.length}`;if(prev)prev.disabled=i===0;if(next)next.disabled=i===slides.length-1;slides.forEach((slide,n)=>{slide.inert=n!==i;});};
-  prev?.addEventListener('click',()=>go(current()-1));
-  next?.addEventListener('click',()=>go(current()+1));
-  let frame=0;track.addEventListener('scroll',()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(update);},{passive:true});
-  update();
- });
-});
-</script>

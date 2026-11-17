@@ -1,6 +1,9 @@
-export interface Story { title: string; excerpt: string; slug: string; body: string[]; quote?: string; name?: string; }
-// Add only hospital-approved stories with publication consent. Routes and homepage cards generate automatically.
-export const stories: Story[] = [];
-export interface NewsItem { title: string; summary: string; date: string; slug: string; body: string[]; }
-// date: YYYY-MM-DD. Add confirmed hospital announcements here.
-export const news: NewsItem[] = [];
+import { getCollection } from 'astro:content';
+
+// Only approved, non-draft entries reach public pages, navigation and the sitemap.
+export const news = (await getCollection('news', ({ data }) => !data.draft))
+  .sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? '') || a.id.localeCompare(b.id))
+  .map(entry => ({ ...entry.data, slug: entry.id, entry }));
+export const stories = (await getCollection('stories', ({ data }) => !data.draft && data.consentConfirmed))
+  .sort((a, b) => a.id.localeCompare(b.id))
+  .map(entry => ({ ...entry.data, slug: entry.id, entry }));

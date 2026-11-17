@@ -1,0 +1,94 @@
+/* Shared visual language for public pages. */
+body.community-theme {
+  --color-surface: #fff;
+  --color-surface-alt: #f0f6fa;
+  --color-paper: #fff;
+  --color-border: #c5d6e2;
+  --color-text: #17263b;
+  --color-text-muted: #586575;
+  background: #fff;
+}
+body.community-theme #main-content :is(h1, h2, h3, h4) {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+body.community-theme #main-content h1 {
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.08;
+}
+body.community-theme #main-content h2 {
+  font-size: clamp(26px, 2.6vw, 38px);
+  line-height: 1.2;
+}
+body.community-theme #main-content h3 { line-height: 1.3; }
+body.community-theme #main-content :is(.content-wrap, .ed-wrap, .editorial-wrap, .partner-wrap, .contact-page > .wrap, .contact-hero > .wrap) {
+  width: min(1320px, calc(100% - 64px));
+  max-width: 1320px;
+  margin-inline: auto;
+}
+body.community-theme #main-content :is(.ed-intro, .page-intro) {
+  padding-block: 48px 40px;
+  max-width: none;
+}
+body.community-theme #main-content :is(.ed-intro-grid, .block-heading) { gap: 40px; }
+body.community-theme #main-content :is(.eyebrow, .ed-label, .kicker, .partner-label) {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+body.community-theme #main-content :is(.contact-page, .partner-page, .services-page) { background: #fff; }
+body.community-theme #main-content :is(.section-alt, .board-band, .honour-band, .recognition, .founder, .arrival, .program-section) { background: #f0f6fa; }
+body.community-theme #main-content :is(.team-block, .care-story, .visit, .recognition, .founder) { padding-block: 56px; }
+body.community-theme #main-content :is(.contact-hero, .partner-hero) { background: #082f4e; }
+body.community-theme #main-content :is(.hero-grid, .partner-hero-grid) { padding-block: 48px 72px; gap: 40px; }
+body.community-theme #main-content :is(.contact-card, .partner-card, .service-directory article) {
+  border: 1px solid #d6e1e9;
+  border-radius: 12px;
+  box-shadow: none;
+  background: #fff;
+}
+body.community-theme #main-content .card {
+  border: 1px solid #d6e1e9;
+  border-radius: 12px;
+  padding: 28px;
+  background: #f0f6fa;
+}
+body.community-theme #main-content :is(.card h2, .card h3, .partner-card h2, .contact-card h2, .service-body h2) { font-size: 24px; }
+body.community-theme #main-content :is(.button, .partner-button, .email-button) {
+  min-height: 48px;
+  border-radius: 7px;
+  padding: 12px 20px;
+  font-weight: 650;
+}
+body.community-theme #main-content :is(.ed-link, .editorial-link, .partner-link) { font-weight: 600; }
+body.community-theme #main-content :is(.ed-closing, .care-shortcuts) { background: #082f4e; }
+body.community-theme #main-content .decade-nav { background: #f0f6fa; }
+body.community-theme #main-content .decade-label { font-family: var(--font-sans); font-weight: 750; font-size: clamp(44px, 5vw, 72px); }
+body.community-theme #main-content :is(.leader img, .person img, .portrait-initials, .facility-photo img, .ed-copy + figure img, .tb-feature img) { border-radius: 10px; }
+body.community-theme #main-content .location-picker button[aria-pressed=true] { border-radius: 0 8px 8px 0; }
+body.community-theme #main-content .services-intro { padding-top: 40px; }
+body.community-theme #main-content .visit-grid { border-radius: 12px; overflow: hidden; }
+body.community-theme :is(a, button, summary, select):focus-visible { outline: 3px solid #c91e43; outline-offset: 5px; }
+body.community-theme #main-content :is(.contact-hero, .partner-hero, .care-hero, .ed-closing, .care-shortcuts) a:focus-visible { outline-color: #fff; }
+body.community-theme .urgent-bar { background: #f0f6fa; color: #17263b; }
+body.community-theme .urgent-bar.urgent-bar :is(a, strong) { color: #17263b; }
+body.community-theme .site-header { background: #fff; }
+body.community-theme .nav-actions > .button { background: #c91e43; }
+body.community-theme > footer {
+  --color-primary: #fff;
+  background: #082f4e;
+  color: #dce8f0;
+  border: 0;
+  padding-block: 56px;
+}
+body.community-theme > footer .footer-corner { display: none; }
+body.community-theme > footer a[aria-label] { color: #002d72; background: #fff; }
+body.community-theme > footer a[aria-label]:hover { background: #dce8f0; }
+@media (max-width: 767px) {
+  body.community-theme #main-content :is(.content-wrap, .ed-wrap, .editorial-wrap, .partner-wrap, .contact-page > .wrap, .contact-hero > .wrap) { width: calc(100% - 40px); }
+  body.community-theme #main-content :is(.ed-intro, .page-intro) { padding-block: 36px 32px; }
+  body.community-theme #main-content :is(.ed-intro-grid, .block-heading, .hero-grid, .partner-hero-grid) { gap: 24px; }
+  body.community-theme #main-content :is(.team-block, .care-story, .visit, .recognition, .founder) { padding-block: 40px; }
+  body.community-theme #main-content :is(.hero-grid, .partner-hero-grid) { padding-block: 36px 64px; }
+}
