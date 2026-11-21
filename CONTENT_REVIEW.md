@@ -31,3 +31,5 @@ Clinic schedule lives in `src/data/care.ts`. Update the confirmed date after che
 - Reference image is a layout model only. Confirm bed count, annual outpatient/inpatient figures, vaccinations, staff count and their reporting period. Homepage uses dashes until confirmed; do not reuse the TB screening count as outpatient visits.
 - Reference testimonial, patient identity and portrait are not approved source content. Homepage uses existing hospital copy and a clear story-approval placeholder until a consent-confirmed story is published through the CMS.
 - Existing hospital/clinical photographs stand in for the reference's hero and volunteer images. Confirm final approved selections. Existing contact details and donation destination are preserved.
+
+- Team portrait: obtain a higher-resolution version of Dr. Tenzin Namdon’s labelled media-library portrait (currently 230 × 230 pixels). The supplied video screenshot was not needed.

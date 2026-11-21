@@ -26,3 +26,6 @@ Each photograph is reserved for its corresponding page. Captions describe archiv
 - `home/inpatient-ward.jpg` ← `2023/03/Inpatient-female-ward-1-1.jpg` (homepage "Our services" card)
 - `home/immunization.jpg` ← `2023/03/immunization30.jpg` (homepage children's health slide)
 - `history/*` ← archive photos from `2023/04`, `2023/12` and `old-pic-4.jpg` (History timeline); dates come from the original filenames.
+
+## Dr. Tenzin Namdon portrait
+- `9-Tenzin-Namdon.jpg` ← `2023/03/9-Tenzin-Namdon.jpg`, identified by the media-library filename. Used on the Team page in place of initials. Original is 230 × 230 pixels; no image alterations.
