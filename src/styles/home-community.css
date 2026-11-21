@@ -13,7 +13,7 @@
 .community-home a:focus-visible { outline: 3px solid #c91e43; outline-offset: 5px; }
 .community-hero { position: relative; isolation: isolate; min-height: 510px; display: flex; align-items: center; color: white; background: #123550; }
 .community-hero > picture { position: absolute; inset: 0; z-index: -2; }
-.community-hero > picture img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; filter: saturate(.65); }
+.community-hero > picture img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; }
 .community-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(7,36,59,.94), rgba(7,36,59,.76) 35%, rgba(7,36,59,.1) 75%); }
 .hero-copy { padding-block: 64px; }
 .home-eyebrow { color: #075785; font-size: 14px; font-weight: 700; margin-bottom: 14px; }
