@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import VisitPlanner from '../components/VisitPlanner.astro';
 import exterior from '../assets/home/ward-round.jpg';
-import consultation from '../assets/clinical-consultation.jpg';
+import consultation from '../assets/elder-care.jpg';
 import tbClinic from '../assets/tb-clinic.jpg';
 ---
 <BaseLayout title="Find Care — Delek Hospital" description="Plan your visit to Delek Hospital in Dharamshala. Explore clinic hours, medical services, TB care and directions.">
@@ -17,7 +17,7 @@ import tbClinic from '../assets/tb-clinic.jpg';
 <section class="clinic-section editorial-wrap" id="plan-visit" aria-label="Plan your visit"><VisitPlanner /></section>
 <section class="care-story editorial-wrap" aria-labelledby="care-heading">
  <div class="story-heading"><p class="kicker">The people behind your care</p><h2 id="care-heading">Here for you.<br />Through every visit.</h2></div>
- <div class="story-grid"><figure class="consultation-frame photo-reveal"><img src={consultation.src} width={consultation.width} height={consultation.height} alt="A clinician examines a child with a stethoscope while another healthcare worker assists" loading="lazy" /><figcaption><span>01 / At the hospital</span><span>Delek Hospital, Dharamshala</span></figcaption></figure><div class="story-aside"><p>From outpatient consultations to ongoing treatment, our team provides care for the communities of Dharamshala.</p><a class="editorial-link" href="/find-care/services">Explore medical services <span aria-hidden="true">↗</span></a><a class="editorial-link" href="/team">Meet our team <span aria-hidden="true">↗</span></a></div></div>
+ <div class="story-grid"><figure class="consultation-frame photo-reveal"><img src={consultation.src} width={consultation.width} height={consultation.height} alt="A healthcare worker checking an older woman’s finger with a pulse oximeter" loading="lazy" /><figcaption><span>01 / Care for older residents</span><span>Delek Hospital</span></figcaption></figure><div class="story-aside"><p>From outpatient consultations to ongoing treatment, our team provides care for the communities of Dharamshala.</p><a class="editorial-link" href="/find-care/services">Explore medical services <span aria-hidden="true">↗</span></a><a class="editorial-link" href="/team">Meet our team <span aria-hidden="true">↗</span></a></div></div>
  <div class="tb-story"><div class="tb-copy"><p class="kicker">Continuity of care</p><h2>Support beyond<br />a diagnosis.</h2><p>Find practical information about TB diagnosis, treatment, follow-up and patient support at Delek.</p><a class="editorial-link" href="/find-care/tb-care">TB care at Delek <span aria-hidden="true">↗</span></a></div><figure class="tb-frame photo-reveal"><img src={tbClinic.src} width={tbClinic.width} height={tbClinic.height} alt="A healthcare worker reviewing a chest X-ray outside the Delek TB clinic" loading="lazy" /><figcaption>02 / At the TB clinic</figcaption></figure></div>
 </section>
 <section class="arrival" aria-labelledby="arrival-title"><div class="editorial-wrap arrival-inner"><div><p class="kicker">Before you travel</p><h2 id="arrival-title">Let’s plan<br />your visit.</h2></div><div class="arrival-details"><p>Clinic availability can change. Please call to confirm appointments and the service you need.</p><a class="editorial-link" href="tel:+911892222053">+91 1892 222053 <span aria-hidden="true">↗</span></a><a class="editorial-link" href="/find-care/locations">Find Delek Hospital <span aria-hidden="true">↗</span></a></div></div></section>

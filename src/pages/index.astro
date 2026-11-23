@@ -1,7 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import elders from '../assets/elder-care.jpg';
+import consultation from '../assets/clinical-consultation.jpg';
 import exterior from '../assets/hospital-exterior.jpg';
 import teaching from '../assets/clinical-teaching.jpg';
 import { stories, news } from '../data/editorial';
@@ -18,7 +18,7 @@ const story = stories[0];
 <BaseLayout title="Delek Hospital — Compassionate Care in Dharamshala">
 <div class="community-home">
   <section class="community-hero" aria-labelledby="home-title">
-    <Picture src={elders} formats={['avif','webp']} widths={[640,960,1440,1920]} sizes="100vw" alt="A healthcare worker caring for an older patient" loading="eager" fetchpriority="high" />
+    <Picture src={consultation} formats={['avif','webp']} widths={[640,960,1440,1920]} sizes="(max-width: 900px) 100vw, 70vw" alt="A clinician examining a child with a stethoscope while another healthcare worker assists" loading="eager" fetchpriority="high" />
     <div class="community-width hero-copy">
       <p class="home-eyebrow">Delek Hospital · Dharamshala</p>
       <h1 id="home-title">Community care<br />in the Himalayas.</h1>
