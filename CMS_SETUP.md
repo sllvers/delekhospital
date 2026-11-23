@@ -49,3 +49,25 @@ References:
 - https://decapcms.org/docs/github-backend/
 - https://decapcms.org/docs/editorial-workflows/
 - https://docs.astro.build/en/guides/content-collections/
+
+## Clinic schedule editor
+Staff open **Clinic schedules → Clinic hours and Saturdays** in `/admin/`.
+This edits `src/data/schedule.json`, used by Schedules, Services and the Find Care planner.
+Existing timings have been migrated without changes. No confirmation date has been invented.
+
+- Edit hours and visit notes, including lunch breaks and confirmed closures.
+- Select weekday filters and keep the displayed Days wording consistent. Include monthly
+  restrictions in Days. By-arrangement clinics have no selected weekdays and blank Days.
+- Leave hours blank for “Call to confirm”. Enter `Closed` for a confirmed closure.
+- Clinic IDs/facilities and the five Saturday positions are fixed to preserve service links.
+- Save through the editorial workflow, request hospital review and publish only after approval.
+  Changes appear after merge to main and a successful production build, not immediately on Save.
+- The build rejects missing/duplicate clinic IDs, invalid dates, weekday values, incorrect
+  facilities and reordered/missing Saturdays. It cannot verify the medical accuracy of hours.
+- Local test-backend mode starts with a disposable copy of the existing schedule and does not persist edits.
+  Use authenticated GitHub editing after OAuth setup for a real draft/review/publish test.
+
+The owner chose to use their existing GitHub account for the first login; add staff later.
+Next setup session: confirm main-branch deployment and
+review protection, then configure a separate OAuth Worker and GitHub OAuth app. No secret
+or live account setup is required to build the editor locally.

@@ -14,7 +14,7 @@ pnpm build    # output in dist/
 
 - `src/pages/` – one file per page (Home, About, History = `milestones.astro`, Team, Find Care, Our Impact, Partner With Us, Support, Contact).
 - `src/data/` – content you will update most often:
-  - `care.ts` – clinic schedule and Saturday hours (`null` shows "Call to confirm").
+  - `schedule.json` – CMS-editable clinic schedule and Saturday hours (`null` shows "Call to confirm").
   - `programs.ts` – public health programs.
   - `editorial.ts` – loads approved Markdown content from Astro collections. Stories and News stay hidden until published entries exist.
   - `locations.ts` – facilities, addresses and map links.

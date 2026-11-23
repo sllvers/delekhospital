@@ -1,6 +1,6 @@
 # Content to confirm before launch
 
-Clinic schedule lives in `src/data/care.ts`. Update the confirmed date after checking with the hospital. Unconfirmed fields use null and display a call-to-confirm message.
+Clinic schedule lives in `src/data/schedule.json`. Update the confirmed date after checking with the hospital. Unconfirmed fields use null and display a call-to-confirm message.
 
 - Confirm all clinic hours, Saturday rules and branch availability. OB-GYN has conflicting end times; fifth Saturday and preventive check-up/private OPD timing need confirmation.
 - Founder birth year differs: current site 1922, client draft 1914. Founder/history copy needs sign-off.
