@@ -14,9 +14,9 @@ pnpm build    # output in dist/
 
 - `src/pages/` – one file per page (Home, About, History = `milestones.astro`, Team, Find Care, Our Impact, Partner With Us, Support, Contact).
 - `src/data/` – content you will update most often:
-  - `schedule.json` – CMS-editable clinic schedule and Saturday hours (`null` shows "Call to confirm").
+  - `care.ts` / `schedule-schema.ts` – loads and validates the clinic schedule from Sanity.
   - `programs.ts` – public health programs.
-  - `editorial.ts` – loads approved Markdown content from Astro collections. Stories and News stay hidden until published entries exist.
+  - `editorial.ts` – loads published news and stories from Sanity. Stories and News stay hidden until published entries exist.
   - `locations.ts` – facilities, addresses and map links.
   - `navigation.ts` – main menu.
 - `src/assets/` – images used by the site. `media/` holds spare files (unused staff portraits, the seal logo) that are not part of the build.
@@ -28,4 +28,4 @@ See `CONTENT_REVIEW.md` for facts that still need the hospital's sign-off, and `
 
 ## Content editor
 
-Decap CMS and Markdown collections are prepared. See [CMS_SETUP.md](CMS_SETUP.md) for the local demo, approval workflow and pending GitHub OAuth setup.
+Staff edit the clinic schedule, news and stories in Sanity Studio (`studio/`). See [CMS_SETUP.md](CMS_SETUP.md) for setup, publishing and inviting staff.

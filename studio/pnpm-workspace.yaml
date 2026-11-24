@@ -1,0 +1,4 @@
+# Separate from the website's workspace: Studio dependencies are installed here
+# only, so the website build on Cloudflare does not download Sanity.
+allowBuilds:
+  esbuild: true

@@ -1,9 +1,10 @@
 import { getCollection } from 'astro:content';
 
-// Only approved, non-draft entries reach public pages, navigation and the sitemap.
-export const news = (await getCollection('news', ({ data }) => !data.draft))
-  .sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? '') || a.id.localeCompare(b.id))
+// Only published Sanity documents are loaded (see src/content.config.ts).
+// Stories additionally require confirmed consent.
+export const news = (await getCollection('news'))
+  .sort((a, b) => b.data.date.localeCompare(a.data.date) || a.id.localeCompare(b.id))
   .map(entry => ({ ...entry.data, slug: entry.id, entry }));
-export const stories = (await getCollection('stories', ({ data }) => !data.draft && data.consentConfirmed))
+export const stories = (await getCollection('stories', ({ data }) => data.consentConfirmed))
   .sort((a, b) => a.id.localeCompare(b.id))
   .map(entry => ({ ...entry.data, slug: entry.id, entry }));

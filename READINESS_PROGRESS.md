@@ -23,6 +23,6 @@
 
 ## Decap implementation checkpoint
 - Added validated news/story Markdown collections, publication filters, Decap editor configuration and setup documentation.
-- Production editor remains disabled pending PUBLIC_DECAP_AUTH_URL and OAuth account setup. Development uses an in-memory demo, not Git writes.
+- Content editor moved from Decap to Sanity Studio (project ep4aoi37). Pending: schedule import, Studio deploy and Cloudflare deploy-hook webhook; see CMS_SETUP.md.
 - Drafts, stories without consent, empty indexes and admin are excluded from public sitemap output.
 - Live staff login, review permissions and publishing/deployment remain unverified pending account setup and deployment approval.

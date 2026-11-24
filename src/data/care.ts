@@ -1,7 +1,14 @@
-import scheduleData from './schedule.json';
 import { scheduleSchema } from './schedule-schema';
+import { sanityQuery } from '../lib/sanity';
 
-// Fail the build on invalid CMS edits; blank optional fields become null.
+// The schedule is edited in Sanity Studio ("Clinic schedule"). Fail the build
+// on a missing or invalid schedule; blank optional fields become null.
+const scheduleData = await sanityQuery(`*[_id == "clinic-schedule"][0]{
+  reviewedOn,
+  clinics[]{ "id": clinicId, name, facility, weekdays, days, hours, note },
+  saturdays[]{ day, hours }
+}`);
+if (!scheduleData) throw new Error('Publish the clinic schedule in Sanity Studio before building the website.');
 export const schedule = scheduleSchema.parse(scheduleData);
 export const services = [
  ['General Medicine','Outpatient consultations and ongoing patient care.'],
